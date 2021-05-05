@@ -8,7 +8,7 @@
 !*.json
 !*.jpg
 !*.uml
-!*build.gradle
+**build.gradle
 
 # Compiled class file
 *.class
