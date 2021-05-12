@@ -21,5 +21,38 @@ public class TwoNumSum {
     return twoNumberSum(Arrays.copyOfRange(array, 1, array.length), targetSum);
   }
 
+  // 1 more solution: using double for loop: the least optimal || O(n^2) time | O(1) space
+
+  /* O(nlog(n)) | O(1) space || using pointers
+  public static int[] twoNumberSum(int[] array, int targetSum) {
+    Arrays.sort(array);
+    int left = 0;
+    int right = array.length-1;
+    while (left < right) {
+      if (array[left] + array[right] == targetSum) {
+        return new int[] {array[left], array[right]};
+      } else if (array[left] + array[right] < targetSum) {
+        left++;
+      } else {
+        right--;
+      }
+    }
+    return new int[0];
+  }
+   */
+
+  /* Best: O(n) time | O(n) space
+  public static int[] twoNumberSum(int[] array, int targetSum) {
+    Set<Integer> nums = new HashSet<>();
+    for (int num: array) {
+      int match = targetSum - num;
+      if (nums.contains(match)) {
+        return new int[] {match, num};
+      }
+      nums.add(num);
+    }
+    return new int[0];
+  }
+   */
 }
 
