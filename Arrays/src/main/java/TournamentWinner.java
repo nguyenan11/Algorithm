@@ -30,26 +30,18 @@ public class TournamentWinner {
   that the tournament will always have at least two teams.
    */
 
+  private static final int AWAY_TEAM_WON = 0, POINTS_PER_WIN = 3;
 
   // O(n) time | O(k) space - n is number of competitions, k is number of teams
-  public static String tournamentWinner(ArrayList<ArrayList<String>> competitions,
+  public String tournamentWinner(ArrayList<ArrayList<String>> competitions,
       ArrayList<Integer> results) {
     Hashtable<String, Integer> tracking = new Hashtable<>();
     String winner = null;
     String roundWinner;
     int highestPoints = 0;
     for (int index = 0; index < competitions.size(); index++) {
-      if (results.get(index) == 0) {
-        roundWinner = competitions.get(index).get(1);
-      } else {
-        roundWinner = competitions.get(index).get(0);
-      }
-
-      if (tracking.containsKey(roundWinner)) {
-        tracking.put(roundWinner, tracking.get(roundWinner) + 3);
-      } else {
-        tracking.put(roundWinner, 3);
-      }
+      roundWinner = getRoundWinner(index, competitions, results);
+      updateScores(tracking, roundWinner);
 
       if (tracking.get(roundWinner) > highestPoints) {
         highestPoints = tracking.get(roundWinner);
@@ -59,6 +51,24 @@ public class TournamentWinner {
     }
     return winner;
   }
+
+  private String getRoundWinner(int index, ArrayList<ArrayList<String>> competitions,
+      ArrayList<Integer> results) {
+    if (results.get(index) == AWAY_TEAM_WON) {
+      return competitions.get(index).get(1);
+    } else {
+      return competitions.get(index).get(0);
+    }
+  }
+
+  private void updateScores(Hashtable<String, Integer> tracking, String roundWinner) {
+    if (tracking.containsKey(roundWinner)) {
+      tracking.put(roundWinner, tracking.get(roundWinner) + POINTS_PER_WIN);
+    } else {
+      tracking.put(roundWinner, POINTS_PER_WIN);
+    }
+  }
+
 
   /* Cleaner
   private int HOME_TEAM_WON = 1;
