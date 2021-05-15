@@ -19,29 +19,61 @@ public class SmallestDifference {
   difference.
    */
 
+  // O(nlog(n) + mlog(m)) time | O(1) space
   public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
     Arrays.sort(arrayOne);
     Arrays.sort(arrayTwo);
-    int arrOnePointer = arrayOne[0];
-    int arrTwoPointer = arrayTwo[0];
-    int currDifference;
-    int currSmallestDiff = Integer.MAX_VALUE;
-    for (int num : arrayOne) {
-      currDifference = Math.abs(arrTwoPointer - num);
-      if (currDifference < currSmallestDiff) {
-        currSmallestDiff = currDifference;
-        arrOnePointer = num;
-      }
-    }
+    int arrOneIdx = 0, arrTwoIdx = 0; // index starts at 0
+    int smallestValueOne = 0, smallestValueTwo = 0; // declaration
+    int smallestDiff = Integer.MAX_VALUE;
 
-    for (int num : arrayTwo) {
-      currDifference = Math.abs(num - arrOnePointer);
-      if (currDifference < currSmallestDiff) {
-        currSmallestDiff = currDifference;
-        arrTwoPointer = num;
+    while (arrOneIdx < arrayOne.length && arrTwoIdx < arrayTwo.length) {
+      int twoCurrValue = arrayTwo[arrTwoIdx];
+      int oneCurrValue = arrayOne[arrOneIdx];
+      int currDifference = Math.abs(twoCurrValue - oneCurrValue);
+        if (oneCurrValue < twoCurrValue) {
+          arrOneIdx++;
+        } else if (oneCurrValue > twoCurrValue) {
+          arrTwoIdx++;
+        } else {
+          return new int[]{oneCurrValue, twoCurrValue};
+        }
+        if (smallestDiff > currDifference) {
+          smallestDiff = currDifference;
+          smallestValueOne = oneCurrValue;
+          smallestValueTwo = twoCurrValue;
       }
     }
-    return new int[]{arrOnePointer, arrTwoPointer};
+    return new int[]{smallestValueOne, smallestValueTwo};
   }
 
+  /* Alternative
+  public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
+    // Write your code here.
+   	Arrays.sort(arrayOne);
+		Arrays.sort(arrayTwo);
+		int idxOne = 0;
+		int idxTwo = 0;
+		int smallest = Integer.MAX_VALUE;
+		int current = Integer.MAX_VALUE;
+		int[] smallestPair = new int[2];
+		while (idxOne < arrayOne.length && idxTwo < arrayTwo.length) {
+			int firstNum = arrayOne[first];
+			int secondNum = arrayTwo[second];
+			current = Math.abs(firstNum - secondNum);
+			if (firstNum < secondNum) {
+				idxOne++;
+			} else if (firstNum > secondNum) {
+				idxTwo++;
+			} else {
+				return new int[] {firstNum, secondNum};
+			}
+			if (smallest > current) {
+				smallest = current;
+				smallestPair = new int[] {firstNum, secondNum};
+			}
+		}
+		return smallestPair;
+  }
+   */
 }

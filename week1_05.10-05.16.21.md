@@ -4,6 +4,8 @@
 
 # Week 1: 05/10 - 05/16/2021
 
+### Topic: Array
+
 ## [Two Numbers Sum](Arrays/src/main/java/TwoNumSum.java)
 
 #### Level: Easy
@@ -188,7 +190,7 @@ public static List<int[]> threeNumberSum(int[] array, int targetSum) {
   }
 ```
 
-### O(n^2) | O(n) space - n is length of input array
+### O(n^2) time | O(n) space - n is length of input array
 * O(nlog(n)) from sorting is less than O(n^2)
 
 ## [Smallest Difference](Arrays/src/main/java/SmallestDifference.java)
@@ -202,4 +204,32 @@ public static List<int[]> threeNumberSum(int[] array, int targetSum) {
 >You can assume that there will only be one pair of numbers with the smallest difference.
 
 ```java
+public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
+    Arrays.sort(arrayOne);
+    Arrays.sort(arrayTwo);
+    int arrOneIdx = 0, arrTwoIdx = 0; // index starts at 0
+    int smallestValueOne = 0, smallestValueTwo = 0; // declaration
+    int smallestDiff = Integer.MAX_VALUE;
+
+    while (arrOneIdx < arrayOne.length && arrTwoIdx < arrayTwo.length) {
+      int twoCurrValue = arrayTwo[arrTwoIdx];
+      int oneCurrValue = arrayOne[arrOneIdx];
+      int currDifference = Math.abs(twoCurrValue - oneCurrValue);
+        if (oneCurrValue < twoCurrValue) {
+          arrOneIdx++;
+        } else if (oneCurrValue > twoCurrValue) {
+          arrTwoIdx++;
+        } else {
+          return new int[]{oneCurrValue, twoCurrValue};
+        }
+        if (smallestDiff > currDifference) {
+          smallestDiff = currDifference;
+          smallestValueOne = oneCurrValue;
+          smallestValueTwo = twoCurrValue;
+      }
+    }
+    return new int[]{smallestValueOne, smallestValueTwo};
+  }
 ```
+
+### O(nlog(n) + mlog(m)) time | O(1) space
