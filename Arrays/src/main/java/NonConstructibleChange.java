@@ -14,14 +14,15 @@ public class NonConstructibleChange {
   create is 4. If you're given no coins, the minimum amount of change that you can't create is 1
    */
 
+  // O(nlog(n)) time | O(1) space - n is number of coins
   public int nonConstructibleChange(int[] coins) {
     int impossibleChange = 1;
     Arrays.sort(coins);
-    for (int index = 0; index < coins.length; index++) {
-      if (coins[index] > impossibleChange) {
+    for (int coin : coins) {
+      if (coin > impossibleChange) {
         return impossibleChange;
-      } else if (coins[index] <= impossibleChange + 1) {
-        impossibleChange += coins[index];
+      } else if (coin <= impossibleChange + 1) {
+        impossibleChange += coin;
       }
     }
     return impossibleChange;

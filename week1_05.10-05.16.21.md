@@ -87,6 +87,8 @@ public int[] sortedSquaredArray(int[] array) {
 > It's guaranteed that exactly one team will win the tournament and that each team will compete against all other teams exactly once. It's also guaranteed that the tournament will always have at least two teams.
 
 ```java
+private static final int AWAY_TEAM_WON = 0, POINTS_PER_WIN = 3;
+
 public String tournamentWinner(ArrayList<ArrayList<String>> competitions,
       ArrayList<Integer> results) {
     Hashtable<String, Integer> tracking = new Hashtable<>();
@@ -138,13 +140,52 @@ public String tournamentWinner(ArrayList<ArrayList<String>> competitions,
 public int nonConstructibleChange(int[] coins) {
     int impossibleChange = 1;
     Arrays.sort(coins);
-    for (int index = 0; index < coins.length; index++) {
-      if (coins[index] > impossibleChange) {
+    for (int coin : coins) {
+      if (coin > impossibleChange) {
         return impossibleChange;
-      } else if (coins[index] <= impossibleChange + 1) {
-        impossibleChange += coins[index];
+      } else if (coin <= impossibleChange + 1) {
+        impossibleChange += coin;
       }
     }
     return impossibleChange;
   }
 ```
+
+### O(nlog(n)) time | O(1) space - n is number of coins
+
+## [Three Numbers Sum](Arrays/src/main/java/ThreeNumSum.java)
+
+### Level: Easy
+
+> Write a function that takes in a non-empty array of distinct integers and an integer representing a target sum. The function should find all triplets in the array that sum up to the target sum and return a two-dimensional array of all these triplets. The numbers in each triplet should be ordered in ascending order, and the triplets themselves should be ordered in ascending order with respect to the numbers they hold.
+>
+>If no three numbers sum up to the target sum, the function should return an empty array.
+
+```java
+public static List<int[]> threeNumberSum(int[] array, int targetSum) {
+    List<int[]> targetList = new ArrayList<int[]>();
+    Arrays.sort(array);
+    int size = array.length - 1;
+    for (int i = 0; i < size; i++) {
+      int match = targetSum - array[i];
+
+      int leftPointer = i + 1;
+      int rightPointer = size;
+      while (leftPointer < rightPointer) {
+        int sumOfTwo = array[leftPointer] + array[rightPointer];
+        if (sumOfTwo == match) {
+          targetList.add(new int[]{array[i], array[leftPointer], array[rightPointer]});
+          leftPointer++;
+          rightPointer--;
+        } else if (sumOfTwo < match) {
+          leftPointer++;
+        } else {
+          rightPointer--;
+        }
+      }
+    }
+    return targetList;
+  }
+```
+
+### O(n^2) or O(n^2log(n)) time | O(n) space - n is length of input array
