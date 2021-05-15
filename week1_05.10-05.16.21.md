@@ -155,7 +155,7 @@ public int nonConstructibleChange(int[] coins) {
 
 ## [Three Numbers Sum](Arrays/src/main/java/ThreeNumSum.java)
 
-### Level: Easy
+### Level: Medium
 
 > Write a function that takes in a non-empty array of distinct integers and an integer representing a target sum. The function should find all triplets in the array that sum up to the target sum and return a two-dimensional array of all these triplets. The numbers in each triplet should be ordered in ascending order, and the triplets themselves should be ordered in ascending order with respect to the numbers they hold.
 >
@@ -188,4 +188,18 @@ public static List<int[]> threeNumberSum(int[] array, int targetSum) {
   }
 ```
 
-### O(n^2) or O(n^2log(n)) time | O(n) space - n is length of input array
+### O(n^2) | O(n) space - n is length of input array
+* O(nlog(n)) from sorting is less than O(n^2)
+
+## [Smallest Difference](Arrays/src/main/java/SmallestDifference.java)
+
+### Level: Medium
+
+> Write a function that takes in two non-empty arrays of integers, finds the pair of numbers (one from each array) whose absolute difference is closest to zero, and returns an array containing these two numbers, with the number from the first array in the first position.
+>
+> Note that the absolute difference of two integers is the distance between them on the real number line. For example, the absolute difference of -5 and 5 is 10, and the absolute difference of -5 and -4 is 1.
+>
+>You can assume that there will only be one pair of numbers with the smallest difference.
+
+```java
+```
