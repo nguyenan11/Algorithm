@@ -4,7 +4,7 @@
 
 # Week 1: 05/10 - 05/16/2021
 
-### Topic: Array
+### Category: Array
 
 ## [Two Numbers Sum](Arrays/src/main/java/TwoNumSum.java)
 
@@ -161,7 +161,7 @@ public int nonConstructibleChange(int[] coins) {
 
 > Write a function that takes in a non-empty array of distinct integers and an integer representing a target sum. The function should find all triplets in the array that sum up to the target sum and return a two-dimensional array of all these triplets. The numbers in each triplet should be ordered in ascending order, and the triplets themselves should be ordered in ascending order with respect to the numbers they hold.
 >
->If no three numbers sum up to the target sum, the function should return an empty array.
+> If no three numbers sum up to the target sum, the function should return an empty array.
 
 ```java
 public static List<int[]> threeNumberSum(int[] array, int targetSum) {
@@ -201,7 +201,7 @@ public static List<int[]> threeNumberSum(int[] array, int targetSum) {
 >
 > Note that the absolute difference of two integers is the distance between them on the real number line. For example, the absolute difference of -5 and 5 is 10, and the absolute difference of -5 and -4 is 1.
 >
->You can assume that there will only be one pair of numbers with the smallest difference.
+> You can assume that there will only be one pair of numbers with the smallest difference.
 
 ```java
 public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
@@ -266,4 +266,33 @@ public static List<Integer> moveElementToEnd(List<Integer> array, int toMove) {
 * Seems like n^2 square for time because of 2 while loops, but the iterations
 stop when two pointers cross-path
 
+## [Monotonic Array]()
 
+### Level: Medium
+
+> Write a function that takes in an array of integers and returns a boolean representing whether the array is monotonic.
+>
+> An array is said to be monotonic if its elements, from left to right, are entirely non-increasing or entirely non-decreasing.
+>
+> Non-increasing elements aren't necessarily exclusively decreasing; they simply don't increase. Similarly, non-decreasing elements aren't necessarily exclusively increasing; they simply don't decrease.
+>
+> Note that empty arrays and arrays of one element are monotonic.
+
+```java
+public static boolean isMonotonic(int[] array) {
+    int length = array.length;
+    if (length <= 2) {
+      return true;
+    }
+    int initialCondition = Integer.compare(array[0], array[1]);
+    for (int i = 1; i < length - 1; i++) {
+      int currCondition = Integer.compare(array[i], array[i + 1]);
+      if (currCondition != initialCondition && currCondition != 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+```
+
+### O(n) time | O(1) space
