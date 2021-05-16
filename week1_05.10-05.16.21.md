@@ -233,3 +233,37 @@ public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
 ```
 
 ### O(nlog(n) + mlog(m)) time | O(1) space
+* Roughly O(n + m) time
+* n and m because 2 arrays might not have the same length
+
+## [Move Element To End](Arrays/src/main/java/MoveEleToEnd.java)
+
+### Level: Medium
+
+>You're given an array of integers and an integer. Write a function that moves all instances of that integer in the array to the end of the array and returns the array.
+>
+>The function should perform this in place (i.e., it should mutate the input array) and doesn't need to maintain the order of the other integers.
+
+```java
+public static List<Integer> moveElementToEnd(List<Integer> array, int toMove) {
+    int start = 0;
+    int end = array.size() - 1;
+    while (start < end) {
+      if (array.get(start) == toMove) {
+        while (array.get(end) == toMove && end > start) {
+          end--;
+        }
+        array.set(start, array.get(end));
+        array.set(end, toMove);
+      }
+      start++;
+    }
+    return array;
+  }
+```
+
+### O(n) time | O(1) space - n is length of array
+* Seems like n^2 square for time because of 2 while loops, but the iterations
+stop when two pointers cross-path
+
+
