@@ -16,13 +16,13 @@ public class MonotonicArray {
    */
 
 
-  // O(n) time | O(1) space
-  // Fail 2 test cases; need to double check
+  /* First attempt, fail 2 test cases where initial condition = 0
   public static boolean isMonotonic(int[] array) {
     int length = array.length;
     if (length <= 2) {
       return true;
     }
+    // need an additional check if initialCondition is 0, not optimal
     int initialCondition = Integer.compare(array[0], array[1]);
     for (int i = 1; i < length - 1; i++) {
       int currCondition = Integer.compare(array[i], array[i + 1]);
@@ -31,5 +31,28 @@ public class MonotonicArray {
       }
     }
     return true;
+  }
+  */
+
+  // O(n) time | O(1) space
+  public static boolean isMonotonic(int[] array) {
+    int length = array.length;
+    if (length <= 2) {
+      return true;
+    }
+
+    boolean isIncreasing = false;
+    boolean isDecreasing = false;
+    for (int i = 0; i < length - 1; i++) {
+      if (array[i] > array[i + 1]) {
+        isDecreasing = true;
+      } else if (array[i] < array[i + 1]) {
+        isIncreasing = true;
+      }
+    }
+
+    return !isIncreasing || !isDecreasing;
+    // Same as return isIncreasing ? !isDecreasing: true;
+    // Sheffer stroke (NAND - negation of conjunction)
   }
 }

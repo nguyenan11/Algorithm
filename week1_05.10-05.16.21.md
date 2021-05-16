@@ -266,7 +266,7 @@ public static List<Integer> moveElementToEnd(List<Integer> array, int toMove) {
 * Seems like n^2 square for time because of 2 while loops, but the iterations
 stop when two pointers cross-path
 
-## [Monotonic Array]()
+## [Monotonic Array](Arrays/src/main/java/MonotonicArray.java)
 
 ### Level: Medium
 
@@ -284,14 +284,20 @@ public static boolean isMonotonic(int[] array) {
     if (length <= 2) {
       return true;
     }
-    int initialCondition = Integer.compare(array[0], array[1]);
-    for (int i = 1; i < length - 1; i++) {
-      int currCondition = Integer.compare(array[i], array[i + 1]);
-      if (currCondition != initialCondition && currCondition != 0) {
-        return false;
+
+    boolean isIncreasing = false;
+    boolean isDecreasing = false;
+    for (int i = 0; i < length - 1; i++) {
+      if (array[i] > array[i + 1]) {
+        isDecreasing = true;
+      } else if (array[i] < array[i + 1]) {
+        isIncreasing = true;
       }
     }
-    return true;
+
+    return !isIncreasing || !isDecreasing;
+    // Same as return isIncreasing ? !isDecreasing: true;
+    // Sheffer stroke (NAND - negation of conjunction)
   }
 ```
 
