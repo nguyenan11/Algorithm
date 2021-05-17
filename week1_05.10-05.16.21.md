@@ -132,7 +132,7 @@ public String tournamentWinner(ArrayList<ArrayList<String>> competitions,
 
 ## [Non-Constructible Change](Arrays/src/main/java/NonConstructibleChange.java)
 
-### Level: Easy
+#### Level: Easy
 
 > Given an array of positive integers representing the values of coins in your possession, write a function that returns the minimum amount of change (the minimum sum of money) that you cannot create. The given coins can have any positive integer value and aren't necessarily unique (i.e., you can have multiple coins of the same value).
 >
@@ -157,7 +157,7 @@ public int nonConstructibleChange(int[] coins) {
 
 ## [Three Numbers Sum](Arrays/src/main/java/ThreeNumSum.java)
 
-### Level: Medium
+#### Level: Medium
 
 > Write a function that takes in a non-empty array of distinct integers and an integer representing a target sum. The function should find all triplets in the array that sum up to the target sum and return a two-dimensional array of all these triplets. The numbers in each triplet should be ordered in ascending order, and the triplets themselves should be ordered in ascending order with respect to the numbers they hold.
 >
@@ -195,7 +195,7 @@ public static List<int[]> threeNumberSum(int[] array, int targetSum) {
 
 ## [Smallest Difference](Arrays/src/main/java/SmallestDifference.java)
 
-### Level: Medium
+#### Level: Medium
 
 > Write a function that takes in two non-empty arrays of integers, finds the pair of numbers (one from each array) whose absolute difference is closest to zero, and returns an array containing these two numbers, with the number from the first array in the first position.
 >
@@ -238,7 +238,7 @@ public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
 
 ## [Move Element To End](Arrays/src/main/java/MoveEleToEnd.java)
 
-### Level: Medium
+#### Level: Medium
 
 >You're given an array of integers and an integer. Write a function that moves all instances of that integer in the array to the end of the array and returns the array.
 >
@@ -268,7 +268,7 @@ stop when two pointers cross-path
 
 ## [Monotonic Array](Arrays/src/main/java/MonotonicArray.java)
 
-### Level: Medium
+#### Level: Medium
 
 > Write a function that takes in an array of integers and returns a boolean representing whether the array is monotonic.
 >
