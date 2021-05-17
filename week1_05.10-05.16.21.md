@@ -1,6 +1,7 @@
 # Algorithm practice
 
-- Alternative solutions might be available in each question.
+- Documentations and extra notes are in each file.
+    * Alternative (less optimal) solutions might also be available
 
 # Week 1: 05/10 - 05/16/2021
 
