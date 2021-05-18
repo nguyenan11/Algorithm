@@ -14,6 +14,8 @@ public class LongestPeak {
   [1, 2, 3]  don't form a peak because there aren't any strictly decreasing integers after the 3.
    */
 
+  // O(n) time | O(1) space. We traverse thru each number once, at most 2 - 3 times (when peak found
+  // and traverse to the left) -> still O(n)
   public static int longestPeak(int[] array) {
     int longestPeakLength = 0;
     int i = 1;

@@ -55,6 +55,8 @@ public static int longestPeak(int[] array) {
 ### O(n) time | O(n) space - n is length of input array
 * Limitation about assumption: peak as if it points up; pointing down was not
 considered.
+* We traverse thru each number once, at most 2 - 3 times (when peak found and 
+traverse to the left) -> still O(n)
 
 ## [Array Of Products](Arrays/src/main/java/ArrayOfProducts.java)
 
@@ -86,3 +88,28 @@ public static int[] arrayOfProducts(int[] array) {
 ```
 
 ### O(n) time | O(n) space - n is length of input array
+
+## [First Duplicate Value](Arrays/src/main/java/FirstDuplicateValue.java)
+
+> Given an array of integers between `1` and `n`, inclusive, where `n` is the length of the array, write a function that returns the first integer that appears more than once (when the array is read from left to right).
+>
+> In other words, out of all the integers that might occur more than once in the input array, your function should return the one whose first duplicate value has the minimum index.
+>
+> If no integer appears more than once, your function should return `-1`.
+>
+> Note that you're allowed to mutate the input array.
+
+```java
+public int firstDuplicateValue(int[] array) {
+    for (int num : array) {
+      int absValue = Math.abs(num);
+      if (array[absValue - 1] < 0) return absValue;
+      array[absValue - 1] *= -1;
+    }
+    return -1;
+  }
+```
+
+### O(n) time | O(1) space - most optimal
+* O(n) time | O(n) is made with single for-loop and a Set/ List
+* O(n^2) | O(1) space is made with double for-loops

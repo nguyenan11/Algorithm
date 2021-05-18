@@ -13,6 +13,7 @@ public class ArrayOfProducts {
    */
 
   // O(n) time | O(n) space
+  // O(2n) = O(n) | Alternative solution is O(3n), use 3 int[], productArr = leftArr * rightArr
   public static int[] arrayOfProducts(int[] array) {
     int[] productArr = new int[array.length];
 
