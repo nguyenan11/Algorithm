@@ -67,4 +67,22 @@ considered.
 > Note that you're expected to solve this problem without using division.
 
 ```java
+public static int[] arrayOfProducts(int[] array) {
+    int[] productArr = new int[array.length];
+
+    int productFromLeft = 1;
+    for (int i = 0; i < array.length; i++) {
+      productArr[i] = productFromLeft;
+      productFromLeft *= array[i];
+    }
+
+    int productFromRight = 1;
+    for (int i = array.length - 1; i >= 0; i--) {
+      productArr[i] *= productFromRight;
+      productFromRight *= array[i];
+    }
+    return productArr;
+  }
 ```
+
+### O(n) time | O(n) space - n is length of input array

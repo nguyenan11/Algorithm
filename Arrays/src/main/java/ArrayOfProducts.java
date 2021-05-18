@@ -12,6 +12,26 @@ public class ArrayOfProducts {
   Note that you're expected to solve this problem without using division.
    */
 
+  // O(n) time | O(n) space
+  public static int[] arrayOfProducts(int[] array) {
+    int[] productArr = new int[array.length];
+
+    int productFromLeft = 1;
+    for (int i = 0; i < array.length; i++) {
+      productArr[i] = productFromLeft;
+      productFromLeft *= array[i];
+    }
+
+    int productFromRight = 1;
+    for (int i = array.length - 1; i >= 0; i--) {
+      productArr[i] *= productFromRight;
+      productFromRight *= array[i];
+    }
+    return productArr;
+  }
+
+  /*
+   O(n^2) time | O(n) space
   public static int[] arrayOfProducts(int[] array) {
     int[] newArr = new int[array.length];
     int leftIdx = 0;
@@ -37,6 +57,7 @@ public class ArrayOfProducts {
     }
     return newArr;
   }
+   */
 
   public static void main(String[] args) {
     int[] array = new int[]{5, 1, 4, 2};
