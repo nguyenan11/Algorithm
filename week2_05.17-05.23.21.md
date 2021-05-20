@@ -5,7 +5,11 @@
 
 # Week 2: 05/17 - 05/23/2021
 
-### Category: Array
+## Category: 
+**[Array](#array)**<br>
+**[Strings](#strings)**<br>
+
+### Array
 
 ## [Longest Peak](Arrays/src/main/java/LongestPeak.java)
 
@@ -174,7 +178,7 @@ comeback for this
 
 ---
 
-### Category: String
+### Strings
 
 ## [Palindrome Check](Strings/src/main/java/PalindromeCheck.java)
 
@@ -197,4 +201,34 @@ public static boolean isPalindrome(String str) {
   }
 ```
 
-### O(n) time | O(1) space
+### O(n) time | O(1) space - n is length of input string
+
+## [Run-Length Encoding](Strings/src/main/java/RunLengthEncoding.java)
+
+#### Level: Easy 
+
+> Prompt
+
+```java
+private static final int MAX_COUNT = 9, COUNT_RESET = 1;
+
+  public static String runLengthEncoding(String string) {
+    String encoding = "";
+    int currCount = COUNT_RESET;
+    char currChar = string.charAt(0);
+    for (int i = 1; i < string.length(); i++) {
+      char tempChar = string.charAt(i);
+      if (currChar == tempChar && currCount < MAX_COUNT) {
+          currCount++;
+      } else {
+        encoding = encoding + currCount + currChar;
+        currChar = tempChar;
+        currCount = COUNT_RESET;
+      }
+    }
+    encoding = encoding + currCount + currChar;
+    return encoding;
+  }
+```
+
+### O(n) time | O(n) space - n is length of input string
