@@ -17,6 +17,36 @@ public class RunLengthEncoding {
 
   private static final int MAX_COUNT = 9, COUNT_RESET = 1;
 
+  
+  // O(n) time | O(n) space
+  public static String runLengthEncoding(String string) {
+
+    // List<String> encoding = new ArrayList<>(); would work the same
+    StringBuilder encoding = new StringBuilder();
+
+    int currCount = COUNT_RESET;
+    char currChar = string.charAt(0);
+
+    // input string is guaranteed non-empty; start for-loop with 1
+    for (int i = 1; i < string.length(); i++) {
+      char tempChar = string.charAt(i);
+      if (currChar == tempChar && currCount < MAX_COUNT) {
+        currCount++;
+      } else {
+        encoding.append(currCount).append(currChar);
+        currChar = tempChar;
+        currCount = COUNT_RESET;
+      }
+    }
+
+    // last run
+    encoding.append(currCount).append(currChar);
+    return encoding.toString();
+  }
+
+
+  /* Alternative: O(n^2) time | O(n) space - because String concatenation is O(n)
+
   public static String runLengthEncoding(String string) {
     String encoding = "";
     int currCount = COUNT_RESET;
@@ -34,6 +64,8 @@ public class RunLengthEncoding {
     encoding = encoding + currCount + currChar;
     return encoding;
   }
+  */
+
 
   public static void main(String[] args) {
     String expected = runLengthEncoding("AAAAAAAAAABBCCCCDD");
