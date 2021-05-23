@@ -169,7 +169,7 @@ static class IntCompare implements Comparator<int[]> {
 
 ### O(nlog(n)) time | O(n) space
 
-## [Spiral Traverse]()
+## [Spiral Traverse](Arrays/src/main/java/SpiralTraverse.java)
 
 #### Level: Medium 📘
 
