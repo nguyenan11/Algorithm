@@ -6,7 +6,7 @@
 
 # Week 1: 05/10 - 05/16/2021
 
-# Category: Array (only)
+# Category for this week: Array (only)
 
 ## [Two Numbers Sum](Arrays/src/main/java/TwoNumSum.java)
 

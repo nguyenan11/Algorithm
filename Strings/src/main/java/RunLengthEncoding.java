@@ -17,7 +17,7 @@ public class RunLengthEncoding {
 
   private static final int MAX_COUNT = 9, COUNT_RESET = 1;
 
-  
+
   // O(n) time | O(n) space
   public static String runLengthEncoding(String string) {
 

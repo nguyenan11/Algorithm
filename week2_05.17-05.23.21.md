@@ -7,7 +7,7 @@
 
 # Week 2: 05/17 - 05/23/2021
 
-# Category: 
+# Category for this week: 
 **[Array](#array)**<br>
 **[Strings](#strings)**<br>
 
@@ -27,37 +27,37 @@
 
 ```java
 public static int longestPeak(int[] array) {
-    int longestPeakLength = 0;
-    int i = 1;
-    while (i < array.length - 1) {
-      boolean tipDetected = array[i - 1] < array[i] && array[i] > array[i + 1];
-      if (!tipDetected) {
-        i++;
-        continue;
-      }
-
-      int leftIdx = i - 2;
-      while (leftIdx >= 0 && array[leftIdx] < array[leftIdx + 1]) {
-        leftIdx--;
-      }
-
-      int rightIdx = i + 2;
-      while (rightIdx < array.length && array[rightIdx] < array[rightIdx - 1]) {
-        rightIdx++;
-      }
-
-      longestPeakLength = updateLongestPeak(longestPeakLength, leftIdx, rightIdx);
-      i = rightIdx;
-
+  int longestPeakLength = 0;
+  int i = 1;
+  while (i < array.length - 1) {
+    boolean tipDetected = array[i - 1] < array[i] && array[i] > array[i + 1];
+    if (!tipDetected) {
+      i++;
+      continue;
     }
-    return longestPeakLength;
+
+    int leftIdx = i - 2;
+    while (leftIdx >= 0 && array[leftIdx] < array[leftIdx + 1]) {
+      leftIdx--;
+    }
+
+    int rightIdx = i + 2;
+    while (rightIdx < array.length && array[rightIdx] < array[rightIdx - 1]) {
+      rightIdx++;
+    }
+
+    longestPeakLength = updateLongestPeak(longestPeakLength, leftIdx, rightIdx);
+    i = rightIdx;
+
   }
+  return longestPeakLength;
+}
 
 
-  private static int updateLongestPeak(int longestPeakLength, int leftIdx, int rightIdx) {
-    int currPeakLength = rightIdx - leftIdx - 1;
-    return Math.max(currPeakLength, longestPeakLength);
-  }
+private static int updateLongestPeak(int longestPeakLength, int leftIdx, int rightIdx) {
+  int currPeakLength = rightIdx - leftIdx - 1;
+  return Math.max(currPeakLength, longestPeakLength);
+}
 ```
 
 ### O(n) time | O(n) space - n is length of input array
@@ -78,21 +78,21 @@ traverse to the left) -> still O(n)
 
 ```java
 public static int[] arrayOfProducts(int[] array) {
-    int[] productArr = new int[array.length];
+  int[] productArr = new int[array.length];
 
-    int productFromLeft = 1;
-    for (int i = 0; i < array.length; i++) {
-      productArr[i] = productFromLeft;
-      productFromLeft *= array[i];
-    }
-
-    int productFromRight = 1;
-    for (int i = array.length - 1; i >= 0; i--) {
-      productArr[i] *= productFromRight;
-      productFromRight *= array[i];
-    }
-    return productArr;
+  int productFromLeft = 1;
+  for (int i = 0; i < array.length; i++) {
+    productArr[i] = productFromLeft;
+    productFromLeft *= array[i];
   }
+
+  int productFromRight = 1;
+  for (int i = array.length - 1; i >= 0; i--) {
+    productArr[i] *= productFromRight;
+    productFromRight *= array[i];
+  }
+  return productArr;
+}
 ```
 
 ### O(n) time | O(n) space - n is length of input array
@@ -111,13 +111,13 @@ public static int[] arrayOfProducts(int[] array) {
 
 ```java
 public int firstDuplicateValue(int[] array) {
-    for (int num : array) {
-      int absValue = Math.abs(num);
-      if (array[absValue - 1] < 0) return absValue;
-      array[absValue - 1] *= -1;
-    }
-    return -1;
+  for (int num : array) {
+    int absValue = Math.abs(num);
+    if (array[absValue - 1] < 0) return absValue;
+    array[absValue - 1] *= -1;
   }
+  return -1;
+}
 ```
 
 ### O(n) time | O(1) space - most optimal
@@ -138,36 +138,101 @@ public int firstDuplicateValue(int[] array) {
 
 ```java
 public static int[][] mergeOverlappingIntervals(int[][] intervals) {
-    Arrays.sort(intervals, new IntCompare());
-    List<int[]> mergedInterval = new ArrayList<int[]>();
-    int[] currInterval = intervals[0];
-    mergedInterval.add(currInterval);
+  Arrays.sort(intervals, new IntCompare());
+  List<int[]> mergedInterval = new ArrayList<int[]>();
+  int[] currInterval = intervals[0];
+  mergedInterval.add(currInterval);
 
-    for (int[] nextInterval : intervals) {
-      int currIntervalEnd = currInterval[1];
-      int nextIntervalStart = nextInterval[0];
-      int nextIntervalEnd = nextInterval[1];
+  for (int[] nextInterval : intervals) {
+    int currIntervalEnd = currInterval[1];
+    int nextIntervalStart = nextInterval[0];
+    int nextIntervalEnd = nextInterval[1];
 
-      if (currIntervalEnd >= nextIntervalStart) {
-        currInterval[1] = nextIntervalEnd;
-      } else {
-        currInterval = nextInterval;
-        mergedInterval.add(currInterval);
-      }
-    }
-    return mergedInterval.toArray(new int[mergedInterval.size()][]);
-  }
-
-  static class IntCompare implements Comparator<int[]> {
-
-    @Override
-    public int compare(int[] o1, int[] o2) {
-      return Integer.compare(o1[0], o2[0]);
+    if (currIntervalEnd >= nextIntervalStart) {
+      currInterval[1] = nextIntervalEnd;
+    } else {
+      currInterval = nextInterval;
+      mergedInterval.add(currInterval);
     }
   }
+  return mergedInterval.toArray(new int[mergedInterval.size()][]);
+}
+
+static class IntCompare implements Comparator<int[]> {
+
+  @Override
+  public int compare(int[] o1, int[] o2) {
+    return Integer.compare(o1[0], o2[0]);
+  }
+}
 ```
 
 ### O(nlog(n)) time | O(n) space
+
+## [Spiral Traverse]()
+
+#### Level: Medium 📘
+
+> Write a function that takes in an n x m two-dimensional array (that can be square-shaped when n == m) and returns a one-dimensional array of all the array's elements in spiral order.
+>
+> Spiral order starts at the top left corner of the two-dimensional array, goes to the right, and proceeds in a spiral pattern all the way until every element has been visited.
+
+```java
+public static List<Integer> spiralTraverse(int[][] array) {
+  if (array.length == 0) {
+    return new ArrayList<Integer>();
+  }
+
+  List<Integer> result = new ArrayList<>();
+  int startRow = 0;
+  int startCol = 0;
+  int endRow = array.length - 1;
+  int endCol = array[0].length - 1;
+
+  while (startRow <= endRow && startCol <= endCol) {
+    for (int col = startCol; col <= endCol; col++) {
+      result.add(array[startRow][col]);
+    }
+
+    for (int row = startRow + 1; row <= endRow; row++) {
+      result.add(array[row][endCol]);
+    }
+
+    /*
+    Handle the edge case when there's a single row in the middle of the 
+    matrix. In this case, we don't want to double-count the values in this 
+    row, which we've already counted in the first for loop above.
+      */
+    for (int col = endCol - 1; col >= startCol; col--) {
+      if (startRow == endRow) {
+        break;
+      }
+      result.add(array[endRow][col]);
+    }
+
+    /*
+    Handle the edge case when there's a single column in the middle of the 
+    matrix. In this case, we don't want to double-count the values in this 
+    column, which we've already counted in the second for loop above.
+      */
+    for (int row = endRow - 1; row >= startRow + 1; row--) {
+      if (startCol == endCol) {
+        break;
+      }
+      result.add(array[row][startCol]);
+    }
+
+    startRow++;
+    startCol++;
+    endRow--;
+    endCol--;
+  }
+
+  return result;
+}
+```
+
+### O(n) time | O(n) space - n is total number of elements in the array
 
 ## [Four Number Sum](Arrays/src/main/java/FourNumSum.java)
 
@@ -194,14 +259,14 @@ comeback for this
 
 ```java
 public static boolean isPalindrome(String str) {
-    int leftIdx = 0;
-    int rightIdx= str.length();
-    while (leftIdx <= rightIdx) {
-      if (str.charAt(leftIdx) != str.charAt(rightIdx)) return false;
-      leftIdx++;
-      rightIdx--;
-    }
-    return true;
+  int leftIdx = 0;
+  int rightIdx= str.length();
+  while (leftIdx <= rightIdx) {
+    if (str.charAt(leftIdx) != str.charAt(rightIdx)) return false;
+    leftIdx++;
+    rightIdx--;
+  }
+  return true;
 }
 ```
 
@@ -222,27 +287,27 @@ private static final int MAX_COUNT = 9, COUNT_RESET = 1;
 
 public static String runLengthEncoding(String string) {
 
-    // List<String> encoding = new ArrayList<>(); would work the same
-    StringBuilder encoding = new StringBuilder();
+  // List<String> encoding = new ArrayList<>(); would work the same
+  StringBuilder encoding = new StringBuilder();
 
-    int currCount = COUNT_RESET;
-    char currChar = string.charAt(0);
+  int currCount = COUNT_RESET;
+  char currChar = string.charAt(0);
 
-    // input string is guaranteed non-empty; start for-loop with 1
-    for (int i = 1; i < string.length(); i++) {
-      char tempChar = string.charAt(i);
-      if (currChar == tempChar && currCount < MAX_COUNT) {
-        currCount++;
-      } else {
-        encoding.append(currCount).append(currChar);
-        currChar = tempChar;
-        currCount = COUNT_RESET;
-      }
+  // input string is guaranteed non-empty; start for-loop with 1
+  for (int i = 1; i < string.length(); i++) {
+    char tempChar = string.charAt(i);
+    if (currChar == tempChar && currCount < MAX_COUNT) {
+      currCount++;
+    } else {
+      encoding.append(currCount).append(currChar);
+      currChar = tempChar;
+      currCount = COUNT_RESET;
     }
+  }
 
-    // last run
-    encoding.append(currCount).append(currChar);
-    return encoding.toString();
+  // last run
+  encoding.append(currCount).append(currChar);
+  return encoding.toString();
 }
 ```
 
@@ -270,30 +335,30 @@ complexity to be O(n^2)
 ```java
 private static final int ONE_APPEARANCE = 1;
 
-  public boolean generateDocument(String characters, String document) {
-    Map<Character, Integer> mapChar = new HashMap<>();
-    for (int i = 0; i < characters.length(); i++) {
-      char currChar = characters.charAt(i);
-      updateMapChar(mapChar, currChar);
-    }
-
-    for (int i = 0; i < document.length(); i++) {
-      char currChar = document.charAt(i);
-      if (!mapChar.containsKey(currChar) || mapChar.get(currChar) == 0) {
-        return false;
-      }
-      mapChar.replace(currChar, mapChar.get(currChar) - ONE_APPEARANCE);
-    }
-    return true;
+public boolean generateDocument(String characters, String document) {
+  Map<Character, Integer> mapChar = new HashMap<>();
+  for (int i = 0; i < characters.length(); i++) {
+    char currChar = characters.charAt(i);
+    updateMapChar(mapChar, currChar);
   }
 
-  private void updateMapChar(Map<Character, Integer> mapChar, char aChar) {
-    if (mapChar.containsKey(aChar)) {
-      mapChar.replace(aChar, mapChar.get(aChar) + ONE_APPEARANCE);
-    } else {
-      mapChar.put(aChar, ONE_APPEARANCE);
+  for (int i = 0; i < document.length(); i++) {
+    char currChar = document.charAt(i);
+    if (!mapChar.containsKey(currChar) || mapChar.get(currChar) == 0) {
+      return false;
     }
+    mapChar.replace(currChar, mapChar.get(currChar) - ONE_APPEARANCE);
   }
+  return true;
+}
+
+private void updateMapChar(Map<Character, Integer> mapChar, char aChar) {
+  if (mapChar.containsKey(aChar)) {
+    mapChar.replace(aChar, mapChar.get(aChar) + ONE_APPEARANCE);
+  } else {
+    mapChar.put(aChar, ONE_APPEARANCE);
+  }
+}
 ```
 
 ### O(n+ m) time | O(c) space - n is number of characters, m is the length of the document, c is number of unique characters in characters string
