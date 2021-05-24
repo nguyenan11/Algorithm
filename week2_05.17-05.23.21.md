@@ -362,3 +362,11 @@ private void updateMapChar(Map<Character, Integer> mapChar, char aChar) {
 ```
 
 ### O(n+ m) time | O(c) space - n is number of characters, m is the length of the document, c is number of unique characters in characters string
+
+## [First Non-Repeating Character](Strings/src/main/java/FirstNonRepeatingCharacter.java)
+
+#### Level: Easy 📗
+
+## [Group Anagrams](Strings/src/main/java/GroupAnagrams.java)
+
+#### Level: Medium 📘
