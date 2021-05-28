@@ -26,6 +26,29 @@
 comeback for this
 ```
 
+## [Problem 1 - Two Number Sum](https://leetcode.com/problems/two-sum/)
+
+#### Level: Easy 📗
+* Redo problem
+* Using Python
+
+```python
+def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        targetDictionary = {}
+        
+        for index, num in enumerate(nums):
+            missingPiece = target - num
+            if missingPiece in targetDictionary:
+                return [index, targetDictionary[missingPiece]]
+            else:
+                targetDictionary[num] = index
+```
+
 ---
 
 # Strings
