@@ -356,10 +356,95 @@ private void updateMapChar(Map<Character, Integer> mapChar, char aChar) {
 
 #### Level: Easy 📗
 
+> Write a function that takes in a string of lowercase English-alphabet letters and returns the index of the string's first non-repeating character.
+>
+> The first non-repeating character is the first character in a string that occurs only once.
+> If the input string doesn't have any non-repeating characters, your function should return `-1`.
+
+```java
+public int firstNonRepeatingCharacter(String string) {
+  Map<Character, Integer> charFrequencies = new HashMap<>();
+
+  for (int i = 0; i < string.length(); i++) {
+    char currChar = string.charAt(i);
+    charFrequencies.put(currChar, charFrequencies.getOrDefault(currChar, 0) + 1);
+  }
+
+  for (int i = 0; i < string.length(); i++) {
+    char currChar = string.charAt(i);
+    if (charFrequencies.get(currChar) == 1) {
+      return i;
+    }
+  }
+  return -1;
+}
+```
+
+### O(n) time | O(1) space - n is the length of the input string
+* Constant space is because input string has only lowercase English-alphabet
+letters; thus, our hash table will never have more than 26 character 
+frequencies.
+
 ## [Caesar Cipher Encryptor](Strings/src/main/java/CaesarCipherEncryptor.java)
 
 #### Level: Easy 📗
 
+> Given a non-empty string of lowercase letters and a non-negative integer representing a key, write a function that returns a new string obtained by shifting every letter in the input string by k positions in the alphabet, where k is the key.
+>
+> Note that letters should "wrap" around the alphabet; in other words, the letter `z` shifted by one returns the letter `a`.
+
+```java
+private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+private static final int TOTAL_LETTERS = 26;
+
+public static String caesarCypherEncryptor(String str, int key) {
+  char[] encryptedStr = new char[str.length()];
+  int shiftKey = key % TOTAL_LETTERS;
+  for (int i = 0; i < encryptedStr.length; i++) {
+    encryptedStr[i] = getNewCharacter(str.charAt(i), shiftKey);
+  }
+  return String.valueOf(encryptedStr);
+}
+
+private static char getNewCharacter(char character, int shiftKey) {
+  int newCharIndex = ALPHABET.indexOf(character) + shiftKey;
+  return ALPHABET.charAt(newCharIndex % TOTAL_LETTERS);
+}
+```
+
+### O(n) time | O(n) space 
+
 ## [Group Anagrams](Strings/src/main/java/GroupAnagrams.java)
 
 #### Level: Medium 📘
+
+> Write a function that takes in an array of strings and groups anagrams together.
+>
+> Anagrams are strings made up of exactly the same letters, where order doesn't matter. For example, `"cinema"` and `"iceman"` are anagrams; similarly, `"foo"` and `"ofo"` are anagrams.
+>
+> Your function should return a list of anagram groups in no particular order.
+
+```java
+public static List<List<String>> groupAnagrams(List<String> words) {
+  Map<String, List<String>> anagramsMap = new HashMap<>();
+
+  for (String word : words) {
+    String currKey = sortStr(word);
+    if (anagramsMap.containsKey(currKey)) {
+      anagramsMap.get(currKey).add(word);
+    } else {
+      anagramsMap.put(currKey, new ArrayList<>(Arrays.asList(word)));
+    }
+  }
+
+  return new ArrayList<>(anagramsMap.values());
+}
+
+private static String sortStr(String word) {
+  char[] arr = word.toCharArray();
+  Arrays.sort(arr);
+  return String.valueOf(arr); // same as new String(arr); || don't use toString
+}
+```
+
+### O(w * n * log(n)) time | O(wn) space - where w is the number of words and n is length of the longest word

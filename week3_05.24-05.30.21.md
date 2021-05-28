@@ -27,10 +27,9 @@ comeback for this
 ```
 
 ## [Problem 1 - Two Number Sum](https://leetcode.com/problems/two-sum/)
+* Redo problem using Python
 
 #### Level: Easy 📗
-* Redo problem
-* Using Python
 
 ```python
 def twoSum(self, nums, target):
@@ -56,3 +55,4 @@ def twoSum(self, nums, target):
 ## [Reverse Words In String](Strings/src/main/java/ReverseWordsInString.java)
 
 #### Level: Medium 📘
+
