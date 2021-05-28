@@ -56,3 +56,27 @@ def twoSum(self, nums, target):
 
 #### Level: Medium 📘
 
+## [Prob 387 - First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string/)
+* Redo problem using Python
+
+#### Level: Easy 📗
+
+```python
+dic = {}
+        
+for character in s:
+        if character in dic:
+            count = dic[character]
+            dic[character] = count + 1
+        else:
+            dic[character] = 1
+            
+    for index,character in enumerate(s):
+        if dic[character] == 1:
+            return index
+    
+    return -1
+```
+
+### O(n) time | O(1) space - n is the length of the input string
+* See notes in week 2 for constant space
