@@ -4,7 +4,8 @@
  */
 public class BubbleSort {
 
-  // O(n^2) time | O(1) space
+  // Average: O(n^2) time | O(1) space
+  // Best: O(n) time | O(1) space - array is already sorted
   public static int[] bubbleSort(int[] array) {
     boolean isSorted = false;
     int counter = 0; // not reducing complexity but made algorithm more efficient

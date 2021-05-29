@@ -68,12 +68,17 @@ at 6.
 #### Level: Easy 📗
 
 ```python
-def twoSum(self, nums, target):
-    """
-    :type nums: List[int]
-    :type target: int
-    :rtype: List[int]
-    """
+def twoSum(nums, target):
+    '''
+    Function -- twoSum
+        Find the two numbers within the array that will made up the sum equaling
+        to the target.
+    Parameters:
+        nums - the array of numbers
+        target - the sum target, an int
+    Return: 
+        An array contains 2 indices of 2 matched numbers.
+    '''
     targetDictionary = {}
     
     for index, num in enumerate(nums):
@@ -100,19 +105,29 @@ def twoSum(self, nums, target):
 #### Level: Easy 📗
 
 ```python
-dic = {}
-        
-for character in s:
+def firstUniqChar(s):
+    '''
+    Function -- firstUniqChar
+        Find the first non - repeating character in a string.
+    Parameter:
+        s - a string to check
+    Return: 
+        An int: index of first non - repeating character, -1 if all characters
+        are repeated.
+    '''
+    dic = {}
+            
+    for character in s:
         if character in dic:
             count = dic[character]
             dic[character] = count + 1
         else:
             dic[character] = 1
-            
+                
     for index,character in enumerate(s):
         if dic[character] == 1:
             return index
-    
+
     return -1
 ```
 
@@ -153,5 +168,33 @@ private static void swap(int i, int j, int[] array) {
 }
 ```
 
-### O(n^2) time | O(1) space
+### Average: O(n^2) time | O(1) space
+* Best: O(n) time | O(1) space - when array is already sorted
+
+## [Insertion Sort](Sortings/src/main/java/InsertionSort.java)
+
+#### Level: Easy 📗
+
+> Write a function that takes in an array of integers and returns a sorted version of that array. Use the Insertion Sort algorithm to sort the array.
+
+```java
+public static int[] insertionSort(int[] array) {
+    for (int i = 1; i < array.length; i++) {
+      int j = i;
+      while (j > 0 && array[j] < array[j - 1]) {
+        swap(j, j - 1, array);
+        j--;
+      }
+    }
+    return array;
+}
+
+private static void swap(int i, int j, int[] array) {
+    int tempValue = array[i];
+    array[i] = array[j];
+    array[j] = tempValue;
+}
+```
+
+### Average: O(n^2) time | O(1) space
 * Best: O(n) time | O(1) space - when array is already sorted
