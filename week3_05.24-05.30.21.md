@@ -230,3 +230,8 @@ private static void swap(int i, int j, int[] array) {
 
 ### Average: O(n^2) time | O(1) space
 * Best: O(n) time | O(1) space - when array is already sorted
+
+## [Three Numbers Sort](Sortings/src/main/java/ThreeNumSort.java)
+
+#### Level: Medium 📘
+
