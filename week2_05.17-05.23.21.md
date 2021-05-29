@@ -381,6 +381,7 @@ public int firstNonRepeatingCharacter(String string) {
 ```
 
 ### O(n) time | O(1) space - n is the length of the input string
+* O(2n) time -> O(n) time
 * Constant space is because input string has only lowercase English-alphabet
 letters; thus, our hash table will never have more than 26 character 
 frequencies.

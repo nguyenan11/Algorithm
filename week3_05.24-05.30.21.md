@@ -5,7 +5,7 @@
     * Alternative (less optimal) solutions might also be available within each 
     file
 
-# Week 2: 05/24 - 05/30/2021
+# Week 3: 05/24 - 05/30/2021
 
 # Category for this week: 
 **[Array](#array)**<br>
@@ -23,30 +23,62 @@
 >
 > If no four numbers sum up to the target sum, the function should return an empty array.
 ```java
-comeback for this
+public static List<Integer[]> fourNumberSum(int[] array, int targetSum) {
+    List<Integer[]> quadruplets = new ArrayList<Integer[]>();
+    Map<Integer, List<Integer[]>> allPairsSum = new HashMap<>();
+    int size = array.length;
+    for (int i = 1; i < size - 1; i++) {
+      for (int j = i + 1; j < size; j++) {
+        int currSum = array[i] + array[j];
+        int match = targetSum - currSum;
+        if (allPairsSum.containsKey(match)) {
+          for (Integer[] pair : allPairsSum.get(match)) {
+            Integer[] newQuadruplets = {pair[0], pair[1], array[i], array[j]};
+            quadruplets.add(newQuadruplets);
+          }
+        }
+      }
+      for (int k = 0; k < i; k++) {
+        int currSum = array[i] + array[k];
+        Integer[] pair = {array[k], array[i]};
+        if (!allPairsSum.containsKey(currSum)) {
+          List<Integer[]> pairGroup = new ArrayList<>();
+          pairGroup.add(pair);
+          allPairsSum.put(currSum, pairGroup);
+        } else {
+          allPairsSum.get(currSum).add(pair);
+        }
+      }
+    }
+    return quadruplets;
+}
 ```
+### Average: O(n^2) time | O(n^2) space
+* Worst: O(n^3) time | O(n^2) space 
 
-## [Problem 1 - Two Number Sum](https://leetcode.com/problems/two-sum/)
+## [Leetcode #1 - Two Number Sum](https://leetcode.com/problems/two-sum/)
 * Redo problem using Python
 
 #### Level: Easy 📗
 
 ```python
 def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        targetDictionary = {}
-        
-        for index, num in enumerate(nums):
-            missingPiece = target - num
-            if missingPiece in targetDictionary:
-                return [index, targetDictionary[missingPiece]]
-            else:
-                targetDictionary[num] = index
+    """
+    :type nums: List[int]
+    :type target: int
+    :rtype: List[int]
+    """
+    targetDictionary = {}
+    
+    for index, num in enumerate(nums):
+        missingPiece = target - num
+        if missingPiece in targetDictionary:
+            return [index, targetDictionary[missingPiece]]
+        else:
+            targetDictionary[num] = index
 ```
+
+### O(n) time | O(n) space
 
 ---
 
@@ -56,7 +88,7 @@ def twoSum(self, nums, target):
 
 #### Level: Medium 📘
 
-## [Prob 387 - First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string/)
+## [Leetcode #387 - First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string/)
 * Redo problem using Python
 
 #### Level: Easy 📗
@@ -79,4 +111,4 @@ for character in s:
 ```
 
 ### O(n) time | O(1) space - n is the length of the input string
-* See notes in week 2 for constant space
+* See notes in week 2 for explanation of constant space
