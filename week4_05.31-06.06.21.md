@@ -15,4 +15,9 @@
 
 ---
 
-# Array
+# Sorting
+
+## [Three Numbers Sort](Sortings/src/main/java/ThreeNumSort.java)
+
+#### Level: Medium 📘
+
