@@ -99,6 +99,41 @@ def twoSum(nums, target):
 
 #### Level: Medium 📘
 
+> Write a function that takes in a string of words separated by one or more whitespaces and returns a string that has these words in reverse order. For example, given the string `"tim is great"`, your function should return `"great is tim"`.
+>
+> For this problem, a word can contain special characters, punctuation, and numbers. The words in the string will be separated by one or more whitespaces, and the reversed string must contain the same whitespaces as the original string. For example, given the string `"whitespace    4"` you would be expected to return `"4    whitespace"`.
+>
+> Note that you're **not** allowed to to use any built-in `spilt` or `reverse` methods/functions. However, you **are** allowed to use a built-in `join` method/function.
+>
+> Also note that the input string isn't guaranteed to always contain words.
+
+```java
+public String reverseWordsInString(String string) {
+  List<String> reverseString = new ArrayList<>();
+  int wordStarting = 0;
+
+  for (int i = 0; i < string.length(); i++) {
+
+    char currChar = string.charAt(i);
+
+    if (currChar == ' ') {
+      reverseString.add(string.substring(wordStarting, i));
+      wordStarting = i;
+    } else if (string.charAt(wordStarting) == ' ') {
+      reverseString.add(" ");
+      wordStarting = i;
+    }
+  }
+
+  reverseString.add(string.substring(wordStarting));
+
+  Collections.reverse(reverseString);
+  return String.join("", reverseString);
+}
+```
+
+### O(n) time | O(1) space - n is the length of the input string
+
 ## [Leetcode #387 - First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string/)
 * Redo problem using Python
 
@@ -106,29 +141,29 @@ def twoSum(nums, target):
 
 ```python
 def firstUniqChar(s):
-    '''
-    Function -- firstUniqChar
-        Find the first non - repeating character in a string.
-    Parameter:
-        s - a string to check
-    Return: 
-        An int: index of first non - repeating character, -1 if all characters
-        are repeated.
-    '''
-    dic = {}
-            
-    for character in s:
-        if character in dic:
-            count = dic[character]
-            dic[character] = count + 1
-        else:
-            dic[character] = 1
-                
-    for index,character in enumerate(s):
-        if dic[character] == 1:
-            return index
+  '''
+  Function -- firstUniqChar
+      Find the first non - repeating character in a string.
+  Parameter:
+      s - a string to check
+  Return: 
+      An int: index of first non - repeating character, -1 if all characters
+      are repeated.
+  '''
+  dic = {}
+          
+  for character in s:
+    if character in dic:
+      count = dic[character]
+      dic[character] = count + 1
+    else:
+      dic[character] = 1
+              
+  for index,character in enumerate(s):
+    if dic[character] == 1:
+      return index
 
-    return -1
+  return -1
 ```
 
 ### O(n) time | O(1) space - n is the length of the input string
@@ -146,25 +181,25 @@ def firstUniqChar(s):
 
 ```java
 public static int[] bubbleSort(int[] array) {
-    boolean isSorted = false;
-    int counter = 0; // not reducing complexity but made algorithm more efficient
-    while (!isSorted) {
-      isSorted = true;
-      for (int i = 0; i < array.length - 1 - counter; i++) {
-        if (array[i] > array[i + 1]) {
-          swap(i, i + 1, array);
-          isSorted = false;
-        }
+  boolean isSorted = false;
+  int counter = 0; // not reducing complexity but made algorithm more efficient
+  while (!isSorted) {
+    isSorted = true;
+    for (int i = 0; i < array.length - 1 - counter; i++) {
+      if (array[i] > array[i + 1]) {
+        swap(i, i + 1, array);
+        isSorted = false;
       }
-      counter++;
     }
-    return array;
+    counter++;
+  }
+  return array;
 }
 
 private static void swap(int i, int j, int[] array) {
-    int tempValue = array[i];
-    array[i] = array[j];
-    array[j] = tempValue;
+  int tempValue = array[i];
+  array[i] = array[j];
+  array[j] = tempValue;
 }
 ```
 
@@ -179,20 +214,20 @@ private static void swap(int i, int j, int[] array) {
 
 ```java
 public static int[] insertionSort(int[] array) {
-    for (int i = 1; i < array.length; i++) {
-      int j = i;
-      while (j > 0 && array[j] < array[j - 1]) {
-        swap(j, j - 1, array);
-        j--;
-      }
+  for (int i = 1; i < array.length; i++) {
+    int j = i;
+    while (j > 0 && array[j] < array[j - 1]) {
+      swap(j, j - 1, array);
+      j--;
     }
-    return array;
+  }
+  return array;
 }
 
 private static void swap(int i, int j, int[] array) {
-    int tempValue = array[i];
-    array[i] = array[j];
-    array[j] = tempValue;
+  int tempValue = array[i];
+  array[i] = array[j];
+  array[j] = tempValue;
 }
 ```
 
@@ -207,24 +242,24 @@ private static void swap(int i, int j, int[] array) {
 
 ```java
 public static int[] selectionSort(int[] array) {
-    int currIdx = 0;
-    while (currIdx < array.length - 1) {
-      int smallestIdx = currIdx;
-      for (int i = currIdx + 1; i < array.length; i++) {
-        if (array[smallestIdx] > array[i]) {
-          smallestIdx = i;
-        }
+  int currIdx = 0;
+  while (currIdx < array.length - 1) {
+    int smallestIdx = currIdx;
+    for (int i = currIdx + 1; i < array.length; i++) {
+      if (array[smallestIdx] > array[i]) {
+        smallestIdx = i;
       }
-      swap(currIdx, smallestIdx, array);
-      currIdx++;
     }
-    return array;
+    swap(currIdx, smallestIdx, array);
+    currIdx++;
+  }
+  return array;
 }
 
 private static void swap(int i, int j, int[] array) {
-    int tempValue = array[i];
-    array[i] = array[j];
-    array[j] = tempValue;
+  int tempValue = array[i];
+  array[i] = array[j];
+  array[j] = tempValue;
 }
 ```
 
