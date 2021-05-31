@@ -27,33 +27,33 @@
 
 ```java
 public static List<Integer[]> fourNumberSum(int[] array, int targetSum) {
-    List<Integer[]> quadruplets = new ArrayList<Integer[]>();
-    Map<Integer, List<Integer[]>> allPairsSum = new HashMap<>();
-    int size = array.length;
-    for (int i = 1; i < size - 1; i++) { // starts with 1, skip through 1st iteration
-      for (int j = i + 1; j < size; j++) {
-        int currSum = array[i] + array[j];
-        int match = targetSum - currSum;
-        if (allPairsSum.containsKey(match)) {
-          for (Integer[] pair : allPairsSum.get(match)) {
-            Integer[] newQuadruplets = {pair[0], pair[1], array[i], array[j]};
-            quadruplets.add(newQuadruplets);
-          }
-        }
-      }
-      for (int k = 0; k < i; k++) { // anything before i -> building Map steps
-        int currSum = array[i] + array[k];
-        Integer[] pair = {array[k], array[i]};
-        if (!allPairsSum.containsKey(currSum)) {
-          List<Integer[]> pairGroup = new ArrayList<>();
-          pairGroup.add(pair);
-          allPairsSum.put(currSum, pairGroup);
-        } else {
-          allPairsSum.get(currSum).add(pair);
+  List<Integer[]> quadruplets = new ArrayList<Integer[]>();
+  Map<Integer, List<Integer[]>> allPairsSum = new HashMap<>();
+  int size = array.length;
+  for (int i = 1; i < size - 1; i++) { // starts with 1, skip through 1st iteration
+    for (int j = i + 1; j < size; j++) {
+      int currSum = array[i] + array[j];
+      int match = targetSum - currSum;
+      if (allPairsSum.containsKey(match)) {
+        for (Integer[] pair : allPairsSum.get(match)) {
+          Integer[] newQuadruplets = {pair[0], pair[1], array[i], array[j]};
+          quadruplets.add(newQuadruplets);
         }
       }
     }
-    return quadruplets;
+    for (int k = 0; k < i; k++) { // anything before i -> building Map steps
+      int currSum = array[i] + array[k];
+      Integer[] pair = {array[k], array[i]};
+      if (!allPairsSum.containsKey(currSum)) {
+        List<Integer[]> pairGroup = new ArrayList<>();
+        pairGroup.add(pair);
+        allPairsSum.put(currSum, pairGroup);
+      } else {
+        allPairsSum.get(currSum).add(pair);
+      }
+    }
+  }
+  return quadruplets;
 }
 ```
 ### Average: O(n^2) time | O(n^2) space
@@ -69,24 +69,24 @@ at 6.
 
 ```python
 def twoSum(nums, target):
-    '''
-    Function -- twoSum
-        Find the two numbers within the array that will made up the sum equaling
-        to the target.
-    Parameters:
-        nums - the array of numbers
-        target - the sum target, an int
-    Return: 
-        An array contains 2 indices of 2 matched numbers.
-    '''
-    targetDictionary = {}
-    
-    for index, num in enumerate(nums):
-        missingPiece = target - num
-        if missingPiece in targetDictionary:
-            return [index, targetDictionary[missingPiece]]
-        else:
-            targetDictionary[num] = index
+  '''
+  Function -- twoSum
+      Find the two numbers within the array that will made up the sum equaling
+      to the target.
+  Parameters:
+      nums - the array of numbers
+      target - the sum target, an int
+  Return: 
+      An array contains 2 indices of 2 matched numbers.
+  '''
+  targetDictionary = {}
+  
+  for index, num in enumerate(nums):
+      missingPiece = target - num
+      if missingPiece in targetDictionary:
+          return [index, targetDictionary[missingPiece]]
+      else:
+          targetDictionary[num] = index
 ```
 
 ### O(n) time | O(n) space

@@ -8,7 +8,6 @@
 # Week 4: 05/31 - 06/06/2021
 
 # Category for this week: 
-**[Array](#array)**<br>
 **[Strings](#strings)**<br>
 **[Sorting](#sorting)**<br>
 
@@ -30,49 +29,49 @@
 
 ```java
 public int[] threeNumberSort(int[] array, int[] order) {
-    int firstNum = order[0];
-    int lastNum = order[2];
+  int firstNum = order[0];
+  int lastNum = order[2];
 
-    int leftPtr = 0;
-    int rightPtr = leftPtr + 1;
+  int leftPtr = 0;
+  int rightPtr = leftPtr + 1;
 
-    // first pass
-    while (rightPtr < array.length) {
-      if (array[leftPtr] == firstNum) {
+  // first pass
+  while (rightPtr < array.length) {
+    if (array[leftPtr] == firstNum) {
+      leftPtr++;
+    } else {
+      if (array[rightPtr] == firstNum) {
+        swap(leftPtr, rightPtr, array);
         leftPtr++;
-      } else {
-        if (array[rightPtr] == firstNum) {
-          swap(leftPtr, rightPtr, array);
-          leftPtr++;
-        }
       }
-      rightPtr++;
     }
+    rightPtr++;
+  }
 
-    rightPtr = array.length - 1;
-    leftPtr = rightPtr - 1;
+  rightPtr = array.length - 1;
+  leftPtr = rightPtr - 1;
 
-    // second pass
-    while (leftPtr >= 0) {
-      if (array[rightPtr] == lastNum) {
+  // second pass
+  while (leftPtr >= 0) {
+    if (array[rightPtr] == lastNum) {
+      rightPtr--;
+    } else {
+      if (array[leftPtr] == lastNum) {
+        swap(leftPtr, rightPtr, array);
         rightPtr--;
-      } else {
-        if (array[leftPtr] == lastNum) {
-          swap(leftPtr, rightPtr, array);
-          rightPtr--;
-        }
       }
-      leftPtr--;
     }
-
-    return array;
+    leftPtr--;
   }
 
-  private static void swap(int i, int j, int[] array) {
-    int tempValue = array[i];
-    array[i] = array[j];
-    array[j] = tempValue;
-  }
+  return array;
+}
+
+private static void swap(int i, int j, int[] array) {
+  int tempValue = array[i];
+  array[i] = array[j];
+  array[j] = tempValue;
+}
 ```
 
 ### O(n) time | O(n) space - n is length of array
@@ -80,3 +79,47 @@ public int[] threeNumberSort(int[] array, int[] order) {
 * Could refactor to use for-loops instead of while loops and use 1 pointer for
 each loop instead of 2 pointers, but I'd like to see the logic clearer this way.
 
+## [Quick Sort](Sortings/src/main/java/QuickSort.java)
+
+#### Level: Hard 📕
+
+> Write a function that takes in an array of integers and returns a sorted version of that array. Use the Quick Sort algorithm to sort the array.
+
+```java
+public static int[] quickSort(int[] array) {
+  quickSort(array, 0, array.length - 1);
+  return array;
+}
+
+private static void quickSort(int[] array, int start, int end) {
+  if (start >= end) {
+    return;
+  }
+  int pivotIdx = partition(array, start, end);
+  quickSort(array, start, pivotIdx - 1);
+  quickSort(array, pivotIdx + 1, end);
+}
+
+private static int partition(int[] array, int start, int end) {
+  int pivotIdx = end;
+  int pivot = array[pivotIdx];
+  int currIdx = start - 1;
+  for (int i = start; i < end; i++) {
+    if (array[i] <= pivot) {
+      currIdx++;
+      swap(currIdx, i, array);
+    }
+  }
+  swap(pivotIdx, currIdx + 1, array);
+  return currIdx + 1;
+}
+
+private static void swap(int i, int j, int[] array) {
+  int tempValue = array[i];
+  array[i] = array[j];
+  array[j] = tempValue;
+}
+```
+
+### Best and average: O(nlog(n)) time | O(log(n)) space
+* Worst: O(n^2) time | O(log(n)) space
