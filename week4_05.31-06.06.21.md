@@ -198,7 +198,7 @@ private static void swap(int i, int j, int[] array) {
 
 # Linked List
 
-## [Remove Duplicates From Linked List](Linked List/src/main/java/RemoveDuplicateFromLL.java)
+## [Remove Duplicates From Linked List](LinkedList/src/main/java/RemoveDuplicateFromLL.java)
 
 #### Level: Easy 📗
 
