@@ -10,6 +10,7 @@
 # Category for this week: 
 **[Strings](#strings)**<br>
 **[Sorting](#sorting)**<br>
+**[Linked List](#linked-list)**<br>
 
 
 ---
@@ -192,3 +193,37 @@ private static void swap(int i, int j, int[] array) {
 
 ### Best and average: O(nlog(n)) time | O(log(n)) space
 * Worst: O(n^2) time | O(log(n)) space
+
+---
+
+# Linked List
+
+## [Remove Duplicates From Linked List](Linked List/src/main/java/RemoveDuplicateFromLL.java)
+
+#### Level: Easy 📗
+
+```java
+public static class LinkedList {
+  public int value;
+  public LinkedList next;
+
+  public LinkedList(int value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
+  LinkedList currNode = linkedList;
+  while (currNode != null) {
+    LinkedList nextNode = currNode.next;
+    while (nextNode != null && nextNode.value == currNode.value) {
+      nextNode = nextNode.next;
+    }
+
+    currNode.next = nextNode;
+    currNode = nextNode;
+  }
+  return linkedList;
+}
+```
