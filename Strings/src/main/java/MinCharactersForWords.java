@@ -11,7 +11,7 @@ public class MinCharactersForWords {
         char currCharacter = word.charAt(i);
         characterFrequencies.put(currCharacter, characterFrequencies.getOrDefault(currCharacter, 1) + 1);
       }
-      allWordsFrequencies.
+      //allWordsFrequencies.
     }
     return new String[] {};
   }
