@@ -8,10 +8,71 @@
 # Week 4: 05/31 - 06/06/2021
 
 # Category for this week: 
+**[Array](#array)**<br>
 **[Strings](#strings)**<br>
 **[Sorting](#sorting)**<br>
 **[Linked List](#linked-list)**<br>
 
+---
+
+# Array
+
+## [Leetcode Premium - Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
+
+```python
+def twoSumLessThanK(self, nums: List[int], k: int) -> int:
+  sorted_nums = sorted(filter(lambda x: x < k, nums))
+  lo, hi, closet = 0, len(sorted_nums) - 1, -1
+  while lo < hi:
+    two_sum = sorted_nums[lo] + sorted_nums[hi]
+    if two_sum < k:
+      closet = max(two_sum, closet)
+      lo += 1
+    else:
+      hi -= 1
+  return closet
+```
+
+
+## [Leetcode #75 - Sort Colors](https://leetcode.com/problems/sort-colors/)
+
+#### Level: Medium 📘
+
+```python
+def sortColors(self, nums):
+  l = -1
+  r = len(nums)
+  i = 0
+  while i < r:
+    if nums[i] == 0:
+      nums[l + 1], nums[i] = nums[i], nums[l + 1]
+      l += 1
+      i += 1
+    elif nums[i] == 1:
+      i += 1
+    else:
+      nums[r - 1], nums[i] = nums[i], nums[r -1]
+      r -= 1
+```
+
+## [Leetcode #11 - Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+
+#### Level: Medium 📘
+
+```python
+def maxArea(self, height):
+  currMax = 0;
+  leftWall = 0;
+  rightWall = len(height) - 1
+  while leftWall != rightWall:
+    currArea = min(height[leftWall], height[rightWall]) * (rightWall - leftWall)
+    currMax = max(currMax, currArea)
+    if height[leftWall] < height[rightWall]:
+      leftWall += 1
+    else:
+      rightWall -= 1
+  return currMax
+```
 
 ---
 
