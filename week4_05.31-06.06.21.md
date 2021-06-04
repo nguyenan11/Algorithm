@@ -17,10 +17,21 @@
 
 # Array
 
-## [Leetcode Premium - Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
+## [Leetcode - Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
 
 ```python
-def twoSumLessThanK(self, nums: List[int], k: int) -> int:
+def twoSumLessThanK(self, nums, k):
+  '''
+  Function -- twoSumLessThanK
+      Find the sum (of 2 number in a list) that is less or equal than a target 
+      number, and that sum is the closet number comparing to target.
+  Parameter:
+      nums - the List of int
+      k - the target int
+  Return: 
+      An int represents the closet number. If no sums are less than equal to
+      target, -1 will be returned.
+  '''
   sorted_nums = sorted(filter(lambda x: x < k, nums))
   lo, hi, closet = 0, len(sorted_nums) - 1, -1
   while lo < hi:

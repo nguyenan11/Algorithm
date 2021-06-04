@@ -1,5 +1,6 @@
 # Algorithm practice
-* Practice algorithm using Java (if not indicated) and Python (indicated)
+* Practice algorithm mainly using Java
+* Leetcode problems are in Python (will be indicated under problem's title)
 
 ### Goal: 1 - 3 problems per day
 ## [Week 1: 05/10 - 05/16/2021](week1_05.10-05.16.21.md)
