@@ -29,15 +29,15 @@ public class TournamentWinner {
   private static final int AWAY_TEAM_WON = 0, POINTS_PER_WIN = 3;
 
   /**
-   * Finds the winner of tournament from rounds of competition. Each competition has 2 teams and
-   * a result.
+   * Finds the winner of tournament from rounds of competition. Each competition has 2 teams and a
+   * result.
    * Complexity: O(n) time | O(k) space - n is number of competitions, k is number of teams.
    * Assumption: each will compete against all other teams exactly once. And tournament will always
    * have at least 2 teams.
    *
    * @param competitions - List containing lists of 2 Strings, each String represents a team.
-   * @param results - List containing integers that represents the result for each round - the
-   *                index of results[] is corresponding to same index of competitions[]
+   * @param results      - List containing integers that represents the result for each round - the
+   *                     index of results[] is corresponding to same index of competitions[]
    * @return the winner of the tournament, a String.
    */
   public String tournamentWinner(ArrayList<ArrayList<String>> competitions,
@@ -62,9 +62,9 @@ public class TournamentWinner {
   /**
    * Helper method that determines the winner of each round.
    *
-   * @param index - the index of each round, an integer.
+   * @param index        - the index of each round, an integer.
    * @param competitions - List containing lists of 2 Strings, each String represents a team.
-   * @param results - List containing integers that represents the result for each round.
+   * @param results      - List containing integers that represents the result for each round.
    * @return the winner of the round, a String.
    */
   private String getRoundWinner(int index, ArrayList<ArrayList<String>> competitions,
@@ -79,8 +79,8 @@ public class TournamentWinner {
   /**
    * Helper method that updates the point for round's winner.
    *
-   * @param tracking - the hashtable to store current rankings, where keys (String) represent
-   *                 teams and values (Integer) are points each team has,
+   * @param tracking    - the hashtable to store current rankings, where keys (String) represent
+   *                    teams and values (Integer) are points each team has,
    * @param roundWinner - the winner of the round, a String.
    */
   private void updateScores(Hashtable<String, Integer> tracking, String roundWinner) {

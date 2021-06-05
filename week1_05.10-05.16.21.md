@@ -192,7 +192,8 @@ public static List<int[]> threeNumberSum(int[] array, int targetSum) {
 ```
 
 ### O(n^2) time | O(n) space - n is length of input array
-* O(nlog(n)) from sorting is less than O(n^2)
+* O(n^2 log(n)) is the actual time (because of sorting) -> since that is way 
+less than O(n^2) -> O(n^2)
 
 ## [Smallest Difference](Arrays/src/main/java/SmallestDifference.java)
 

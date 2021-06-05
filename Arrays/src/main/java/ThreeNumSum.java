@@ -2,21 +2,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ThreeNumSum {
-
-  /*
-  Write a function that takes in a non-empty array of distinct integers and an
-  integer representing a target sum. The function should find all triplets in
-  the array that sum up to the target sum and return a two-dimensional array of
-  all these triplets. The numbers in each triplet should be ordered in ascending
-  order, and the triplets themselves should be ordered in ascending order with
+/*
+  Write a function that takes in a non-empty array of distinct integers and an integer representing
+  a target sum. The function should find all triplets in the array that sum up to the target sum
+  and return a two-dimensional array of all these triplets. The numbers in each triplet should be
+  ordered in ascending order, and the triplets themselves should be ordered in ascending order with
   respect to the numbers they hold.
 
-  If no three numbers sum up to the target sum, the function should return an
-  empty array.
-   */
+  If no three numbers sum up to the target sum, the function should return an empty array.
+*/
+public class ThreeNumSum {
 
-  // O(n^2) -- O(n^2log(n)) time | O(n) space - n is length of input array
+  /**
+   * Finds all triplets in array that sum up to the target sum.
+   * Complexity: O(n^2) time | O(n) space - n is length of input array.
+   * Assumption: number in each triplet should be in ascending order, and triplets themselves
+   * should be ordered in ascending order with respect to number they hold.
+   *
+   * @param array     - the array of integers.
+   * @param targetSum - the target sum, an integer.
+   * @return list of triplet(s) that the sum of each triplet is equal to the targetSum, empty list
+   * if no 3 numbers sum up the targetSum.
+   */
   public static List<int[]> threeNumberSum(int[] array, int targetSum) {
     List<int[]> targetList = new ArrayList<int[]>();
     Arrays.sort(array);
@@ -46,7 +53,7 @@ public class ThreeNumSum {
     int[] array = new int[]{12, 3, 1, 2, -6, 5, -8, 6};
     int target = 0;
     List<int[]> expected = threeNumberSum(array, target);
-    for (int[] list: expected) {
+    for (int[] list : expected) {
       System.out.println(Arrays.toString(list));
     }
   }
