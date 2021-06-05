@@ -49,8 +49,7 @@ public boolean isValidSubsequence(List<Integer> array, List<Integer> sequence) {
 ```
 
 ### O(n) time | O(1) space
-
-### Alternative: Same idea, using arrIndex and seqIndex, using while loop, keep ++, same complexity.
+* Alternative: Same idea, using arrIndex and seqIndex, using while loop, keep ++, same complexity.
 
 ## [Sorted Squared Array](Arrays/src/main/java/SortedSquareArray.java)
 
