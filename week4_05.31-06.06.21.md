@@ -17,7 +17,10 @@
 
 # Array
 
-## [Leetcode - Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
+## [Leetcode #1099 - Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
+* Python
+
+#### Level: Easy 📗
 
 ```python
 def twoSumLessThanK(self, nums, k):
@@ -44,29 +47,11 @@ def twoSumLessThanK(self, nums, k):
   return closet
 ```
 
-
-## [Leetcode #75 - Sort Colors](https://leetcode.com/problems/sort-colors/)
-
-#### Level: Medium 📘
-
-```python
-def sortColors(self, nums):
-  l = -1
-  r = len(nums)
-  i = 0
-  while i < r:
-    if nums[i] == 0:
-      nums[l + 1], nums[i] = nums[i], nums[l + 1]
-      l += 1
-      i += 1
-    elif nums[i] == 1:
-      i += 1
-    else:
-      nums[r - 1], nums[i] = nums[i], nums[r -1]
-      r -= 1
-```
+### O(nlog(n)) time | O(n) space - n is number of elements in the list
+* Definitely could make it O(1) space by storing sorted_nums into nums
 
 ## [Leetcode #11 - Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+* Python
 
 #### Level: Medium 📘
 
@@ -86,6 +71,7 @@ def maxArea(self, height):
 ```
 
 ## [Leetcode #35 - Search Insert Position](https://leetcode.com/problems/search-insert-position/)
+* Python
 
 #### Level: Easy 📗
 
@@ -239,6 +225,33 @@ private static void swap(int i, int j, int[] array) {
 * O(2n) because 2 loops -> O(n)
 * Could refactor to use for-loops instead of while loops and use 1 pointer for
 each loop instead of 2 pointers, but I'd like to see the logic clearer this way.
+
+## [Leetcode #75 - Sort Colors](https://leetcode.com/problems/sort-colors/)
+* Python
+* This is the same problem as above, but this is a less extensible version
+
+#### Level: Medium 📘 
+
+```python
+def sortColors(self, nums):
+  '''
+  Function -- sortColors
+    Sort the array of numbers/ colors 
+  '''
+  l = -1
+  r = len(nums)
+  i = 0
+  while i < r:
+    if nums[i] == 0:
+      nums[l + 1], nums[i] = nums[i], nums[l + 1]
+      l += 1
+      i += 1
+    elif nums[i] == 1:
+      i += 1
+    else:
+      nums[r - 1], nums[i] = nums[i], nums[r -1]
+      r -= 1
+```
 
 ## [Quick Sort](Sortings/src/main/java/QuickSort.java)
 
