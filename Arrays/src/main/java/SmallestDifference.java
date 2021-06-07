@@ -13,15 +13,15 @@ import java.util.Arrays;
 */
 public class SmallestDifference {
 
-
-
-  // O(nlog(n) + mlog(m)) time | O(1) space
-
   /**
+   * Loops through two non-empty arrays and finds a pair of numbers whose absolute difference is
+   * closet to zero.
+   * Complexity: O(nlog(n) + mlog(m)) time | O(1) space
+   * Assumption: only 1 pair of numbers with smallest difference.
    *
-   * @param arrayOne
-   * @param arrayTwo
-   * @return
+   * @param arrayOne - the first array of integers to loop through.
+   * @param arrayTwo - the second array of integers to loop through.
+   * @return array containing 2 numbers, with number from 1st array in the 1st position.
    */
   public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
     Arrays.sort(arrayOne);
@@ -78,4 +78,5 @@ public class SmallestDifference {
 		return smallestPair;
   }
    */
+
 }

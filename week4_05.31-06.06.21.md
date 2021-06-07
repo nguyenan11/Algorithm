@@ -298,6 +298,11 @@ private static void swap(int i, int j, int[] array) {
 ### Best and average: O(nlog(n)) time | O(log(n)) space
 * Worst: O(n^2) time | O(log(n)) space
 
+## [Heap Sort](Sortings/src/main/java/HeapSort.java)
+
+#### Level: Hard 📕
+
+
 ---
 
 # Linked List
