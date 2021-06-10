@@ -7,7 +7,8 @@
 
 # Week 5: 06/07 - 06/13/2021
 
-## [Leetcode #70](https://leetcode.com/problems/climbing-stairs/)
+## [Leetcode #70 - Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+* Python
 
 #### Level: Easy 📗
 
@@ -22,6 +23,7 @@ def climbStairs(n) {
 ```
 
 ## [Leetcode #2 - Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
+* Python
 
 ```python
 def addTwoNumbers(self, l1, l2):
@@ -45,3 +47,29 @@ def addTwoNumbers(self, l1, l2):
         n = n.next
     return root.next
 ```
+
+### O(max(m, n)) time | O(max(m, n)) space - where m is length of linked list 1 and n is length of linked list 2
+
+## [Leetcode #3 - Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+* Redo problem using Python
+
+#### Level: Medium 📘
+
+```python
+def lengthOfLongestSubstring(self, s):
+    """
+    :type s: str
+    :rtype: int
+    """
+    lastSeen = {}
+    startIdx, longest = 0, 0
+    for idx, char in enumerate(s):
+        if char in lastSeen:
+            startIdx = max(startIdx, lastSeen[char] + 1)
+        longest = max(longest, idx + 1 - startIdx)
+        lastSeen[char] = idx
+    return longest
+```
+
+### O(n) time | O(min(n, a)) - n is the length of input string and a is the length of the character alphabet represented in the input string
+
