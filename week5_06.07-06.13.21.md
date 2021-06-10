@@ -7,6 +7,18 @@
 
 # Week 5: 06/07 - 06/13/2021
 
+# Category for this week:
+**[Recursion](#recursion)**<br>
+**[Linked List](#linked-list)**<br>
+**[Strings](#strings)**<br>
+**[Array](#array)**<br>
+
+> Leetcode problems only for this week
+
+---
+
+# Recursion
+
 ## [Leetcode #70 - Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
 * Python
 
@@ -21,6 +33,13 @@ def climbStairs(n) {
     return climbStairs(n - 1) + climbStairs(n - 2)
 }
 ```
+
+### O(n) time | O(n) space
+* Could make this O(1) space using Fibonacci Number approach
+
+---
+
+# Linked List
 
 ## [Leetcode #2 - Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
 * Python
@@ -50,6 +69,10 @@ def addTwoNumbers(self, l1, l2):
 
 ### O(max(m, n)) time | O(max(m, n)) space - where m is length of linked list 1 and n is length of linked list 2
 
+---
+
+# Strings
+
 ## [Leetcode #3 - Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 * Redo problem using Python
 
@@ -72,4 +95,13 @@ def lengthOfLongestSubstring(self, s):
 ```
 
 ### O(n) time | O(min(n, a)) - n is the length of input string and a is the length of the character alphabet represented in the input string
+
+---
+
+# Array
+
+## [Leetcode #1004 - Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/)
+
+#### Level: Medium 📘
+
 
