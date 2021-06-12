@@ -120,4 +120,30 @@ def longestOnes(self, nums, k):
             k += 1 - nums[i]
             i += 1
     return j - i + 1
+```
 
+## [Leetcode #74 - Search a 2d Matrix](https://leetcode.com/problems/search-a-2d-matrix/)
+
+#### Level: Medium 📘
+
+```python
+def searchMatrix(self, matrix, target):
+    if not matrix or target is None:
+        return False
+
+    rows, cols = len(matrix), len(matrix[0])
+    low, high = 0, rows * cols - 1
+    
+    while low <= high:
+        mid = (low + high) / 2
+        num = matrix[mid / cols][mid % cols]
+
+        if num == target:
+            return True
+        elif num < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    
+    return False
+```
