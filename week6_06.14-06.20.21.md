@@ -20,19 +20,19 @@
 
 ```python
 def simplifyPath(self, path):
-    """
-    :type path: str
-    :rtype: str
-    """
-    lst = path.split("/")
-    stack = []
-    for elem in lst:
-        if elem == "..":
-            if stack:
-                stack.pop()
-        elif elem != "." and elem != "":
-            stack.append(elem)
-    return "/" + "/".join(stack)
+  """
+  :type path: str
+  :rtype: str
+  """
+  lst = path.split("/")
+  stack = []
+  for elem in lst:
+      if elem == "..":
+          if stack:
+              stack.pop()
+      elif elem != "." and elem != "":
+          stack.append(elem)
+  return "/" + "/".join(stack)
 ```
 
 ## [Leetcode #1544 - Make The String Great](https://leetcode.com/problems/make-the-string-great/)
@@ -41,21 +41,21 @@ def simplifyPath(self, path):
 
 ```python
 def makeGood(self, s):
-    """
-    :type s: str
-    :rtype: str
-    """
-    stack = []
-    for char in s:
-        if not stack:
-            stack.append(char)
-        elif stack[-1].isupper() and stack[-1].lower() == char:
-            stack.pop()
-        elif stack[-1].islower() and stack[-1].upper() == char:
-            stack.pop()
-        else:
-            stack.append(char)
-    return "".join(stack)
+  """
+  :type s: str
+  :rtype: str
+  """
+  stack = []
+  for char in s:
+    if not stack:
+      stack.append(char)
+    elif stack[-1].isupper() and stack[-1].lower() == char:
+      stack.pop()
+    elif stack[-1].islower() and stack[-1].upper() == char:
+      stack.pop()
+    else:
+      stack.append(char)
+  return "".join(stack)
 ```
 
 ## [Min Max Stack Construction](Stacks/src/main/java/MinMaxStackConstruction.java)
@@ -72,45 +72,45 @@ def makeGood(self, s):
 ```java
 static class MinMaxStack {
 
-    List<Map<String, Integer>> minMaxStack = new ArrayList<Map<String, Integer>>();
-    List<Integer> stack = new ArrayList<Integer>();
+  List<Map<String, Integer>> minMaxStack = new ArrayList<Map<String, Integer>>();
+  List<Integer> stack = new ArrayList<Integer>();
 
-    // O(1) time | O(1) space
-    public int peek() {
-      return stack.get(stack.size() - 1);
+  // O(1) time | O(1) space
+  public int peek() {
+    return stack.get(stack.size() - 1);
+  }
+
+
+  // O(1) time | O(1) space
+  public int pop() {
+    minMaxStack.remove(minMaxStack.size() - 1);
+    return stack.remove(stack.size() - 1);
+  }
+
+  // O(1) time | O(1) space
+  public void push(Integer number) {
+    Map<String, Integer> newMinMax = new HashMap<String, Integer>();
+    newMinMax.put("min", number);
+    newMinMax.put("max", number);
+    if (minMaxStack.size() > 0) {
+      Map<String, Integer> lastMinMax = new HashMap<String, Integer>(
+          minMaxStack.get(minMaxStack.size() - 1));
+      newMinMax.replace("min", Math.min(lastMinMax.get("min"), number));
+      newMinMax.replace("max", Math.max(lastMinMax.get("max"), number));
     }
+    minMaxStack.add(newMinMax);
+    stack.add(number);
+  }
 
+  // O(1) time | O(1) space
+  public int getMin() {
+    return minMaxStack.get(minMaxStack.size() - 1).get("min");
+  }
 
-    // O(1) time | O(1) space
-    public int pop() {
-      minMaxStack.remove(minMaxStack.size() - 1);
-      return stack.remove(stack.size() - 1);
-    }
-
-    // O(1) time | O(1) space
-    public void push(Integer number) {
-      Map<String, Integer> newMinMax = new HashMap<String, Integer>();
-      newMinMax.put("min", number);
-      newMinMax.put("max", number);
-      if (minMaxStack.size() > 0) {
-        Map<String, Integer> lastMinMax = new HashMap<String, Integer>(
-            minMaxStack.get(minMaxStack.size() - 1));
-        newMinMax.replace("min", Math.min(lastMinMax.get("min"), number));
-        newMinMax.replace("max", Math.max(lastMinMax.get("max"), number));
-      }
-      minMaxStack.add(newMinMax);
-      stack.add(number);
-    }
-
-    // O(1) time | O(1) space
-    public int getMin() {
-      return minMaxStack.get(minMaxStack.size() - 1).get("min");
-    }
-
-    // O(1) time | O(1) space
-    public int getMax() {
-      return minMaxStack.get(minMaxStack.size() - 1).get("max");
-    }
+  // O(1) time | O(1) space
+  public int getMax() {
+    return minMaxStack.get(minMaxStack.size() - 1).get("max");
+  }
 }
 ```
 
@@ -127,25 +127,25 @@ static class MinMaxStack {
 
 ```java
 public static boolean balancedBrackets(String str) {
-    List<Character> OPEN_BRACKETS = Arrays.asList('[', '(', '{');
-    List<Character> CLOSE_BRACKETS = Arrays.asList(']', ')', '}');
-    List<Character> stack = new ArrayList<>();
-    for (int i = 0; i < str.length(); i++) {
-      Character currChar = str.charAt(i);
-      int targetIdx = CLOSE_BRACKETS.indexOf(currChar); // return -1 if not found
-      if (targetIdx != -1) {
-        if (stack.size() == 0 || (stack.get(stack.size() - 1) != OPEN_BRACKETS.get(targetIdx))) {
-          return false;
-        } else {
-          stack.remove(stack.size() - 1);
-        }
+  List<Character> OPEN_BRACKETS = Arrays.asList('[', '(', '{');
+  List<Character> CLOSE_BRACKETS = Arrays.asList(']', ')', '}');
+  List<Character> stack = new ArrayList<>();
+  for (int i = 0; i < str.length(); i++) {
+    Character currChar = str.charAt(i);
+    int targetIdx = CLOSE_BRACKETS.indexOf(currChar); // return -1 if not found
+    if (targetIdx != -1) {
+      if (stack.size() == 0 || (stack.get(stack.size() - 1) != OPEN_BRACKETS.get(targetIdx))) {
+        return false;
       } else {
-        if (OPEN_BRACKETS.contains(currChar)) {
-          stack.add(currChar);
-        }
+        stack.remove(stack.size() - 1);
+      }
+    } else {
+      if (OPEN_BRACKETS.contains(currChar)) {
+        stack.add(currChar);
       }
     }
-    return stack.size() == 0;
+  }
+  return stack.size() == 0;
 }
 ```
 
@@ -156,3 +156,27 @@ public static boolean balancedBrackets(String str) {
 
 #### Level: Medium 📘
 
+## [Sort Stacks](Stacks/src/main/java/SortStack.java)
+
+#### Level: Medium 📘
+
+```java
+public ArrayList<Integer> sortStack(ArrayList<Integer> stack) {
+  if (stack.size() == 0) return stack;
+  
+  int top = stack.remove(stack.size() - 1);
+  sortStack(stack);
+  insertInSortOrder(stack, top);
+  return stack;
+}
+
+public void insertInSortOrder(ArrayList<Integer> stack, int value) {
+  if (stack.size() == 0 || stack.get(stack.size() - 1) <= value) {
+    stack.add(value);
+    return;
+  }
+  int top = stack.remove(stack.size() - 1);
+  insertInSortOrder(stack, value);
+  stack.add(top);
+}
+```
