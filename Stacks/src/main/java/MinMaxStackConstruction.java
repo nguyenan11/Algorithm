@@ -16,13 +16,13 @@ public class MinMaxStackConstruction {
     List<Map<String, Integer>> minMaxStack = new ArrayList<Map<String, Integer>>();
     List<Integer> stack = new ArrayList<Integer>();
 
-    // O(1) time | O(n) space
+    // O(1) time | O(1) space
     public int peek() {
       return stack.get(stack.size() - 1);
     }
 
 
-    // O(1) time | O(n) space
+    // O(1) time | O(1) space
     public int pop() {
       minMaxStack.remove(minMaxStack.size() - 1);
       return stack.remove(stack.size() - 1);

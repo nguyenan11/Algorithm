@@ -62,7 +62,7 @@ def makeGood(self, s):
 
 #### Level: Medium 📘
 
-> Write a MinMaxStack class for a Min Max Stack. The class should support:
+> Write a `MinMaxStack` class for a Min Max Stack. The class should support:
 > - Pushing and popping values on and off the stack.
 > - Peeking at the value at the top of the stack.
 > - Getting both the minimum and the maximum values in the stack at any given point in time.
@@ -75,13 +75,13 @@ static class MinMaxStack {
     List<Map<String, Integer>> minMaxStack = new ArrayList<Map<String, Integer>>();
     List<Integer> stack = new ArrayList<Integer>();
 
-    // O(1) time | O(n) space
+    // O(1) time | O(1) space
     public int peek() {
       return stack.get(stack.size() - 1);
     }
 
 
-    // O(1) time | O(n) space
+    // O(1) time | O(1) space
     public int pop() {
       minMaxStack.remove(minMaxStack.size() - 1);
       return stack.remove(stack.size() - 1);
@@ -115,4 +115,41 @@ static class MinMaxStack {
 ```
 
 ### O(1) time | O(1) space
+* O(1) space because when add add or remove, we work with an existed array; no 
+iteration. With each value of n, we might store 2 additional map (3n), but
+overall O(n) comes down to O(1) and so does O(3n)
+
+## [Balanced Brackets](Stacks/src/main/java/BalancedBrackets.java)
+
+#### Level: Medium 📘
+
+> Write a function that takes in a string made up of brackets `(, [, {, ), ], and }` and other optional characters. The function should return a boolean representing whether the string is balanced with regards to brackets.
+>
+> A string is said to be balanced if it has as many opening brackets of a certain type as it has closing brackets of that type and if no bracket is unmatched. Note that an opening bracket can't match a corresponding closing bracket that comes before it, and similarly, a closing bracket can't match a corresponding opening bracket that comes after it. Also, brackets can't overlap each other as in `([)]`.
+
+```java
+public static boolean balancedBrackets(String str) {
+    List<Character> OPEN_BRACKETS = Arrays.asList('[', '(', '{');
+    List<Character> CLOSE_BRACKETS = Arrays.asList(']', ')', '}');
+    List<Character> stack = new ArrayList<>();
+    for (int i = 0; i < str.length(); i++) {
+      Character currChar = str.charAt(i);
+      int targetIdx = CLOSE_BRACKETS.indexOf(currChar); // return -1 if not found
+      if (targetIdx != -1) {
+        if (stack.size() == 0 || (stack.get(stack.size() - 1) != OPEN_BRACKETS.get(targetIdx))) {
+          return false;
+        } else {
+          stack.remove(stack.size() - 1);
+        }
+      } else {
+        if (OPEN_BRACKETS.contains(currChar)) {
+          stack.add(currChar);
+        }
+      }
+    }
+    return stack.size() == 0;
+}
+```
+
+### O(n) time | O(n) space
 
