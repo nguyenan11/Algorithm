@@ -115,9 +115,7 @@ static class MinMaxStack {
 ```
 
 ### O(1) time | O(1) space
-* O(1) space because when add add or remove, we work with an existed array; no 
-iteration. With each value of n, we might store 2 additional map (3n), but
-overall O(n) comes down to O(1) and so does O(3n)
+* O(1) space because at each method, we work with an existed array.
 
 ## [Balanced Brackets](Stacks/src/main/java/BalancedBrackets.java)
 
@@ -152,4 +150,6 @@ public static boolean balancedBrackets(String str) {
 ```
 
 ### O(n) time | O(n) space
+* space is O(n / 2) at max, which is converted to O(n)
+
 
