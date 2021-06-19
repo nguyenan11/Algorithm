@@ -34,3 +34,26 @@ def simplifyPath(self, path):
             stack.append(elem)
     return "/" + "/".join(stack)
 ```
+
+## [Leetcode #1544 - Make The String Great](https://leetcode.com/problems/make-the-string-great/)
+
+#### Level: Easy 📗
+
+```python
+def makeGood(self, s):
+    """
+    :type s: str
+    :rtype: str
+    """
+    stack = []
+    for char in s:
+        if not stack:
+            stack.append(char)
+        elif stack[-1].isupper() and stack[-1].lower() == char:
+            stack.pop()
+        elif stack[-1].islower() and stack[-1].upper() == char:
+            stack.pop()
+        else:
+            stack.append(char)
+    return "".join(stack)
+```
