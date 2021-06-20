@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 public class SortStack {
+
+  // O(n^2) time | O(n) space
   public ArrayList<Integer> sortStack(ArrayList<Integer> stack) {
     if (stack.size() == 0) return stack;
 
@@ -19,4 +21,5 @@ public class SortStack {
     insertInSortOrder(stack, value);
     stack.add(top);
   }
+
 }
