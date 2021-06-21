@@ -180,3 +180,28 @@ public void insertInSortOrder(ArrayList<Integer> stack, int value) {
   stack.add(top);
 }
 ```
+
+## [Leetcode #1249 - Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)
+
+#### Level: Medium 📘
+
+```python
+def minRemoveToMakeValid(self, s):
+  """
+  :type s: str
+  :rtype: str
+  """
+  s = list(s)
+  stack = []
+  for idx, char in enumerate(s):
+    if char == '(':
+      stack.append(idx)
+    elif char == ')':
+      if stack:
+        stack.pop()
+      else:
+        s[idx] = ''
+  while stack:
+    s[stack.pop()] = ''
+  return ''.join(s)
+```
