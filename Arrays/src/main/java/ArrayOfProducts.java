@@ -1,19 +1,25 @@
-public class ArrayOfProducts {
+/*
+  Write a function that takes in a non-empty array of integers and returns an array of the same
+  length, where each element in the output array is equal to the product of every other number in
+  the input array.
 
-  /*
-
-  Write a function that takes in a non-empty array of integers and returns an
-  array of the same length, where each element in the output array is equal to
-  the product of every other number in the input array.
-
-  In other words, the value at output[i] is equal to the product of
-  every number in the input array other than input[i].
+  In other words, the value at output[i] is equal to the product of every number in the input
+  array other than input[i].
 
   Note that you're expected to solve this problem without using division.
-   */
+*/
+public class ArrayOfProducts {
 
   // O(n) time | O(n) space
   // O(2n) = O(n) | Alternative solution is O(3n), use 3 int[], productArr = leftArr * rightArr
+
+  /**
+   * Creates a new array from the given array where each element in the new array is equal to the
+   * product of every other number in given array.
+   * Complexity: O(n) time | O(n) space.
+   * @param array
+   * @return
+   */
   public static int[] arrayOfProducts(int[] array) {
     int[] productArr = new int[array.length];
 
@@ -32,6 +38,7 @@ public class ArrayOfProducts {
   }
 
   /*
+  Brute force approach
    O(n^2) time | O(n) space
   public static int[] arrayOfProducts(int[] array) {
     int[] newArr = new int[array.length];

@@ -11,6 +11,8 @@
 **[Array](#array)**<br>
 **[Strings](#strings)**<br>
 
+> Java only for this week
+
 ---
 
 # Array
@@ -96,6 +98,7 @@ public static int[] arrayOfProducts(int[] array) {
 ```
 
 ### O(n) time | O(n) space - n is length of input array
+* O(2n) = O(n)
 
 ## [First Duplicate Value](Arrays/src/main/java/FirstDuplicateValue.java)
 

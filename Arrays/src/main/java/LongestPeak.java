@@ -12,13 +12,15 @@
  */
 public class LongestPeak {
 
-  // O(n) time | O(1) space. We traverse thru each number once, at most 2 - 3 times (when peak found
-  // and traverse to the left) -> still O(n)
-
   /**
-   * Finds
-   * @param array
-   * @return
+   * Finds the length of the longest peak from the given array.
+   * Complexity: O(n) time | O(1) space. We traverse thru each number once, at most 2 - 3 times
+   * (when peak found and traverse to the left) -> still O(n).
+   * Assumption: at least 3 integers required to form a peak. Peak only point up and have to
+   * shape like ^.
+   *
+   * @param array - the array of integers.
+   * @return an integer represents the length of the longest peak, 0 if no peak found.
    */
   public static int longestPeak(int[] array) {
     int longestPeakLength = 0;
@@ -47,7 +49,14 @@ public class LongestPeak {
     return longestPeakLength;
   }
 
-
+  /**
+   * Helper method to find to longest peak at current iteration.
+   *
+   * @param longestPeakLength - the current longest peak length, an integer.
+   * @param leftIdx           - the left-most index of the new peak, an integer.
+   * @param rightIdx          - the right-most index of the new peak, an integer.
+   * @return the longer peak between the current longest peak and the new peak, an integer.
+   */
   private static int updateLongestPeak(int longestPeakLength, int leftIdx, int rightIdx) {
     int currPeakLength = rightIdx - leftIdx - 1;
     return Math.max(currPeakLength, longestPeakLength);
