@@ -8,6 +8,8 @@
 
 # Category for this week: Array (only)
 
+> Java only for this week
+
 ## [Two Numbers Sum](Arrays/src/main/java/TwoNumSum.java)
 
 #### Level: Easy 📗
