@@ -11,7 +11,7 @@
 **[Array](#array)**<br>
 **[Strings](#strings)**<br>
 
-> Java only for this week
+> Java only for this
 
 ---
 

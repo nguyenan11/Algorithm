@@ -10,15 +10,14 @@
 */
 public class ArrayOfProducts {
 
-  // O(n) time | O(n) space
-  // O(2n) = O(n) | Alternative solution is O(3n), use 3 int[], productArr = leftArr * rightArr
-
   /**
    * Creates a new array from the given array where each element in the new array is equal to the
    * product of every other number in given array.
-   * Complexity: O(n) time | O(n) space.
-   * @param array
-   * @return
+   * Complexity: O(n) time | O(n) space - O(2n) = O(n).
+   * Assumption: No division allowed.
+   *
+   * @param array - the array of integers.
+   * @return a new array of integers computed from the input array.
    */
   public static int[] arrayOfProducts(int[] array) {
     int[] productArr = new int[array.length];
@@ -37,9 +36,11 @@ public class ArrayOfProducts {
     return productArr;
   }
 
+  // Alternative solution is O(3n), use 3 int[] - productArr = leftArr * rightArr
+
   /*
   Brute force approach
-   O(n^2) time | O(n) space
+  O(n^2) time | O(n) space
   public static int[] arrayOfProducts(int[] array) {
     int[] newArr = new int[array.length];
     int leftIdx = 0;
@@ -65,7 +66,7 @@ public class ArrayOfProducts {
     }
     return newArr;
   }
-   */
+  */
 
   public static void main(String[] args) {
     int[] array = new int[]{5, 1, 4, 2};
