@@ -5,7 +5,7 @@
     * Alternative (less optimal) solutions might also be available within each 
     file
 
-# Week 5: 06/14 - 06/20/2021
+# Week 6: 06/14 - 06/20/2021
 
 # Category for this week:
 **[Stack](#stack)**<br>
