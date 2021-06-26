@@ -59,3 +59,25 @@ def dailyTemperatures(self, temperatures):
         stack.append(i)
     return res
 ```
+
+## [Leetcode #1673 - Find the Most Competitive Subsequence](https://leetcode.com/problems/find-the-most-competitive-subsequence/)
+
+#### Level: Medium 📘
+
+```python
+def mostCompetitive(self, nums, k):
+    """
+    :type nums: List[int]
+    :type k: int
+    :rtype: List[int]
+    """
+    stack = []
+    for i, num in enumerate(nums):
+        if len(nums) - i + len(stack) == k:
+            return stack + nums[i:]
+        while stack and stack[-1] > num and len(stack) - 1 + len(nums) - i >= k:
+            stack.pop()
+        if len(stack) < k:
+            stack.append(num)
+    return stack
+```
