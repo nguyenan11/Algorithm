@@ -8,10 +8,17 @@ import java.util.Map;
   The first non-repeating character is the first character in a string that occurs only once.
 
   If the input string doesn't have any non-repeating characters, your function should return "-1".
- */
+*/
 public class FirstNonRepeatingCharacter {
 
-  // O(n) time | O(1) space - n is the length of the input string
+  /**
+   * Finds the index where first non-repeating character appear in the string.
+   * Complexity: O(n) time | O(1) space - n is the length of the input string.
+   * Assumption: String might not contain any repeating characters.
+   *
+   * @param string - the input String.
+   * @return the index of first non-repeating character, -1 if no repeating was found.
+   */
   public int firstNonRepeatingCharacter(String string) {
     Map<Character, Integer> charFrequencies = new HashMap<>();
 

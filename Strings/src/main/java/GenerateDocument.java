@@ -16,13 +16,21 @@ import java.util.Map;
   capital letters, numbers, and spaces.
 
   Note: you can always generate the empty string ("").
- */
+*/
 public class GenerateDocument {
 
   private static final int ONE_APPEARANCE = 1;
 
-  // O(n+ m) time | O(c) space - n is number of characters, m is the length of the document, c is
-  // number of unique characters in characters string
+  /**
+   * Checks if a Document string can be generated from the characters in the Characters string.
+   * Complexity: O(n+ m) time | O(c) space - n is number of characters, m is the length of the
+   * document, c is number of unique characters in characters string.
+   * Assumption: each character is distinctly used once.
+   *
+   * @param characters - the Characters String contains characters to build a new String.
+   * @param document   - the Document String, the target String.
+   * @return true if Characters supply enough characters for Document, false otherwise.
+   */
   public boolean generateDocument(String characters, String document) {
     Map<Character, Integer> mapChar = new HashMap<>();
     for (int i = 0; i < characters.length(); i++) {
@@ -40,6 +48,12 @@ public class GenerateDocument {
     return true;
   }
 
+  /**
+   * Helper method to update the map of characters.
+   *
+   * @param mapChar - the map of characters.
+   * @param aChar   - a character to be added/ updated within the map.
+   */
   private void updateMapChar(Map<Character, Integer> mapChar, char aChar) {
     if (mapChar.containsKey(aChar)) {
       mapChar.replace(aChar, mapChar.get(aChar) + ONE_APPEARANCE);

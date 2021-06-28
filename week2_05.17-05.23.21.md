@@ -205,7 +205,7 @@ public static List<Integer> spiralTraverse(int[][] array) {
     Handle the edge case when there's a single row in the middle of the 
     matrix. In this case, we don't want to double-count the values in this 
     row, which we've already counted in the first for loop above.
-      */
+    */
     for (int col = endCol - 1; col >= startCol; col--) {
       if (startRow == endRow) {
         break;
@@ -217,7 +217,7 @@ public static List<Integer> spiralTraverse(int[][] array) {
     Handle the edge case when there's a single column in the middle of the 
     matrix. In this case, we don't want to double-count the values in this 
     column, which we've already counted in the second for loop above.
-      */
+    */
     for (int row = endRow - 1; row >= startRow + 1; row--) {
       if (startCol == endCol) {
         break;
@@ -304,7 +304,7 @@ public static String runLengthEncoding(String string) {
 ```
 
 ### O(n) time | O(n) space - n is length of input string
-* Most space complexity: O(2n) - all different characters -> O(n)
+* Max space complexity: O(2n) - all different characters -> Still O(n)
 * Accurate time complexity for this solution: O(n) + O(2n)
   * O(n) for first for loop
   * O(n) for the toString() (O(2n) for worst time complexity)
@@ -384,7 +384,7 @@ public int firstNonRepeatingCharacter(String string) {
 ```
 
 ### O(n) time | O(1) space - n is the length of the input string
-* O(2n) time -> O(n) time
+* Actual O(2n) time -> O(n) time
 * Constant space is because input string has only lowercase English-alphabet
 letters; thus, our hash table will never have more than 26 character 
 frequencies.

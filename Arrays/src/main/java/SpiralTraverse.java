@@ -2,15 +2,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-Write a function that takes in an n x m two-dimensional array (that can be square-shaped when
-n == m) and returns a one-dimensional array of all the array's elements in spiral order.
+  Write a function that takes in an n x m two-dimensional array (that can be square-shaped when
+  n == m) and returns a one-dimensional array of all the array's elements in spiral order.
 
-Spiral order starts at the top left corner of the two-dimensional array, goes to the right, and
-proceeds in a spiral pattern all the way until every element has been visited.
- */
+  Spiral order starts at the top left corner of the two-dimensional array, goes to the right, and
+  proceeds in a spiral pattern all the way until every element has been visited.
+*/
 public class SpiralTraverse {
 
-  // O(n) time | O(n) space - n is total number of elements in the array
+  /**
+   * Spiral traverses through an n x m two-dimensional array and return one-dimensional array of all
+   * array's elements.
+   * Complexity: O(n) time | O(n) space - n is total number of elements in the array.
+   * Assumption/ Edge case: traverse from top-left, then clockwise and in-ward. Also
+   * two-dimensional array can shape as any type of rectangle, not necessarily square.
+   *
+   * @param array - the two-dimensional array of integers.
+   * @return one-dimensional array of integers.
+   */
   public static List<Integer> spiralTraverse(int[][] array) {
     if (array.length == 0) {
       return new ArrayList<Integer>();

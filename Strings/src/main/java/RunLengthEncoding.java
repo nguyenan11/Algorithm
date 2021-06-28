@@ -12,13 +12,21 @@
   be encoded as "12A" , since this string can be decoded as either "AAAAAAAAAAAA" or "1AA". Thus,
   long runs (runs of 10 or more characters) should be encoded in a split fashion; the
   aforementioned run should be encoded as "9A3A".
- */
+*/
 public class RunLengthEncoding {
 
   private static final int MAX_COUNT = 9, COUNT_RESET = 1;
 
-
-  // O(n) time | O(n) space
+  /**
+   * Encodes input string into a new string that tells how many characters are there according to
+   * their order.
+   * Complexity: O(n) time | O(n) space.
+   * Assumption: Characters are strictly ordered. Maximum count for each character is 9, anything
+   * that's larger has to be seperated out. Ex: 12A would mean 9A3A.
+   *
+   * @param string - the input String.
+   * @return a new encoded String.
+   */
   public static String runLengthEncoding(String string) {
 
     // List<String> encoding = new ArrayList<>(); would work the same
@@ -45,7 +53,9 @@ public class RunLengthEncoding {
   }
 
 
-  /* Alternative: O(n^2) time | O(n) space - because String concatenation is O(n)
+  /*
+  Brute force
+  Alternative: O(n^2) time | O(n) space - because String concatenation is O(n)
 
   public static String runLengthEncoding(String string) {
     String encoding = "";
@@ -71,4 +81,5 @@ public class RunLengthEncoding {
     String expected = runLengthEncoding("AAAAAAAAAABBCCCCDD");
     System.out.println(expected);
   }
+
 }

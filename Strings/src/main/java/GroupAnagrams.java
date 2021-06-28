@@ -7,11 +7,17 @@ import java.util.*;
   "cinema" and "iceman" are anagrams; similarly, "foo" and "ofo" are anagrams.
 
   Your function should return a list of anagram groups in no particular order.
- */
+*/
 public class GroupAnagrams {
 
-  // O(w * n * log(n)) time | O(wn) space - where w is the number of words and n is length of the
-  // longest word
+  /**
+   * Makes a list of anagram lists (groups) from a single list of words.
+   * Complexity: O(w * n * log(n)) time | O(wn) space - where w is the number of words and n is
+   * length of the longest word.
+   *
+   * @param words - list of words (Strings).
+   * @return list of list of anagrams.
+   */
   public static List<List<String>> groupAnagrams(List<String> words) {
     Map<String, List<String>> anagramsMap = new HashMap<>();
 
@@ -27,6 +33,12 @@ public class GroupAnagrams {
     return new ArrayList<>(anagramsMap.values());
   }
 
+  /**
+   * Helper method to sort a string.
+   *
+   * @param word - the input String.
+   * @return a new sorted version of the input String.
+   */
   private static String sortStr(String word) {
     char[] arr = word.toCharArray();
     Arrays.sort(arr);

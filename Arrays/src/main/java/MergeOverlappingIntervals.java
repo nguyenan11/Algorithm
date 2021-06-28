@@ -18,7 +18,14 @@ import java.util.List;
 */
 public class MergeOverlappingIntervals {
 
-  // O(nlog(n)) time | O(n) space
+  /**
+   * Merges any overlapping intervals in the given array.
+   * Complexity: O(nlog(n)) time | O(n) space
+   * Assumption: each interval inside the array of intervals will be size of 2
+   *
+   * @param intervals - the given array of intervals, where each interval consists of 2 integers.
+   * @return new array of intervals with any overlapping intervals merged.
+   */
   public static int[][] mergeOverlappingIntervals(int[][] intervals) {
     Arrays.sort(intervals, new IntCompare());
     List<int[]> mergedInterval = new ArrayList<int[]>();
@@ -40,6 +47,9 @@ public class MergeOverlappingIntervals {
     return mergedInterval.toArray(new int[mergedInterval.size()][]);
   }
 
+  /**
+   * Comparator to compare/ sort 2 intervals based their first integer.
+   */
   static class IntCompare implements Comparator<int[]> {
 
     @Override
