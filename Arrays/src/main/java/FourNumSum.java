@@ -10,11 +10,19 @@ import java.util.Map;
   and return a two-dimensional array of all these quadruplets in no particular order.
 
   If no four numbers sum up to the target sum, the function should return an empty array.
- */
+*/
 public class FourNumSum {
 
-  // Average: O(n^2) time | O(n^2) space
-  // Worst: O(n^3) time | O(n^2) space
+  /**
+   * Finds all quadruplets in array that sum up to the target sum.
+   * Complexity: Average: O(n^2) time | O(n^2) space. Worst: O(n^3) time | O(n^2) space.
+   * Edge case: be careful with duplication; when [7, 1, 3, 6] is stored in the final array,
+   * [1, 7, 3, 6] should not be added to array/ should be disregarded.
+   *
+   * @param array     - the one-dimensional array of integers.
+   * @param targetSum - the target sum, an integer.
+   * @return two-dimensional array of quadruplets, empty array if no 4 numbers found.
+   */
   public static List<Integer[]> fourNumberSum(int[] array, int targetSum) {
     List<Integer[]> quadruplets = new ArrayList<Integer[]>();
     Map<Integer, List<Integer[]>> allPairsSum = new HashMap<>();

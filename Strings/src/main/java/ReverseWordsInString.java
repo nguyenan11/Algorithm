@@ -14,10 +14,18 @@ import java.util.*;
   However, you are allowed to use a built-in "join" method/function.
 
   Also note that the input string isn't guaranteed to always contain words.
- */
+*/
 public class ReverseWordsInString {
 
-  // O(n) time | O(1) space - n is the length of the input string
+  /**
+   * Reverses the words in the input string.
+   * Complexity: O(n) time | O(1) space - n is the length of the input string.
+   * Assumption: no using String methods "spilt" or "reverse".
+   * Edge case: White space(s) is reversed. Might contain special characters, not just words.
+   *
+   * @param string - the input String.
+   * @return the reversed version of input String.
+   */
   public String reverseWordsInString(String string) {
     List<String> reverseString = new ArrayList<>();
     int wordStarting = 0;

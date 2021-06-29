@@ -63,7 +63,7 @@ target number is 13, when pointer is at 7, don't add to Map; add when pointer is
 at 6.
 
 ## [Leetcode #1 - Two Number Sum](https://leetcode.com/problems/two-sum/)
-* Redo problem using Python
+* Redo [problem](Arrays/src/main/java/TwoNumSum.java) (week 1) using Python
 
 #### Level: Easy 📗
 
@@ -71,22 +71,22 @@ at 6.
 def twoSum(nums, target):
   '''
   Function -- twoSum
-      Find the two numbers within the array that will made up the sum equaling
-      to the target.
+    Find the two numbers within the array that will made up the sum equaling
+    to the target.
   Parameters:
-      nums - the array of numbers
-      target - the sum target, an int
+    nums - the array of numbers
+    target - the sum target, an int
   Return: 
-      An array contains 2 indices of 2 matched numbers.
+    An array contains 2 indices of 2 matched numbers.
   '''
   targetDictionary = {}
   
   for index, num in enumerate(nums):
-      missingPiece = target - num
-      if missingPiece in targetDictionary:
-          return [index, targetDictionary[missingPiece]]
-      else:
-          targetDictionary[num] = index
+    missingPiece = target - num
+    if missingPiece in targetDictionary:
+      return [index, targetDictionary[missingPiece]]
+    else:
+      targetDictionary[num] = index
 ```
 
 ### O(n) time | O(n) space
@@ -135,7 +135,7 @@ public String reverseWordsInString(String string) {
 ### O(n) time | O(1) space - n is the length of the input string
 
 ## [Leetcode #387 - First Unique Character in a String](https://leetcode.com/problems/first-unique-character-in-a-string/)
-* Redo problem using Python
+* Redo [problem](Strings/src/main/java/FirstNonRepeatingCharacter.java) (week 2) using Python
 
 #### Level: Easy 📗
 
@@ -143,12 +143,12 @@ public String reverseWordsInString(String string) {
 def firstUniqChar(s):
   '''
   Function -- firstUniqChar
-      Find the first non - repeating character in a string.
+    Find the first non - repeating character in a string.
   Parameter:
-      s - a string to check
+    s - a string to check
   Return: 
-      An int: index of first non - repeating character, -1 if all characters
-      are repeated.
+    An int: index of first non - repeating character, -1 if all characters are 
+    repeated.
   '''
   dic = {}
           
