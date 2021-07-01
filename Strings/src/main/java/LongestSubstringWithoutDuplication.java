@@ -13,7 +13,7 @@ public class LongestSubstringWithoutDuplication {
   // length of the character alphabet represented in the input string
 
   /**
-   * 
+   *
    * @param str
    * @return
    */

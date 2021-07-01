@@ -15,6 +15,7 @@
 # Binary Search
 
 ## [Leetcode #278 - First Bad Version](https://leetcode.com/problems/first-bad-version/)
+* *Python*
 
 #### Level: Easy 📗
 
@@ -34,3 +35,33 @@ def firstBadVersion(self, n):
       left = mid + 1
   return left
 ```
+
+
+
+## [Find Closet Value in BST](Binary Search Trees/src/main/java/FindClosetValue.java)
+
+#### Level: Easy 📗
+
+```java
+public static int findClosestValueInBst(BST tree, int target) {
+  return findClosestValue(tree, target, tree.value);
+}
+
+
+public static int findClosestValue(BST node, int target, int closest) {
+  if (node == null) {
+    return closest; // case base
+  }
+
+  closest = Math.abs(closest - target) > Math.abs(node.value - target) ? node.value : closest;
+
+  if (target < node.value) {
+    return findClosestValue(node.left, target, closest);
+  } else if (target > node.value) {
+    return findClosestValue(node.right, target, closest);
+  } else {
+    return node.value;
+  }
+}
+```
+

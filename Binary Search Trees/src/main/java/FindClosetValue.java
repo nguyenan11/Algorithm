@@ -1,19 +1,28 @@
 public class FindClosetValue {
 
   public static int findClosestValueInBst(BST tree, int target) {
-    int closetValue = tree.value;
-    if (closetValue - target == 0) return closetValue; // case base
+    return findClosestValue(tree, target, tree.value);
+  }
 
-    if (target < tree.value && tree.left != null) {
-      return Math.min(closetValue, findClosestValueInBst(tree.left, target));
-    } else if (target > tree.value && tree.right != null) {
-      return Math.min(closetValue, findClosestValueInBst(tree.right, target));
+
+  public static int findClosestValue(BST node, int target, int closest) {
+    if (node == null) {
+      return closest; // case base
+    }
+
+    closest = Math.abs(closest - target) > Math.abs(node.value - target) ? node.value : closest;
+
+    if (target < node.value) {
+      return findClosestValue(node.left, target, closest);
+    } else if (target > node.value) {
+      return findClosestValue(node.right, target, closest);
     } else {
-      return closetValue;
+      return node.value;
     }
   }
 
   static class BST {
+
     public int value;
     public BST left;
     public BST right;
