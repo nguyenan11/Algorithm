@@ -6,11 +6,17 @@ import java.util.Map;
   characters.
 
   You can assume that there will only be one longest substring without duplication.
- */
+*/
 public class LongestSubstringWithoutDuplication {
 
   // O(n) time | O(min(n, a)) space - where n is the length of the input string and a is the
   // length of the character alphabet represented in the input string
+
+  /**
+   * 
+   * @param str
+   * @return
+   */
   public static String longestSubstringWithoutDuplication(String str) {
     Map<Character, Integer> lastSeen = new HashMap<>();
     int[] longest = {0, 1};

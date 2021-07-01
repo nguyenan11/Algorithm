@@ -18,7 +18,7 @@
 # Array
 
 ## [Leetcode #1099 - Two Sum Less Than K](https://leetcode.com/problems/two-sum-less-than-k/)
-* Python
+* *Python*
 
 #### Level: Easy 📗
 
@@ -26,14 +26,14 @@
 def twoSumLessThanK(self, nums, k):
   '''
   Function -- twoSumLessThanK
-      Find the sum (of 2 number in a list) that is less or equal than a target 
-      number, and that sum is the closet number comparing to target.
+    Finds the sum (of 2 number in a list) that is less or equal than a target 
+    number, and that sum is the closet number comparing to target.
   Parameter:
-      nums - the List of int
-      k - the target int
+    nums - the list of integers
+    k - the target int
   Return: 
-      An int represents the closet number. If no sums are less than equal to
-      target, -1 will be returned.
+    An int represents the closet number. If no sums are less than equal to
+    target, -1 will be returned.
   '''
   sorted_nums = sorted(filter(lambda x: x < k, nums))
   lo, hi, closet = 0, len(sorted_nums) - 1, -1
@@ -51,12 +51,23 @@ def twoSumLessThanK(self, nums, k):
 * Definitely could make it O(1) space by storing sorted_nums into nums
 
 ## [Leetcode #11 - Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
-* Python
+* *Python*
 
 #### Level: Medium 📘
 
 ```python
 def maxArea(self, height):
+  '''
+  Function -- maxArea
+    Finds the container (rectangle shaped) that can hold the most water -
+    biggest area can be formed. Width can be calculated by subtraction between
+    each height.
+  Parameter:
+    height - the list of integers, where each int represents a height
+  Return:
+    The biggest area to hold water (without spilling) that can be formed, an 
+    int.
+  '''
   currMax = 0;
   leftWall = 0;
   rightWall = len(height) - 1
@@ -71,23 +82,32 @@ def maxArea(self, height):
 ```
 
 ## [Leetcode #35 - Search Insert Position](https://leetcode.com/problems/search-insert-position/)
-* Python
+* *Python*
 
 #### Level: Easy 📗
 
 ```python
-def searchInsert(self, nums: List[int], target: int) -> int:
-  l = 0
-  r = len(nums)-1
-  while l <= r:
-    mid = (l + r) // 2
+def searchInsert(self, nums, target):
+  '''
+  Function -- searchInsert
+    Given a sorted list of integers, finds where a new target int can be inserted????
+  Parameter:
+    nums - SORTED?? list of integers
+    target - the target int
+  Return:
+    The position where the target number can be inserted, an int.
+  '''
+  left = 0
+  right = len(nums) - 1
+  while left <= right:
+    mid = (left + right) // 2
     if nums[mid] == target:
       return mid
     elif nums[mid] > target:
-      r = mid - 1
+      right = mid - 1
     else:
-      l = mid + 1
-  return l
+      left = mid + 1
+  return left
 ```
 
 ---
