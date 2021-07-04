@@ -15,7 +15,7 @@ public class LongestPalindromicSubstring {
    * Edge case: Palindrome can be in even or odd length.
    *
    * @param str - the input String.
-   * @return the longest palindromic subtring, a String.
+   * @return the longest palindromic substring, a String.
    */
   public static String longestPalindromicSubstring(String str) {
     int[] currLongest = new int[]{0, 1};

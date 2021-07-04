@@ -9,13 +9,14 @@ import java.util.Map;
 */
 public class LongestSubstringWithoutDuplication {
 
-  // O(n) time | O(min(n, a)) space - where n is the length of the input string and a is the
-  // length of the character alphabet represented in the input string
-
   /**
+   * Finds the longest substring without duplication from the input string.
+   * Complexity: O(n) time | O(min(n, a)) space - where n is the length of the input string and a
+   * is the length of the character alphabet represented in the input string.
+   * Assumption: only 1 longest substring without duplication.
    *
-   * @param str
-   * @return
+   * @param str - the input String.
+   * @return longest substring without duplication, a String.
    */
   public static String longestSubstringWithoutDuplication(String str) {
     Map<Character, Integer> lastSeen = new HashMap<>();

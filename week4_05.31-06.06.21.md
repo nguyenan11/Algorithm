@@ -11,7 +11,6 @@
 **[Array](#array)**<br>
 **[Strings](#strings)**<br>
 **[Sorting](#sorting)**<br>
-**[Linked List](#linked-list)**<br>
 
 ---
 
@@ -81,6 +80,8 @@ def maxArea(self, height):
   return currMax
 ```
 
+### O(n) time | O(1) space - n is number of elements in the list (height)
+
 ## [Leetcode #35 - Search Insert Position](https://leetcode.com/problems/search-insert-position/)
 * *Python*
 
@@ -90,12 +91,13 @@ def maxArea(self, height):
 def searchInsert(self, nums, target):
   '''
   Function -- searchInsert
-    Given a sorted list of integers, finds where a new target int can be inserted????
+    Given a sorted list of integers, finds where a new target int can be
+    inserted.
   Parameter:
-    nums - SORTED?? list of integers
+    nums - SORTED list of integers
     target - the target int
   Return:
-    The position where the target number can be inserted, an int.
+    The position (index) where the target number can be inserted, an int.
   '''
   left = 0
   right = len(nums) - 1
@@ -109,6 +111,9 @@ def searchInsert(self, nums, target):
       left = mid + 1
   return left
 ```
+
+### O(log n) time | O(1) space - n is number of elements in the list (nums)
+* O(log n) time because only considering half the array at each iteration.
 
 ---
 
@@ -241,13 +246,13 @@ private static void swap(int i, int j, int[] array) {
 }
 ```
 
-### O(n) time | O(n) space - n is length of array
-* O(2n) because 2 loops -> O(n)
+### O(n) time | O(1) space - n is length of array
+* O(2n) because 2 loops -> O(n) time
 * Could refactor to use for-loops instead of while loops and use 1 pointer for
 each loop instead of 2 pointers, but I'd like to see the logic clearer this way.
 
 ## [Leetcode #75 - Sort Colors](https://leetcode.com/problems/sort-colors/)
-* Python
+* *Python*
 * This is the same problem as above, but this is a less extensible version
 
 #### Level: Medium 📘 
@@ -256,8 +261,13 @@ each loop instead of 2 pointers, but I'd like to see the logic clearer this way.
 def sortColors(self, nums):
   '''
   Function -- sortColors
-    Sort the array of numbers/ colors 
+    Sorts the array of int (nums) following the order [0, 1, 2].
+  Parameter:
+    nums - unsorted array of integers ranged from 0 - 2
+  Return:
+    Sorted array of integers.
   '''
+  
   l = -1
   r = len(nums)
   i = 0
@@ -272,6 +282,8 @@ def sortColors(self, nums):
       nums[r - 1], nums[i] = nums[i], nums[r -1]
       r -= 1
 ```
+
+### O(n) time | O(1) space - n is length of array
 
 ## [Quick Sort](Sortings/src/main/java/QuickSort.java)
 
@@ -317,42 +329,3 @@ private static void swap(int i, int j, int[] array) {
 
 ### Best and average: O(nlog(n)) time | O(log(n)) space
 * Worst: O(n^2) time | O(log(n)) space
-
-## [Heap Sort](Sortings/src/main/java/HeapSort.java)
-
-#### Level: Hard 📕
-
-
----
-
-# Linked List
-
-## [Remove Duplicates From Linked List](LinkedList/src/main/java/RemoveDuplicateFromLL.java)
-
-#### Level: Easy 📗
-
-```java
-public static class LinkedList {
-  public int value;
-  public LinkedList next;
-
-  public LinkedList(int value) {
-    this.value = value;
-    this.next = null;
-  }
-}
-
-public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
-  LinkedList currNode = linkedList;
-  while (currNode != null) {
-    LinkedList nextNode = currNode.next;
-    while (nextNode != null && nextNode.value == currNode.value) {
-      nextNode = nextNode.next;
-    }
-
-    currNode.next = nextNode;
-    currNode = nextNode;
-  }
-  return linkedList;
-}
-```

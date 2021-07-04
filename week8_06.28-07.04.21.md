@@ -9,6 +9,8 @@
 
 # Category for this week:
 **[Binary Search](#binary-search)**<br>
+**[Sorting](#sorting)**<br>
+**[Linked List](#linked-list)**<br>
 
 ---
 
@@ -65,3 +67,44 @@ public static int findClosestValue(BST node, int target, int closest) {
 }
 ```
 
+---
+
+# Sorting
+
+## [Heap Sort](Sortings/src/main/java/HeapSort.java)
+
+#### Level: Hard 📕
+
+---
+
+# Linked List
+
+## [Remove Duplicates From Linked List](LinkedList/src/main/java/RemoveDuplicateFromLL.java)
+
+#### Level: Easy 📗
+
+```java
+public static class LinkedList {
+  public int value;
+  public LinkedList next;
+
+  public LinkedList(int value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
+  LinkedList currNode = linkedList;
+  while (currNode != null) {
+    LinkedList nextNode = currNode.next;
+    while (nextNode != null && nextNode.value == currNode.value) {
+      nextNode = nextNode.next;
+    }
+
+    currNode.next = nextNode;
+    currNode = nextNode;
+  }
+  return linkedList;
+}
+```

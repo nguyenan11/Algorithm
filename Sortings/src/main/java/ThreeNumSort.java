@@ -12,10 +12,18 @@
   Note that the desired order won't necessarily be ascending or descending and that the first array
   won't necessarily contain all three integers found in the second array—it might only contain one
   or two.
- */
+*/
 public class ThreeNumSort {
 
-  // O(n) time | O(n) space - n is length of array
+  /**
+   * Sorts the first array based on the order given in the second array.
+   * Complexity: O(n) time | O(1) space - n is length of array.
+   * Assumption: There are maximum of 3 distinct integers.
+   *
+   * @param array - the array of integers to be sorted.
+   * @param order - the array contains desired order of integers, size of 1 - 3.
+   * @return sorted array of integers.
+   */
   public int[] threeNumberSort(int[] array, int[] order) {
     int firstNum = order[0];
     int lastNum = order[2];
@@ -55,6 +63,13 @@ public class ThreeNumSort {
     return array;
   }
 
+  /**
+   * Helper method to swap 2 values of the array.
+   *
+   * @param i     - index of first value, an integer.
+   * @param j     - index of second value, an integer.
+   * @param array - the array of integers.
+   */
   private static void swap(int i, int j, int[] array) {
     int tempValue = array[i];
     array[i] = array[j];
