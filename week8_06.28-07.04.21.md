@@ -40,7 +40,7 @@ def firstBadVersion(self, n):
 
 ### Complexity
 
-## [Find Closet Value in BST](binarySearchTrees/src/main/java/FindClosetValue.java)
+## [Find Closet Value in BST](Binary\ Search\ Trees/src/main/java/FindClosetValue.java)
 
 #### Level: Easy 📗
 
@@ -77,7 +77,7 @@ public static int findClosestValue(BST node, int target, int closest) {
 * Worst: O(n) time | O(n) space when tree has 1 branch.
 * Could use O(1) space by solving iteratively; still 2 functions, use currNode and get rid of base case.
 
-## [BST Construction](binarySearchTrees/src/main/java/BSTConstruction.java)
+## [BST Construction](Binary\ Search\ Trees/src/main/java/BSTConstruction.java)
 
 #### Level: Medium 📘
 
