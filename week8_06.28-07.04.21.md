@@ -40,7 +40,7 @@ def firstBadVersion(self, n):
 
 ### Complexity
 
-## [Find Closet Value in BST](Binary\ Search\ Trees/src/main/java/FindClosetValue.java)
+## [Find Closet Value in BST](Binary%20Search%20Trees/src/main/java/FindClosetValue.java)
 
 #### Level: Easy 📗
 
@@ -77,7 +77,7 @@ public static int findClosestValue(BST node, int target, int closest) {
 * Worst: O(n) time | O(n) space when tree has 1 branch.
 * Could use O(1) space by solving iteratively; still 2 functions, use currNode and get rid of base case.
 
-## [BST Construction](Binary\ Search\ Trees/src/main/java/BSTConstruction.java)
+## [BST Construction](Binary%20Search%20Trees/src/main/java/BSTConstruction.java)
 
 #### Level: Medium 📘
 
@@ -187,6 +187,37 @@ static class BST {
 ### Average: O(log n) time | O(log n) space. 
 * Worst: O(n) time | O(n) space when tree has 1 branch.
 * Same idea as above problem to make it O(1) space.
+
+## [Validate BST](Binary%20Search%20Trees/src/main/java/ValidateBST.java)
+
+#### Level: Medium 📘
+
+```java
+public static boolean validateBst(BST tree) {
+  return validate(tree, Integer.MIN_VALUE, Integer.MAX_VALUE);
+}
+
+public static boolean validate(BST root, int minValue, int maxValue) {
+  if (root.value < minValue || root.value >= maxValue) {
+    return false;
+  }
+  if (root.left != null && !validate(root.left, minValue, root.value)) {
+    return false;
+  }
+  return root.right == null || validate(root.right, root.value, maxValue);
+}
+
+static class BST {
+
+  public int value;
+  public BST left;
+  public BST right;
+
+  public BST(int value) {
+    this.value = value;
+  }
+}
+```
 
 ---
 
