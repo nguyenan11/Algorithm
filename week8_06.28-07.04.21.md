@@ -9,8 +9,7 @@
 
 # Category for this week:
 **[Binary Search](#binary-search)**<br>
-**[Sorting](#sorting)**<br>
-**[Linked List](#linked-list)**<br>
+**[Binary Search Tree](#binary-search-tree)**<br>
 
 ---
 
@@ -38,7 +37,11 @@ def firstBadVersion(self, n):
   return left
 ```
 
-### Complexity
+### Complexity??
+
+---
+
+# Binary Search Tree
 
 ## [Find Closet Value in BST](Binary%20Search%20Trees/src/main/java/FindClosetValue.java)
 
@@ -192,6 +195,12 @@ static class BST {
 
 #### Level: Medium 📘
 
+> Write a function that takes in a potentially invalid Binary Search Tree (BST) and returns a boolean representing whether the BST is valid.
+>
+> Each `BST` node has an integer `value`, a `left` child node, and a `right` child node. A node is said to be a valid `BST` node if and only if it satisfies the BST property: its `value` is strictly greater than the values of every node to its left; its `value` is less than or equal to the values of every node to its right; and its children nodes are either valid `BST` nodes themselves or `None` / `null`.
+>
+> A BST is valid if and only if all of its nodes are valid `BST` nodes.
+
 ```java
 public static boolean validateBst(BST tree) {
   return validate(tree, Integer.MIN_VALUE, Integer.MAX_VALUE);
@@ -219,44 +228,5 @@ static class BST {
 }
 ```
 
----
-
-# Sorting
-
-## [Heap Sort](Sortings/src/main/java/HeapSort.java)
-
-#### Level: Hard 📕
-
----
-
-# Linked List
-
-## [Remove Duplicates From Linked List](LinkedList/src/main/java/RemoveDuplicateFromLL.java)
-
-#### Level: Easy 📗
-
-```java
-public static class LinkedList {
-  public int value;
-  public LinkedList next;
-
-  public LinkedList(int value) {
-    this.value = value;
-    this.next = null;
-  }
-}
-
-public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
-  LinkedList currNode = linkedList;
-  while (currNode != null) {
-    LinkedList nextNode = currNode.next;
-    while (nextNode != null && nextNode.value == currNode.value) {
-      nextNode = nextNode.next;
-    }
-
-    currNode.next = nextNode;
-    currNode = nextNode;
-  }
-  return linkedList;
-}
-```
+### O(n) time | O(h) space - n is number of nodes in tree, h is the height of tree (or length of the longest branch).
+* O(h) space due to using space on call stack.
