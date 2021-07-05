@@ -73,7 +73,17 @@ public static int findClosestValue(BST node, int target, int closest) {
 }
 ```
 
-### Average: O(log n) time | O(log n) space. Worst: O(n) time | O(n) space
+### Average: O(log n) time | O(log n) space. 
+* Worst: O(n) time | O(n) space when tree has 1 branch.
+* Could use O(1) space by solving iteratively; still 2 functions, use currNode and get rid of base case.
+
+## [BST Construction](Binary Search Trees/src/main/java/BSTConstruction.java)
+
+#### Level: Medium 📘
+
+```java
+
+```
 
 ---
 

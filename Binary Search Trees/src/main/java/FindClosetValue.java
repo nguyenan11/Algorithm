@@ -14,6 +14,7 @@ public class FindClosetValue {
 
   // Average: O(log n) time | O(log n) space
   // Worst: O(n) time | O(n) space
+  // Solved recursively
   public static int findClosestValueInBst(BST tree, int target) {
     return findClosestValue(tree, target, tree.value);
   }
