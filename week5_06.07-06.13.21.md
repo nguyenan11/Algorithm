@@ -13,25 +13,30 @@
 **[Strings](#strings)**<br>
 **[Array](#array)**<br>
 
-> Leetcode problems only for this week
-
 ---
 
 # Recursion
 
 ## [Leetcode #70 - Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
-* Python
+* *Python*
 
 #### Level: Easy 📗
 
 ```python
-def climbStairs(n) {
+def climbStairs(n):
+    '''
+    Function -- climbStairs
+        Placeholder
+    Parameter:
+        n - some
+    Return:
+        Placeholder
+    '''
     if n == 1:
         return 1
     elif n == 2:
         return 2
     return climbStairs(n - 1) + climbStairs(n - 2)
-}
 ```
 
 ### O(n) time | O(n) space
@@ -42,15 +47,18 @@ def climbStairs(n) {
 # Linked List
 
 ## [Leetcode #2 - Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
-* Python
+* *Python*
 
 ```python
 def addTwoNumbers(self, l1, l2):
-    """
-    :type l1: ListNode
-    :type l2: ListNode
-    :rtype: ListNode
-    """
+    '''
+    Function -- climbStairs
+        Placeholder
+    Parameter:
+        n - some
+    Return:
+        Placeholder
+    '''
     needAddOne = 0
     root = n = ListNode(0)
     while l1 or l2 or needAddOne:
@@ -112,10 +120,14 @@ public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
 
 ```python
 def lengthOfLongestSubstring(self, s):
-    """
-    :type s: str
-    :rtype: int
-    """
+    '''
+    Function -- climbStairs
+        Placeholder
+    Parameter:
+        n - some
+    Return:
+        Placeholder
+    '''
     lastSeen = {}
     startIdx, longest = 0, 0
     for idx, char in enumerate(s):
@@ -138,13 +150,14 @@ def lengthOfLongestSubstring(self, s):
 
 ```python
 def longestOnes(self, nums, k):
-    """
-    :type nums: List[int]
-    :type k: int
-    :rtype: int
-    
-    
-    """
+    '''
+    Function -- climbStairs
+        Placeholder
+    Parameter:
+        n - some
+    Return:
+        Placeholder
+    '''
     i = 0
     for j in range(len(nums)):
         k -= 1 - nums[j]
@@ -160,6 +173,14 @@ def longestOnes(self, nums, k):
 
 ```python
 def searchMatrix(self, matrix, target):
+    '''
+    Function -- climbStairs
+        Placeholder
+    Parameter:
+        n - some
+    Return:
+        Placeholder
+    '''
     if not matrix or target is None:
         return False
 
@@ -186,6 +207,14 @@ def searchMatrix(self, matrix, target):
 
 ```python
 def largestRectangleArea(self, height):
+    '''
+    Function -- climbStairs
+        Placeholder
+    Parameter:
+        n - some
+    Return:
+        Placeholder
+    '''
     n = len(height)
 
     # left[i], right[i] represent how many bars are >= than the current bar
@@ -222,6 +251,14 @@ def largestRectangleArea(self, height):
 
 ```python
 def lengthOfLongestSubstringKDistinct(s: str, k: int) -> int:
+    '''
+    Function -- climbStairs
+        Placeholder
+    Parameter:
+        n - some
+    Return:
+        Placeholder
+    '''
     d = {}
     j, longest = 0, 0
     for i in range(len(s)):
