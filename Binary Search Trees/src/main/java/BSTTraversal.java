@@ -27,6 +27,7 @@ public class BSTTraversal {
 
   // O(n) time | O(n) space
   public static List<Integer> preOrderTraverse(BST tree, List<Integer> array) {
+    // root, left, right
     if (tree != null) {
       array.add(tree.value);
       preOrderTraverse(tree.left, array);
@@ -37,6 +38,7 @@ public class BSTTraversal {
 
   // O(n) time | O(n) space
   public static List<Integer> postOrderTraverse(BST tree, List<Integer> array) {
+    // left, right, root
     if (tree != null) {
       postOrderTraverse(tree.left, array);
       postOrderTraverse(tree.right, array);

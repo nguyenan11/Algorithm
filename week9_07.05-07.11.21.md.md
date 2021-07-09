@@ -16,6 +16,7 @@
 # Binary Search Tree
 
 ## [BST Traversal](Binary%20Search%20Trees/src/main/java/BSTTraversal.java)
+* **Important**: Check the pattern where the array.add/append is placed within each function
 
 #### Level: Medium 📘
 
@@ -54,6 +55,10 @@ public static List<Integer> postOrderTraverse(BST tree, List<Integer> array) {
 ```
 
 ### O(n) time | O(n) space
+
+## [Min Height BST]()
+
+
 
 ---
 
