@@ -25,32 +25,34 @@
 > Each `BST` node has an integer `value`, a `left` child node, and a `right` child node. A node is said to be a valid `BST` node if and only if it satisfies the BST property: its `value` is strictly greater than the values of every node to its left; its `value` is less than or equal to the values of every node to its right; and its children nodes are either valid `BST` nodes themselves or `None` / `null`.
 
 ```java
+// left, root, right
 public static List<Integer> inOrderTraverse(BST tree, List<Integer> array) {
-    // left, root, right
-    if (tree != null) {
-      inOrderTraverse(tree.left, array);
-      array.add(tree.value);
-      inOrderTraverse(tree.right, array);
-    }
-    return array;
+  if (tree != null) {
+    inOrderTraverse(tree.left, array);
+    array.add(tree.value);
+    inOrderTraverse(tree.right, array);
+  }
+  return array;
 }
 
+// root, left, right
 public static List<Integer> preOrderTraverse(BST tree, List<Integer> array) {
-    if (tree != null) {
-      array.add(tree.value);
-      preOrderTraverse(tree.left, array);
-      preOrderTraverse(tree.right, array);
-    }
-    return array;
+  if (tree != null) {
+    array.add(tree.value);
+    preOrderTraverse(tree.left, array);
+    preOrderTraverse(tree.right, array);
+  }
+  return array;
 }
 
+// left, right, root
 public static List<Integer> postOrderTraverse(BST tree, List<Integer> array) {
-    if (tree != null) {
-      postOrderTraverse(tree.left, array);
-      postOrderTraverse(tree.right, array);
-      array.add(tree.value);
-    }
-    return array;
+  if (tree != null) {
+    postOrderTraverse(tree.left, array);
+    postOrderTraverse(tree.right, array);
+    array.add(tree.value);
+  }
+  return array;
 }
 ```
 
@@ -71,25 +73,55 @@ public static List<Integer> postOrderTraverse(BST tree, List<Integer> array) {
 
 ```java
 public static BST reconstructBST(List<Integer> array, BST bst, int startIdx, int endIdx) {
-    if (endIdx < startIdx) {
-      return null;
-    }
-    int midIdx = (startIdx + endIdx) / 2;
-    BST newNode = new BST(array.get(midIdx));
-    if (bst == null) {
-      bst = newNode;
+  if (endIdx < startIdx) {
+    return null;
+  }
+  int midIdx = (startIdx + endIdx) / 2;
+  BST newNode = new BST(array.get(midIdx));
+  if (bst == null) {
+    bst = newNode;
+  } else {
+    if (array.get(midIdx) < bst.value) {
+      bst.left = newNode;
+      bst = bst.left;
     } else {
-      if (array.get(midIdx) < bst.value) {
-        bst.left = newNode;
-        bst = bst.left;
-      } else {
-        bst.right = newNode;
-        bst = bst.right;
-      }
+      bst.right = newNode;
+      bst = bst.right;
     }
-    reconstructBST(array, bst, startIdx, midIdx - 1);
-    reconstructBST(array, bst, midIdx + 1, endIdx);
-    return bst;
+  }
+  reconstructBST(array, bst, startIdx, midIdx - 1);
+  reconstructBST(array, bst, midIdx + 1, endIdx);
+  return bst;
+}
+```
+
+### O(n) time | O(n) space
+
+## [Find Kth Largest Value in BST](Binary%20Search%20Trees/src/main/java/FindKthLargestValue.java)
+
+#### Level: Medium 📘
+
+> Write a function that takes in a Binary Search Tree (BST) and a positive integer `k` and returns the kth largest integer contained in the BST.
+>
+> You can assume that there will only be integer values in the BST and that `k` is less than or equal to the number of nodes in the tree.
+> Also, for the purpose of this question, duplicate integers will be treated as distinct values. In other words, the second largest value in a BST containing values `{5, 7, 7}` will be `7`—not `5`.
+>
+> Each `BST` node has an integer `value`, a `left` child node, and a `right` child node. A node is said to be a valid `BST` node if and only if it satisfies the BST property: its `value` is strictly greater than the values of every node to its left; its `value` is less than or equal to the values of every node to its right; and its children nodes are either valid `BST` nodes themselves or `None` / `null`.
+
+```java
+public int findKthLargestValueInBst(BST tree, int k) {
+  List<Integer> inOrderArr = new ArrayList<>();
+  inOrderBST(tree, inOrderArr);
+  int idx = inOrderArr.size() - k;
+  return inOrderArr.get(idx);
+}
+
+public void inOrderBST(BST tree, List<Integer> array) {
+  if (tree != null) {
+    inOrderBST(tree.left, array);
+    array.add(tree.value);
+    inOrderBST(tree.right, array);
+  }
 }
 ```
 
