@@ -56,9 +56,44 @@ public static List<Integer> postOrderTraverse(BST tree, List<Integer> array) {
 
 ### O(n) time | O(n) space
 
-## [Min Height BST]()
+## [Min Height BST](Binary%20Search%20Trees/src/main/java/MinHeightBST.java)
 
+#### Level: Medium 📘
 
+> Write a function that takes in a non-empty sorted array of distinct integers, constructs a BST from the integers, and returns the root of the BST.
+> The function should minimize the height of the BST.
+> You've been provided with a `BST` class that you'll have to use to construct the BST.
+>
+> Each `BST` node has an integer `value`, a `left` child node, and a `right` child node. A node is said to be a valid `BST` node if and only if it satisfies the BST property: its `value` is strictly greater than the values of every node to its left; its `value` is less than or equal to the values of every node to its right; and its children nodes are either valid `BST` nodes themselves or `None` / `null`.
+>
+> A BST is valid if and only if all of its nodes are valid `BST` nodes.
+> Note that the `BST` class already has an `insert` method which you can use if you want.
+
+```java
+public static BST reconstructBST(List<Integer> array, BST bst, int startIdx, int endIdx) {
+    if (endIdx < startIdx) {
+      return null;
+    }
+    int midIdx = (startIdx + endIdx) / 2;
+    BST newNode = new BST(array.get(midIdx));
+    if (bst == null) {
+      bst = newNode;
+    } else {
+      if (array.get(midIdx) < bst.value) {
+        bst.left = newNode;
+        bst = bst.left;
+      } else {
+        bst.right = newNode;
+        bst = bst.right;
+      }
+    }
+    reconstructBST(array, bst, startIdx, midIdx - 1);
+    reconstructBST(array, bst, midIdx + 1, endIdx);
+    return bst;
+}
+```
+
+### O(n) time | O(n) space
 
 ---
 
