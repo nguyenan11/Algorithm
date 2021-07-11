@@ -11,7 +11,7 @@ import java.util.List;
   Also, for the purpose of this question, duplicate integers will be treated as distinct values.
   In other words, the second largest value in a BST containing values `{5, 7, 7}` will be `7`—not
   `5`.
-  
+
   Each `BST` node has an integer `value`, a `left` child node, and a `right` child node. A node is
   said to be a valid `BST` node if and only if it satisfies the BST property: its `value` is
   strictly greater than the values of every node to its left; its `value` is less than or equal to
