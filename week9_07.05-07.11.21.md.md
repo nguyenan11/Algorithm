@@ -127,13 +127,37 @@ public void inOrderBST(BST tree, List<Integer> array) {
 
 ### O(n) time | O(n) space
 
-## [Reconstruct BST]()
+## [Reconstruct BST](Binary%20Search%20Trees/src/main/java/ReconstructBST.java)
 
 #### Level: Medium 📘
 
 ```java
 
 ```
+
+### Complexity??
+
+## [Leetcode #783 - Minimum Distance Between BST Nodes](https://leetcode.com/problems/minimum-distance-between-bst-nodes/)
+* *Python*
+
+#### Level: Easy 📗
+
+```python
+class Solution(object):
+  pre = -float('inf')
+  res = float('inf')
+
+  def minDiffInBST(self, root):
+    if root.left:
+      self.minDiffInBST(root.left)
+    self.res = min(self.res, root.val - self.pre)
+    self.pre = root.val
+    if root.right:
+      self.minDiffInBST(root.right)
+    return self.res
+```
+
+### Complexity???
 
 ---
 
