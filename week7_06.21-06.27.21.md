@@ -7,6 +7,13 @@
 
 # Week 7: 06/21 - 06/27/2021
 
+# Category for this week:
+More **[Stack](#stack)**<br>
+
+---
+
+# Stack
+
 ## [Leetcode #792 - Number of Matching Subsequences](https://leetcode.com/problems/number-of-matching-subsequences/)
 
 #### Level: Medium 📘
@@ -40,6 +47,8 @@ class Solution(object):
         return count
 ```
 
+### Complexity???
+
 ## [Leetcode #739 - Daily Temperatures](https://leetcode.com/problems/daily-temperatures/)
 
 #### Level: Medium 📘
@@ -59,6 +68,8 @@ def dailyTemperatures(self, temperatures):
         stack.append(i)
     return res
 ```
+
+### Complexity?
 
 ## [Leetcode #1673 - Find the Most Competitive Subsequence](https://leetcode.com/problems/find-the-most-competitive-subsequence/)
 
@@ -81,3 +92,15 @@ def mostCompetitive(self, nums, k):
             stack.append(num)
     return stack
 ```
+
+### Complexity???
+
+## [Next Greater Element](Stacks/src/main/java/NextGreaterElement.java)
+
+#### Level: Medium 📘
+
+```java
+incorrect - comeback to finish
+```
+
+### Complexity?

@@ -12,7 +12,7 @@
 
 ---
 
-# Recursion
+# Stack
 
 ## [Leetcode #71 - Simplify Path](https://leetcode.com/problems/simplify-path/)
 
@@ -156,6 +156,10 @@ public static boolean balancedBrackets(String str) {
 
 #### Level: Medium 📘
 
+```java
+unsolved - need to finish
+```
+
 ## [Sort Stacks](Stacks/src/main/java/SortStack.java)
 
 #### Level: Medium 📘
@@ -181,6 +185,8 @@ public void insertInSortOrder(ArrayList<Integer> stack, int value) {
 }
 ```
 
+### Complexity??
+
 ## [Leetcode #1249 - Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)
 
 #### Level: Medium 📘
@@ -205,3 +211,5 @@ def minRemoveToMakeValid(self, s):
     s[stack.pop()] = ''
   return ''.join(s)
 ```
+
+### Complexity??
