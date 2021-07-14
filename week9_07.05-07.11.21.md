@@ -16,7 +16,7 @@
 # Binary Search Tree
 
 ## [BST Traversal](Binary%20Search%20Trees/src/main/java/BSTTraversal.java)
-* **Important**: Check the pattern where the array.add/append is placed within each function
+* **Important**: Check the pattern *where* the array.add/append is placed within each function
 
 #### Level: Medium 📘
 
@@ -166,3 +166,5 @@ class Solution(object):
 ## [Heap Sort](Sortings/src/main/java/HeapSort.java)
 
 #### Level: Hard 📕
+
+Unfinished work, will move this to later week!
