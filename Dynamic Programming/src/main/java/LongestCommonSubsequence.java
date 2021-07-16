@@ -4,7 +4,7 @@ import java.util.List;
 public class LongestCommonSubsequence {
 
 
-  // Naive solution
+  // Bruteforce solution
   // O(nm * min(n, m)) time | O(nm * min(n, m)) time space
   public static List<Character> longestCommonSubsequence(String str1, String str2) {
     List<List<List<Character>>> lcs = new ArrayList<List<List<Character>>>();
