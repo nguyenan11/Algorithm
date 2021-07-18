@@ -23,7 +23,7 @@ public class MaxSubsetSumNoAdjacent {
   /*
   Brute force
   O(n) time | O(n) space
-  
+
   public static int maxSubsetSumNoAdjacent(int[] array) {
     if (array.length == 0) return 0;
     if (array.length == 1) return array[0];
