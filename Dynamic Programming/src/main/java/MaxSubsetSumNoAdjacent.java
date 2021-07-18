@@ -6,7 +6,24 @@
 */
 public class MaxSubsetSumNoAdjacent {
 
-  // O(n) time | O(n) space
+  // O(n) time | O(1) space
+  public static int maxSubsetSumNoAdjacent(int[] array) {
+    if (array.length == 0) return 0;
+    if (array.length == 1) return array[0];
+    int second = array[0];
+    int first = Math.max(array[0], array[1]);
+    for (int i = 2; i < array.length; i++) {
+      int currMax = Math.max(array[i] + second, first);
+      second = first;
+      first = currMax;
+    }
+    return first;
+  }
+
+  /*
+  Brute force
+  O(n) time | O(n) space
+  
   public static int maxSubsetSumNoAdjacent(int[] array) {
     if (array.length == 0) return 0;
     if (array.length == 1) return array[0];
@@ -19,6 +36,7 @@ public class MaxSubsetSumNoAdjacent {
     }
     return maxSum[maxSum.length - 1];
   }
+   */
 
   public static void main(String[] args) {
     int[] array = new int[]{7, 10, 12, 7, 9, 14};
