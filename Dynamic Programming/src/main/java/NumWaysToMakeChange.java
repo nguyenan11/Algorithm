@@ -7,9 +7,10 @@
 */
 public class NumWaysToMakeChange {
 
+  // O(nd) time | O(n) space
   public static int numberOfWaysToMakeChange(int n, int[] denoms) {
     int[] ways = new int[n + 1];
-    ways[0] = 1;
+    ways[0] = 1; // important here
     for (int denom : denoms) {
       for (int amount = 1; amount < n + 1; amount++) {
         if (denom <= amount) {
