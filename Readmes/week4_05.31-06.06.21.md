@@ -119,7 +119,7 @@ def searchInsert(self, nums, target):
 
 # Strings
 
-## [Longest Palindromic Substring](Strings/src/main/java/LongestPalindromicSubstring.java)
+## [Longest Palindromic Substring](../Strings/src/main/java/LongestPalindromicSubstring.java)
 
 #### Level: Medium 📘
 
@@ -155,7 +155,7 @@ private static int[] getLongestPalindrome(int leftIdx, int rightIdx, String str)
 
 ### O(n^2) time | O(n) space
 
-## [Longest Substring Without Duplication](Strings/src/main/java/LongestSubstringWithoutDuplication.java)
+## [Longest Substring Without Duplication](../Strings/src/main/java/LongestSubstringWithoutDuplication.java)
 
 #### Level: Hard 📕
 
@@ -188,7 +188,7 @@ public static String longestSubstringWithoutDuplication(String str) {
 
 # Sorting
 
-## [Three Numbers Sort](Sortings/src/main/java/ThreeNumSort.java)
+## [Three Numbers Sort](../Sortings/src/main/java/ThreeNumSort.java)
 
 #### Level: Medium 📘
 
@@ -285,7 +285,7 @@ def sortColors(self, nums):
 
 ### O(n) time | O(1) space - n is length of array
 
-## [Quick Sort](Sortings/src/main/java/QuickSort.java)
+## [Quick Sort](../Sortings/src/main/java/QuickSort.java)
 
 #### Level: Hard 📕
 

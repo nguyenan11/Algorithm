@@ -17,7 +17,7 @@
 
 # Array
 
-## [Four Number Sum](Arrays/src/main/java/FourNumSum.java)
+## [Four Number Sum](../Arrays/src/main/java/FourNumSum.java)
 
 #### Level: Hard 📕
 
@@ -95,7 +95,7 @@ def twoSum(nums, target):
 
 # Strings
 
-## [Reverse Words In String](Strings/src/main/java/ReverseWordsInString.java)
+## [Reverse Words In String](../Strings/src/main/java/ReverseWordsInString.java)
 
 #### Level: Medium 📘
 
@@ -173,7 +173,7 @@ def firstUniqChar(s):
 
 # Sorting
 
-## [Bubble Sort](Sortings/src/main/java/BubbleSort.java)
+## [Bubble Sort](../Sortings/src/main/java/BubbleSort.java)
 
 #### Level: Easy 📗
 
@@ -206,7 +206,7 @@ private static void swap(int i, int j, int[] array) {
 ### Average: O(n^2) time | O(1) space
 * Best: O(n) time | O(1) space - when array is already sorted
 
-## [Insertion Sort](Sortings/src/main/java/InsertionSort.java)
+## [Insertion Sort](../Sortings/src/main/java/InsertionSort.java)
 
 #### Level: Easy 📗
 
@@ -234,7 +234,7 @@ private static void swap(int i, int j, int[] array) {
 ### Average: O(n^2) time | O(1) space
 * Best: O(n) time | O(1) space - when array is already sorted
 
-## [Selection Sort](Sortings/src/main/java/SelectionSort.java)
+## [Selection Sort](../Sortings/src/main/java/SelectionSort.java)
 
 #### Level: Easy 📗
 

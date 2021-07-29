@@ -17,7 +17,7 @@
 
 # Array
 
-## [Longest Peak](Arrays/src/main/java/LongestPeak.java)
+## [Longest Peak](../Arrays/src/main/java/LongestPeak.java)
 
 #### Level: Medium 📘
 
@@ -68,7 +68,7 @@ considered.
 * We traverse thru each number once, at most 2 - 3 times (when peak found and 
 traverse to the left) -> still O(n)
 
-## [Array Of Products](Arrays/src/main/java/ArrayOfProducts.java)
+## [Array Of Products](../Arrays/src/main/java/ArrayOfProducts.java)
 
 #### Level: Medium 📘
 
@@ -100,7 +100,7 @@ public static int[] arrayOfProducts(int[] array) {
 ### O(n) time | O(n) space - n is length of input array
 * O(2n) = O(n)
 
-## [First Duplicate Value](Arrays/src/main/java/FirstDuplicateValue.java)
+## [First Duplicate Value](../Arrays/src/main/java/FirstDuplicateValue.java)
 
 #### Level: Medium 📘
 
@@ -127,7 +127,7 @@ public int firstDuplicateValue(int[] array) {
 * O(n) time | O(n) is made with single for-loop and a Set/ List
 * O(n^2) | O(1) space is made with double for-loops
 
-## [Merge Overlapping Intervals](Arrays/src/main/java/MergeOverlappingIntervals.java)
+## [Merge Overlapping Intervals](../Arrays/src/main/java/MergeOverlappingIntervals.java)
 
 #### Level: Medium 📘
 
@@ -172,7 +172,7 @@ static class IntCompare implements Comparator<int[]> {
 
 ### O(nlog(n)) time | O(n) space
 
-## [Spiral Traverse](Arrays/src/main/java/SpiralTraverse.java)
+## [Spiral Traverse](../Arrays/src/main/java/SpiralTraverse.java)
 
 #### Level: Medium 📘
 
@@ -241,7 +241,7 @@ public static List<Integer> spiralTraverse(int[][] array) {
 
 # Strings
 
-## [Palindrome Check](Strings/src/main/java/PalindromeCheck.java)
+## [Palindrome Check](../Strings/src/main/java/PalindromeCheck.java)
 
 #### Level: Easy 📗
 
@@ -264,7 +264,7 @@ public static boolean isPalindrome(String str) {
 
 ### O(n) time | O(1) space - n is length of input string
 
-## [Run-Length Encoding](Strings/src/main/java/RunLengthEncoding.java)
+## [Run-Length Encoding](../Strings/src/main/java/RunLengthEncoding.java)
 
 #### Level: Easy 📗
 
@@ -312,7 +312,7 @@ public static String runLengthEncoding(String string) {
 * Highlight: String concatenation is O(n); using that here will make time
 complexity to be O(n^2)
 
-## [Generate Document](Strings/src/main/java/GenerateDocument.java)
+## [Generate Document](../Strings/src/main/java/GenerateDocument.java)
 
 #### Level: Easy 📗
 
@@ -355,7 +355,7 @@ private void updateMapChar(Map<Character, Integer> mapChar, char aChar) {
 
 ### O(n+ m) time | O(c) space - n is number of characters, m is the length of the document, c is number of unique characters in characters string
 
-## [First Non-Repeating Character](Strings/src/main/java/FirstNonRepeatingCharacter.java)
+## [First Non-Repeating Character](../Strings/src/main/java/FirstNonRepeatingCharacter.java)
 
 #### Level: Easy 📗
 
@@ -389,7 +389,7 @@ public int firstNonRepeatingCharacter(String string) {
 letters; thus, our hash table will never have more than 26 character 
 frequencies.
 
-## [Caesar Cipher Encryptor](Strings/src/main/java/CaesarCipherEncryptor.java)
+## [Caesar Cipher Encryptor](../Strings/src/main/java/CaesarCipherEncryptor.java)
 
 #### Level: Easy 📗
 
@@ -418,7 +418,7 @@ private static char getNewCharacter(char character, int shiftKey) {
 
 ### O(n) time | O(n) space 
 
-## [Group Anagrams](Strings/src/main/java/GroupAnagrams.java)
+## [Group Anagrams](../Strings/src/main/java/GroupAnagrams.java)
 
 #### Level: Medium 📘
 

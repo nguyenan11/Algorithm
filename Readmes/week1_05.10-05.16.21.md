@@ -10,7 +10,7 @@
 
 > Java only for this week
 
-## [Two Numbers Sum](Arrays/src/main/java/TwoNumSum.java)
+## [Two Numbers Sum](../Arrays/src/main/java/TwoNumSum.java)
 
 #### Level: Easy 📗
 
@@ -32,7 +32,7 @@ public int[] twoNumberSum(int[] array, int targetSum) {
 
 ### O(n) time | O(n) space
 
-## [Validate Subsequence](Arrays/src/main/java/ValidateSubsequence.java)
+## [Validate Subsequence](../Arrays/src/main/java/ValidateSubsequence.java)
 
 #### Level: Easy 📗
 
@@ -53,7 +53,7 @@ public boolean isValidSubsequence(List<Integer> array, List<Integer> sequence) {
 ### O(n) time | O(1) space
 * Alternative: Same idea, using arrIndex and seqIndex, using while loop, keep ++, same complexity.
 
-## [Sorted Squared Array](Arrays/src/main/java/SortedSquareArray.java)
+## [Sorted Squared Array](../Arrays/src/main/java/SortedSquareArray.java)
 
 #### Level: Easy 📗
 
@@ -81,7 +81,7 @@ public int[] sortedSquaredArray(int[] array) {
 
 ### O(n) time | O(n) space
 
-## [Tournament Winner](Arrays/src/main/java/TournamentWinner.java)
+## [Tournament Winner](../Arrays/src/main/java/TournamentWinner.java)
 
 #### Level: Easy 📗
 
@@ -133,7 +133,7 @@ private void updateScores(Hashtable<String, Integer> tracking, String roundWinne
 
 ### O(n) time | O(k) space - n is number of competitions, k is number of teams
 
-## [Non-Constructible Change](Arrays/src/main/java/NonConstructibleChange.java)
+## [Non-Constructible Change](../Arrays/src/main/java/NonConstructibleChange.java)
 
 #### Level: Easy 📗
 
@@ -158,7 +158,7 @@ public int nonConstructibleChange(int[] coins) {
 
 ### O(nlog(n)) time | O(1) space - n is number of coins
 
-## [Three Numbers Sum](Arrays/src/main/java/ThreeNumSum.java)
+## [Three Numbers Sum](../Arrays/src/main/java/ThreeNumSum.java)
 
 #### Level: Medium 📘
 
@@ -197,7 +197,7 @@ public static List<int[]> threeNumberSum(int[] array, int targetSum) {
 * O(n^2 log(n)) is the actual time (because of sorting) -> since that is way 
 less than O(n^2) -> O(n^2)
 
-## [Smallest Difference](Arrays/src/main/java/SmallestDifference.java)
+## [Smallest Difference](../Arrays/src/main/java/SmallestDifference.java)
 
 #### Level: Medium 📘
 
@@ -240,7 +240,7 @@ public static int[] smallestDifference(int[] arrayOne, int[] arrayTwo) {
 * Roughly O(n + m) time
 * n and m because 2 arrays might not have the same length
 
-## [Move Element To End](Arrays/src/main/java/MoveEleToEnd.java)
+## [Move Element To End](../Arrays/src/main/java/MoveEleToEnd.java)
 
 #### Level: Medium 📘
 
@@ -270,7 +270,7 @@ public static List<Integer> moveElementToEnd(List<Integer> array, int toMove) {
 * Seems like n^2 square for time because of 2 while loops, but the iterations
 stop when two pointers cross-path
 
-## [Monotonic Array](Arrays/src/main/java/MonotonicArray.java)
+## [Monotonic Array](../Arrays/src/main/java/MonotonicArray.java)
 
 #### Level: Medium 📘
 
