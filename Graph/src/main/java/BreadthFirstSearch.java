@@ -30,10 +30,10 @@ public class BreadthFirstSearch {
 
     // O(v + e) time | O(v) space - v is number of vertices, e is number of edges
     public List<String> breadthFirstSearch(List<String> array) {
-      Queue<Node> queue = new LinkedList<>();
+      List<Node> queue = new ArrayList<>();
       queue.add(this);
       while (!queue.isEmpty()) {
-        Node currNode = queue.poll(); // dequeue
+        Node currNode = queue.remove(0);
         array.add(currNode.name);
         queue.addAll(currNode.children);
       }
