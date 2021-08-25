@@ -54,16 +54,35 @@ public class LLConstruction {
     }
 
     public void removeNodesWithValue(int value) {
-      // Write your code here.
+      Node currNode = head;
+      while (currNode != null) {
+        Node nodeToRemove = currNode;
+        currNode = currNode.next;
+        if (nodeToRemove.value == value) remove(nodeToRemove);
+      }
     }
 
     public void remove(Node node) {
+      if (node == head) {
+        head = node.next;
+      }
+      if (node == tail) {
+        tail = node.prev;
+      }
+      removeNodeBinding(node);
+    }
 
+    public void removeNodeBinding(Node node) {
+      if (node.prev != null) node.prev.next = node.next;
+      if (node.next != null) node.next.prev = node.prev;
+      node.prev = null;
+      node.next = null;
     }
 
     public boolean containsNodeWithValue(int value) {
-      // Write your code here.
-      return false;
+      Node currNode = head;
+      while (currNode != null && currNode.value != value) currNode = currNode.next;
+      return currNode != null;
     }
   }
 
