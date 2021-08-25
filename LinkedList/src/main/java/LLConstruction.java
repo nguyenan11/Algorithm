@@ -14,43 +14,52 @@ public class LLConstruction {
     }
 
     public void setTail(Node node) {
-      if (head == null) {
-        head = node;
-        tail = node;
+      if (tail == null) {
+        setHead(node);
         return;
       }
       insertAfter(tail, node);
     }
 
     public void insertBefore(Node node, Node nodeToInsert) {
-      if (node == head) {
+      if (nodeToInsert == head && nodeToInsert == null) return;
+      remove(nodeToInsert);
+      nodeToInsert.prev = node.prev;
+      nodeToInsert.next = node;
+      if (node.prev == null) {
         head = nodeToInsert;
-        head.next = node;
       } else {
-        nodeToInsert.prev = node.prev;
-        nodeToInsert.next = node;
-        node.prev = nodeToInsert;
+        node.prev.next = nodeToInsert;
       }
+      node.prev = nodeToInsert;
     }
 
     public void insertAfter(Node node, Node nodeToInsert) {
-      if (node == tail) {
+      if (nodeToInsert == head && nodeToInsert == tail) return;
+      remove(nodeToInsert);
+      nodeToInsert.prev = node;
+      nodeToInsert.next = node.next;
+      if (node.next == null) {
         tail = nodeToInsert;
-        tail.prev = node;
       } else {
-        nodeToInsert.next = node.next;
-        nodeToInsert.prev = node;
-        node.next = nodeToInsert;
+        node.next.prev = nodeToInsert;
       }
+      node.next = nodeToInsert;
     }
 
     public void insertAtPosition(int position, Node nodeToInsert) {
-      Node currNode = head;
-      while (position > 1) {
-        currNode = currNode.next;
-        position--;
+      if (position == 1) {
+        setHead(nodeToInsert);
+        return;
       }
-      insertBefore(currNode, nodeToInsert);
+      Node currNode = head;
+      int currPosition = 1;
+      while (currNode != null && currPosition++ != position) currNode = currNode.next;
+      if (currNode != null) {
+        insertBefore(currNode, nodeToInsert);
+      } else {
+        setTail(nodeToInsert);
+      }
     }
 
     public void removeNodesWithValue(int value) {
