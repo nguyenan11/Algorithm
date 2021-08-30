@@ -10,6 +10,19 @@
 */
 public class ReverseLinkedList {
 
+  // O(n) time | O(1) space
+  public static LinkedList reverseLinkedList(LinkedList head) {
+    LinkedList currNode = head;
+    LinkedList prevNode = null;
+    while (currNode != null) {
+      LinkedList nextNode = currNode.next; // temp node
+      currNode.next = prevNode;
+      prevNode = currNode;
+      currNode = nextNode;
+    }
+    return prevNode;
+  }
+
   /* Brute force: O(2n) -> O(n) time | O(n) space
   public static LinkedList reverseLinkedList(LinkedList head) {
     Stack<Integer> stack = new Stack<Integer>();
