@@ -25,6 +25,9 @@ public class FindLoop {
     return slowPtr;
   }
 
+  // Brute force: Traverse the LL, store value in a HashTable or Set
+  // -> when repeated value found -> start of loop
+
   static class LinkedList {
 
     int value;
