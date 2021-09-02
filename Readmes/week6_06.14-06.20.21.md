@@ -58,7 +58,7 @@ def makeGood(self, s):
   return "".join(stack)
 ```
 
-## [Min Max Stack Construction](Stacks/src/main/java/MinMaxStackConstruction.java)
+## [Min Max Stack Construction](../Stacks/src/main/java/MinMaxStackConstruction.java)
 
 #### Level: Medium 📘
 
@@ -117,7 +117,7 @@ static class MinMaxStack {
 ### O(1) time | O(1) space
 * O(1) space because at each method, we work with an existed array.
 
-## [Balanced Brackets](Stacks/src/main/java/BalancedBrackets.java)
+## [Balanced Brackets](../Stacks/src/main/java/BalancedBrackets.java)
 
 #### Level: Medium 📘
 
@@ -152,7 +152,7 @@ public static boolean balancedBrackets(String str) {
 ### O(n) time | O(n) space
 * space is O(n / 2) at max, which is converted to O(n)
 
-## [Sunset Views](Stacks/src/main/java/SunsetViews.java)
+## [Sunset Views](../Stacks/src/main/java/SunsetViews.java)
 
 #### Level: Medium 📘
 
@@ -160,7 +160,7 @@ public static boolean balancedBrackets(String str) {
 unsolved - need to finish
 ```
 
-## [Sort Stacks](Stacks/src/main/java/SortStack.java)
+## [Sort Stacks](../Stacks/src/main/java/SortStack.java)
 
 #### Level: Medium 📘
 

@@ -15,7 +15,7 @@
 
 # Binary Search Tree
 
-## [BST Traversal](Binary%20Search%20Trees/src/main/java/BSTTraversal.java)
+## [BST Traversal](../Binary%20Search%20Trees/src/main/java/BSTTraversal.java)
 * **Important**: Check the pattern *where* the array.add/append is placed within each function
 
 #### Level: Medium 📘
@@ -58,7 +58,7 @@ public static List<Integer> postOrderTraverse(BST tree, List<Integer> array) {
 
 ### O(n) time | O(n) space
 
-## [Min Height BST](Binary%20Search%20Trees/src/main/java/MinHeightBST.java)
+## [Min Height BST](../Binary%20Search%20Trees/src/main/java/MinHeightBST.java)
 
 #### Level: Medium 📘
 
@@ -97,7 +97,7 @@ public static BST reconstructBST(List<Integer> array, BST bst, int startIdx, int
 
 ### O(n) time | O(n) space
 
-## [Find Kth Largest Value in BST](Binary%20Search%20Trees/src/main/java/FindKthLargestValue.java)
+## [Find Kth Largest Value in BST](../Binary%20Search%20Trees/src/main/java/FindKthLargestValue.java)
 
 #### Level: Medium 📘
 
@@ -127,7 +127,7 @@ public void inOrderBST(BST tree, List<Integer> array) {
 
 ### O(n) time | O(n) space
 
-## [Reconstruct BST](Binary%20Search%20Trees/src/main/java/ReconstructBST.java)
+## [Reconstruct BST](../Binary%20Search%20Trees/src/main/java/ReconstructBST.java)
 
 #### Level: Medium 📘
 
@@ -163,7 +163,7 @@ class Solution(object):
 
 # Sorting
 
-## [Heap Sort](Sortings/src/main/java/HeapSort.java)
+## [Heap Sort](../Sortings/src/main/java/HeapSort.java)
 
 #### Level: Hard 📕
 

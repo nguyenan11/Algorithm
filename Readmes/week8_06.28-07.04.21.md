@@ -43,7 +43,7 @@ def firstBadVersion(self, n):
 
 # Binary Search Tree
 
-## [Find Closet Value in BST](Binary%20Search%20Trees/src/main/java/FindClosetValue.java)
+## [Find Closet Value in BST](../Binary%20Search%20Trees/src/main/java/FindClosetValue.java)
 
 #### Level: Easy 📗
 
@@ -80,7 +80,7 @@ public static int findClosestValue(BST node, int target, int closest) {
 * Worst: O(n) time | O(n) space when tree has 1 branch.
 * Could use O(1) space by solving iteratively; still 2 functions, use currNode and get rid of base case.
 
-## [BST Construction](Binary%20Search%20Trees/src/main/java/BSTConstruction.java)
+## [BST Construction](../Binary%20Search%20Trees/src/main/java/BSTConstruction.java)
 
 #### Level: Medium 📘
 
@@ -191,7 +191,7 @@ static class BST {
 * Worst: O(n) time | O(n) space when tree has 1 branch.
 * Same idea as above problem to make it O(1) space.
 
-## [Validate BST](Binary%20Search%20Trees/src/main/java/ValidateBST.java)
+## [Validate BST](../Binary%20Search%20Trees/src/main/java/ValidateBST.java)
 
 #### Level: Medium 📘
 

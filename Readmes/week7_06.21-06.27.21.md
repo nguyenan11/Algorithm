@@ -95,7 +95,7 @@ def mostCompetitive(self, nums, k):
 
 ### Complexity???
 
-## [Next Greater Element](Stacks/src/main/java/NextGreaterElement.java)
+## [Next Greater Element](../Stacks/src/main/java/NextGreaterElement.java)
 
 #### Level: Medium 📘
 
