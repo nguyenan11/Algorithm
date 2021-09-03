@@ -26,11 +26,11 @@
 def climbStairs(n):
     '''
     Function -- climbStairs
-        Placeholder
+        Finds total number of steps necessary to climb given number of stairs
     Parameter:
-        n - some
+        n - number of stairs, an int.
     Return:
-        Placeholder
+        An int represents total number of steps to climb stairs.
     '''
     if n == 1:
         return 1
@@ -52,12 +52,17 @@ def climbStairs(n):
 ```python
 def addTwoNumbers(self, l1, l2):
     '''
-    Function -- climbStairs
-        Placeholder
+    Function -- addTwoNumbers
+        Given 2 Linked Lists, each represents an int in reverse order (for ex, 
+        [1, 2, 3] means number 321). Calculates the sum of those 2 numbers and 
+        return the result in format of Linked List.
+        Ex: [1, 2, 3] + [1, 2, 2, 3]  = [2, 4, 5, 3]
+        Because 321 + 3221 = 3542
     Parameter:
-        n - some
+        l1 - 1st Linked List of integers
+        l2 - 2nd Linked List of integers
     Return:
-        Placeholder
+        A Linked List of integers, which represents an int in reverse order.
     '''
     needAddOne = 0
     root = n = ListNode(0)
@@ -77,7 +82,7 @@ def addTwoNumbers(self, l1, l2):
 
 ### O(max(m, n)) time | O(max(m, n)) space - where m is length of linked list 1 and n is length of linked list 2
 
-## [Remove Duplicates From Linked List](LinkedList/src/main/java/RemoveDuplicateFromLL.java)
+## [Remove Duplicates From Linked List](../LinkedList/src/main/java/RemoveDuplicateFromLL.java)
 
 #### Level: Easy 📗
 
@@ -107,7 +112,7 @@ public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
 }
 ```
 
-### Complexity:
+### O(n) time | O(1) space
 
 ---
 
@@ -121,12 +126,13 @@ public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
 ```python
 def lengthOfLongestSubstring(self, s):
     '''
-    Function -- climbStairs
-        Placeholder
+    Function -- lengthOfLongestSubstring
+        Finds the longest substring without character duplication
     Parameter:
-        n - some
+        s - input String
     Return:
-        Placeholder
+        Longest substring without duplication. Assumption: There's only 1
+        longest substring.
     '''
     lastSeen = {}
     startIdx, longest = 0, 0
@@ -151,8 +157,8 @@ def lengthOfLongestSubstring(self, s):
 ```python
 def longestOnes(self, nums, k):
     '''
-    Function -- climbStairs
-        Placeholder
+    Function -- longestOnes
+        Need to finish here
     Parameter:
         n - some
     Return:
@@ -167,6 +173,8 @@ def longestOnes(self, nums, k):
     return j - i + 1
 ```
 
+### Complexity??
+
 ## [Leetcode #74 - Search a 2d Matrix](https://leetcode.com/problems/search-a-2d-matrix/)
 
 #### Level: Medium 📘
@@ -174,7 +182,7 @@ def longestOnes(self, nums, k):
 ```python
 def searchMatrix(self, matrix, target):
     '''
-    Function -- climbStairs
+    Function -- searchMatrix
         Placeholder
     Parameter:
         n - some
@@ -201,6 +209,8 @@ def searchMatrix(self, matrix, target):
     return False
 ```
 
+### Complexity???
+
 ## [Leetcode #84 - Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)
 
 #### Level: Hard 📕
@@ -208,7 +218,7 @@ def searchMatrix(self, matrix, target):
 ```python
 def largestRectangleArea(self, height):
     '''
-    Function -- climbStairs
+    Function -- largestRectangleArea
         Placeholder
     Parameter:
         n - some
@@ -247,6 +257,8 @@ def largestRectangleArea(self, height):
     return max_rect
 ```
 
+### Complexity???
+
 ## [Leetcode #340 - Longest Substring with At Most K Distinct Characters]()
 
 ```python
@@ -272,3 +284,5 @@ def lengthOfLongestSubstringKDistinct(s: str, k: int) -> int:
         longest = max(longest, i - j + 1)
     return longest
 ```
+
+### Complexity???

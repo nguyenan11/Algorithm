@@ -1,5 +1,11 @@
+/*
+  Need add prompt and check complexity
+*/
 public class RemoveDuplicateFromLL {
 
+  /**
+   * This is an input class. Do not edit.
+   */
   public static class LinkedList {
 
     public int value;
@@ -11,6 +17,14 @@ public class RemoveDuplicateFromLL {
     }
   }
 
+  /**
+   * Loops through a Linked List, and remove any node(s) with duplicated value.
+   * Complexity: O(n) time | O(1) space.
+   * Edge case: There might more than 1 node with duplicated value.
+   *
+   * @param linkedList - a LinkedList object, where each node contains a value and a next node.
+   * @return the result LinkedList with any duplication(s) removed.
+   */
   public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
     LinkedList currNode = linkedList;
     while (currNode != null) {
