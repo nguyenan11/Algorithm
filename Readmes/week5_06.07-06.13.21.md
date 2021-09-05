@@ -26,11 +26,12 @@
 def climbStairs(n):
     '''
     Function -- climbStairs
-        Finds total number of steps necessary to climb given number of stairs
+        Finds total number of distinct ways to climb to the top, given each 
+        time you can either climb 1 or 2 steps.
     Parameter:
-        n - number of stairs, an int.
+        n - number of stairs to reach a top, an int.
     Return:
-        An int represents total number of steps to climb stairs.
+        An int represents total number of distinct ways to climb the stairs.
     '''
     if n == 1:
         return 1
@@ -53,16 +54,16 @@ def climbStairs(n):
 def addTwoNumbers(self, l1, l2):
     '''
     Function -- addTwoNumbers
-        Given 2 Linked Lists, each represents an int in reverse order (for ex, 
-        [1, 2, 3] means number 321). Calculates the sum of those 2 numbers and 
-        return the result in format of Linked List.
+        Given 2 non-empty Linked Lists, each represents an int in reverse order 
+        (for ex, [1, 2, 3] means number 321). Calculates the sum of those 2 
+        numbers and return the result in format of Linked List.
         Ex: [1, 2, 3] + [1, 2, 2, 3]  = [2, 4, 5, 3]
         Because 321 + 3221 = 3542
     Parameter:
-        l1 - 1st Linked List of integers
-        l2 - 2nd Linked List of integers
+        l1 - 1st Linked List of digits (integers)
+        l2 - 2nd Linked List of digits (integers)
     Return:
-        A Linked List of integers, which represents an int in reverse order.
+        A Linked List of digits, which represents an int in reverse order.
     '''
     needAddOne = 0
     root = n = ListNode(0)
@@ -85,6 +86,10 @@ def addTwoNumbers(self, l1, l2):
 ## [Remove Duplicates From Linked List](../LinkedList/src/main/java/RemoveDuplicateFromLL.java)
 
 #### Level: Easy 📗
+
+> You're given the head of a Singly Linked List whose nodes are in sorted order with respect to their values. Write a function that returns a modified version of the Linked List that doesn't contain any nodes with duplicate values. The Linked List should be modified in place (i.e., you shouldn't create a brand new list), and the modified Linked List should still have its nodes sorted with respect to their values.
+>
+> Each `LinkedList` node has an integer `value` as well as a `next` node pointing to the next node in the list or to `None` / `null` if it's the tail of the list.
 
 ```java
 public static class LinkedList {
@@ -127,12 +132,12 @@ public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
 def lengthOfLongestSubstring(self, s):
     '''
     Function -- lengthOfLongestSubstring
-        Finds the longest substring without character duplication
+        Finds the longest substring without repeating character.
     Parameter:
         s - input String
     Return:
-        Longest substring without duplication. Assumption: There's only 1
-        longest substring.
+        Longest substring without repeating. 
+        Assumption: There's only 1 longest substring.
     '''
     lastSeen = {}
     startIdx, longest = 0, 0
@@ -158,11 +163,13 @@ def lengthOfLongestSubstring(self, s):
 def longestOnes(self, nums, k):
     '''
     Function -- longestOnes
-        Need to finish here
+        Finds the maximum number of consecutive 1's in the array if you can 
+        flip at most k 0's.
     Parameter:
-        n - some
+        nums - binary array of integers (1 and 0 only)
+        k - maximum number (an int) of 0's can be flipped into 1's
     Return:
-        Placeholder
+        Maximum number of consecutive 1's after the operation was done, an int.
     '''
     i = 0
     for j in range(len(nums)):
@@ -173,7 +180,7 @@ def longestOnes(self, nums, k):
     return j - i + 1
 ```
 
-### Complexity??
+### O(n) time | O(1) space - n is the number of elements in nums array
 
 ## [Leetcode #74 - Search a 2d Matrix](https://leetcode.com/problems/search-a-2d-matrix/)
 
@@ -183,11 +190,16 @@ def longestOnes(self, nums, k):
 def searchMatrix(self, matrix, target):
     '''
     Function -- searchMatrix
-        Placeholder
+        Searches whether a value is in an m x n matrix.
     Parameter:
-        n - some
+        matrix - array of arrays of integers, which has the following 
+        properties:
+            * Integers in each row are sorted from left to right.
+            * The first integer of each row is greater than the last integer 
+            of the previous row.
+        target - a number to be searched, an int
     Return:
-        Placeholder
+        True if target was found in the matrix, false otherwise.
     '''
     if not matrix or target is None:
         return False
@@ -209,7 +221,7 @@ def searchMatrix(self, matrix, target):
     return False
 ```
 
-### Complexity???
+### O(log(mn)) time | O(1) space
 
 ## [Leetcode #84 - Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/)
 
