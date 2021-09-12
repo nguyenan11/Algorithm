@@ -19,32 +19,46 @@
 #### Level: Medium 📘
 
 ```python
-def simplifyPath(self, path):
-  """
-  :type path: str
-  :rtype: str
-  """
+def simplifyPath(path):
+  '''
+  Function -- simplifyPath
+    Converts an absolute path in simplified canonical path in a Unix-style file 
+    system.
+  Parameter:
+    path - a path, a String.
+  Return:
+    Simplified path, a String.
+  '''
   lst = path.split("/")
   stack = []
   for elem in lst:
-      if elem == "..":
-          if stack:
-              stack.pop()
-      elif elem != "." and elem != "":
-          stack.append(elem)
+    if elem == "..":
+      if stack:
+        stack.pop()
+    elif elem != "." and elem != "":
+      stack.append(elem)
   return "/" + "/".join(stack)
 ```
+
+### O(n) time | O(n) space
 
 ## [Leetcode #1544 - Make The String Great](https://leetcode.com/problems/make-the-string-great/)
 
 #### Level: Easy 📗
 
 ```python
-def makeGood(self, s):
-  """
-  :type s: str
-  :rtype: str
-  """
+def makeGood(s):
+  '''
+  Function -- makeGood
+    Makes the string good by removing two adjacent characters that make the 
+    string bad.
+    The string is bad when two adjacent characters that are the same letter
+    but one is lower-case and one is upper-case.
+  Parameter:
+    s - the given String.
+  Return:
+    A String with any bad pair(s) of characters removed.
+  '''
   stack = []
   for char in s:
     if not stack:
@@ -57,6 +71,8 @@ def makeGood(self, s):
       stack.append(char)
   return "".join(stack)
 ```
+
+### O(n) time | O(n) space
 
 ## [Min Max Stack Construction](../Stacks/src/main/java/MinMaxStackConstruction.java)
 
@@ -152,17 +168,18 @@ public static boolean balancedBrackets(String str) {
 ### O(n) time | O(n) space
 * space is O(n / 2) at max, which is converted to O(n)
 
-## [Sunset Views](../Stacks/src/main/java/SunsetViews.java)
-
-#### Level: Medium 📘
-
-```java
-unsolved - need to finish
-```
-
 ## [Sort Stacks](../Stacks/src/main/java/SortStack.java)
 
 #### Level: Medium 📘
+
+> Write a function that takes in an array of integers representing a stack, recursively sorts the stack in place (i.e., doesn't create a brand new array), and returns it.
+>
+> The array must be treated as a stack, with the end of the array as the top of the stack. Therefore, you're only allowed to
+> * Pop elements from the top of the stack by removing elements from the end of the array using the built-in `.pop()` method in your programming language of choice.
+> * Push elements to the top of the stack by appending elements to the end of the array using the built-in `.append()` method in your programming language of choice.
+> * Peek at the element on top of the stack by accessing the last element in the array.
+>
+> You're not allowed to perform any other operations on the input array, including accessing elements (except for the last element), moving elements, etc.. You're also not allowed to use any other data structures, and your solution must be recursive.
 
 ```java
 public ArrayList<Integer> sortStack(ArrayList<Integer> stack) {
@@ -185,18 +202,22 @@ public void insertInSortOrder(ArrayList<Integer> stack, int value) {
 }
 ```
 
-### Complexity??
+### O(n^2) time | O(n) space
 
 ## [Leetcode #1249 - Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/)
 
 #### Level: Medium 📘
 
 ```python
-def minRemoveToMakeValid(self, s):
-  """
-  :type s: str
-  :rtype: str
-  """
+def minRemoveToMakeValid(s):
+  '''
+  Function -- minRemoveToMakeValid
+    Removes the minimum number of parentheses ( '(' or ')', in any positions ).
+  Parameter:
+    s - the given String.
+  Return:
+    A valid resulting parentheses String.
+  '''
   s = list(s)
   stack = []
   for idx, char in enumerate(s):
@@ -212,4 +233,4 @@ def minRemoveToMakeValid(self, s):
   return ''.join(s)
 ```
 
-### Complexity??
+### O(n) time | O(n) space

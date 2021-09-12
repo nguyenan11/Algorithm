@@ -15,8 +15,15 @@ import java.util.List;
 */
 public class BalancedBrackets {
 
-  // O(n) time | O(n) space
-  // Edge case: string might contain letter, and also end with open bracket(s)
+  /**
+   * Checks if a given string is made up of balanced brackets. () [] {}
+   * Complexity: O(n) time | O(n) space.
+   * Edge case: string might contain letter, and also end with open bracket(s). Brackets can
+   * also not be overlap.
+   *
+   * @param str - the given String.
+   * @return true if string is made up of balanced brackets, false otherwise.
+   */
   public static boolean balancedBrackets(String str) {
     List<Character> OPEN_BRACKETS = Arrays.asList('[', '(', '{');
     List<Character> CLOSE_BRACKETS = Arrays.asList(']', ')', '}');

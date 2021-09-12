@@ -11,6 +11,10 @@ import java.util.*;
 */
 public class MinMaxStackConstruction {
 
+  /**
+   * Basic operations for a MinMaxStack.
+   * Complexity: O(1) time | O(1) space
+   */
   static class MinMaxStack {
 
     List<Map<String, Integer>> minMaxStack = new ArrayList<Map<String, Integer>>();
