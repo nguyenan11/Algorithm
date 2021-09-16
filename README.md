@@ -1,6 +1,8 @@
 # Algorithm practice
-* Practice algorithm mainly using Java
-* Leetcode problems are in Python (will be indicated under problem's title)
+* Practice algorithm mainly using *Java*
+* Leetcode problems are in *Python* (will be indicated under problem's title)
+
+#### Please let me know if there're any bugs or any of the link isn't working. Thank you!
 
 ### Goal: 1 - 3 problems per day
 
