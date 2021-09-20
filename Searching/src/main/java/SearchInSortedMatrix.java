@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /*
   You're given a two-dimensional array (a matrix) of distinct integers and a target integer. Each
   row in the matrix is sorted, and each column is also sorted; the matrix doesn't necessarily have
@@ -10,6 +8,25 @@ import java.util.Arrays;
 */
 public class SearchInSortedMatrix {
 
+  // O(m + n) time | O(1) space
+  // Important assumption: Each row in the matrix is sorted, and each column is also sorted.
+  public static int[] searchInSortedMatrix(int[][] matrix, int target) {
+    int row = 0;
+    int col = matrix[0].length - 1;
+    while (row < matrix.length && col >= 0) {
+      if (matrix[row][col] > target) {
+        col--;
+      } else if (matrix[row][col] < target) {
+        row++;
+      } else {
+        return new int[] {row, col};
+      }
+    }
+    return new int[] {-1, -1};
+  }
+
+  /* Brute force
+  O(mlog(n)) time | O(1) space
   public static int[] searchInSortedMatrix(int[][] matrix, int target) {
     int[] notFound = new int[] {-1, -1};
     for (int i = 0; i < matrix.length; i++) {
@@ -32,5 +49,6 @@ public class SearchInSortedMatrix {
     }
     return new int[] {-1, -1};
   }
+  */
 
 }
