@@ -12,11 +12,25 @@
 */
 public class ValidateBST {
 
-  // O(n) time | O(h) space - n is number of nodes in tree, h is the height of tree.
+  /**
+   * Validates if a tree is BST.
+   * Complexity: O(n) time | O(h) space - n is number of nodes in tree, h is the height of tree.
+   *
+   * @param tree - a root node, a BST object.
+   * @return true if tree is valid BST, false otherwise.
+   */
   public static boolean validateBst(BST tree) {
     return validate(tree, Integer.MIN_VALUE, Integer.MAX_VALUE);
   }
 
+  /**
+   * Helper method to validate BST node.
+   *
+   * @param root     - the current node, a BST object.
+   * @param minValue - the minimum value the node can have, an int.
+   * @param maxValue - the maximum value the node can have, an int.
+   * @return true if node is valid BST node, false otherwise.
+   */
   public static boolean validate(BST root, int minValue, int maxValue) {
     if (root.value < minValue || root.value >= maxValue) {
       return false;

@@ -16,9 +16,12 @@
 */
 public class BSTConstruction {
 
-  // Average: O(log n) time | O(log n) space
-  // Worst: O(n) time | O(n) space
-  // Assumption: this BST allows duplications and duplications goes to right
+  /**
+   * Complexity for each operation: Average: O(log n) time | O(log n) space. Worst: O(n) time | O(n)
+   * space.
+   *
+   * Major assumption: this BST allows duplications and duplications goes to right
+   */
   static class BST {
 
     public int value;
@@ -29,6 +32,12 @@ public class BSTConstruction {
       this.value = value;
     }
 
+    /**
+     * Inserts a new value into existing BST.
+     *
+     * @param value - value to be inserted, an int.
+     * @return this BST.
+     */
     public BST insert(int value) {
       if (value < this.value) {
         if (this.left == null) {
@@ -48,6 +57,12 @@ public class BSTConstruction {
       return this;
     }
 
+    /**
+     * Checks if a given value is in the existing BST.
+     *
+     * @param value - value to be checked, an int.
+     * @return true if value is in BST, false otherwise.
+     */
     public boolean contains(int value) {
       if (value < this.value) {
         if (this.left == null) {
@@ -64,11 +79,24 @@ public class BSTConstruction {
       }
     }
 
+    /**
+     * Removes a given value from BST if it exists in BST.
+     *
+     * @param value - value to be removed, an int.
+     * @return this BST.
+     */
     public BST remove(int value) {
       this.removeHelper(this, value);
       return this;
     }
 
+    /**
+     * Helper method to remove a value from BST node.
+     *
+     * @param root  - the current node, an BST object.
+     * @param value - value to be removed, an int.
+     * @return the root with value removed.
+     */
     private BST removeHelper(BST root, int value) {
       // base case
       if (root == null) {
@@ -100,6 +128,12 @@ public class BSTConstruction {
       return root;
     }
 
+    /**
+     * Helper method to find the minimum value in a BST.
+     *
+     * @param root - the root node, a BST object.
+     * @return smallest value in BST.
+     */
     private int findMin(BST root) {
       BST currNode = root;
       while (currNode.left != null) {

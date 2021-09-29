@@ -12,14 +12,29 @@
 */
 public class FindClosetValue {
 
-  // Average: O(log n) time | O(log n) space
-  // Worst: O(n) time | O(n) space
-  // Solved recursively
+  /**
+   * Finds a closet value to the target in a Binary Search Tree (recursive approach).
+   * Complexity: Average: O(log n) time | O(log n) space - Worst: O(n) time | O(n) space.
+   * Assumption: node's value is strictly greater than all values on left, and less or equal to
+   * values on right.
+   *
+   * @param tree   - the root node, an BST object.
+   * @param target - the given target, an int.
+   * @return the int in BST that's closet to the target.
+   */
   public static int findClosestValueInBst(BST tree, int target) {
     return findClosestValue(tree, target, tree.value);
   }
 
 
+  /**
+   * Helper method to find closet value recursively.
+   *
+   * @param node    - current node, an BST object.
+   * @param target  - the given target, an int.
+   * @param closest - the current closet value, an int.
+   * @return the int that's closet the target.
+   */
   public static int findClosestValue(BST node, int target, int closest) {
     if (node == null) {
       return closest; // case base

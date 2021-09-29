@@ -2,8 +2,8 @@
 
 * Java documentations and extra notes are in each file.
 * Solutions displayed here are preferably the most optimal
-    * Alternative (less optimal) solutions might also be available within each 
-    file
+  * Alternative (less optimal) solutions might also be available within each 
+  file
 
 # Week 8: 06/28 - 07/04/2021
 
@@ -22,10 +22,17 @@
 
 ```python
 def firstBadVersion(self, n):
-  """
-  :type n: int
-  :rtype: int
-  """
+  '''
+  Function -- firstBadVersion
+    Finds the first bad version in array of versions, because version are built
+    from its previous version.
+
+    Note: function bool isBadVersion(version) is given.
+  Parameter:
+    n - array of int, starting from 1 to n, ascending.
+  Return:
+    First bad version, an int.
+  '''
   left = 1
   right = n
   while left < right:
@@ -37,7 +44,7 @@ def firstBadVersion(self, n):
   return left
 ```
 
-### Complexity??
+### O(log n) time | O(1) space
 
 ---
 
@@ -94,7 +101,7 @@ public static int findClosestValue(BST node, int target, int closest) {
 > Each `BST` node has an integer `value`, a `left` child node, and a `right` child node. A node is said to be a valid `BST` node if and only if it satisfies the BST property: its `value` is strictly greater than the values of every node to its left; its `value` is less than or equal to the values of every node to its right; and its children nodes are either valid `BST` nodes themselves or `None` / `null`.
 
 ```java
-// Assumption: this BST allows duplications and duplications goes to right
+// Major assumption: this BST allows duplications and duplications goes to right
 static class BST {
 
   public int value;
