@@ -2,14 +2,13 @@
 
 * Java documentations and extra notes are in each file.
 * Solutions displayed here are preferably the most optimal
-    * Alternative (less optimal) solutions might also be available within each 
-    file
+  * Alternative (less optimal) solutions might also be available within each 
+  file
 
 # Week 9: 07/05 - 07/11/2021
 
 # Category for this week:
 **[Binary Search Tree](#binary-search-tree)**<br>
-**[Sorting](#sorting)**<br>
 
 ---
 
@@ -158,13 +157,3 @@ class Solution(object):
 ```
 
 ### Complexity???
-
----
-
-# Sorting
-
-## [Heap Sort](../Sortings/src/main/java/HeapSort.java)
-
-#### Level: Hard 📕
-
-Unfinished work, will move this to later week!

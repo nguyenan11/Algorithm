@@ -22,6 +22,7 @@ public class FindKthLargestValue {
 
   // This is an input class. Do not edit.
   static class BST {
+
     public int value;
     public BST left = null;
     public BST right = null;
@@ -31,7 +32,16 @@ public class FindKthLargestValue {
     }
   }
 
-  // O(n) time | O(n) space
+  /**
+   * Finds value in BST that is Kth largest.
+   * Complexity: O(n) time | O(n) space.
+   * Assumption: there will only be integer values in the BST and that `k` is less than or equal to
+   * the number of nodes in the tree.
+   *
+   * @param tree - BST object.
+   * @param k    - the Kth order, an int.
+   * @return the Kth largest value, an int.
+   */
   public int findKthLargestValueInBst(BST tree, int k) {
     List<Integer> inOrderArr = new ArrayList<>();
     inOrderBST(tree, inOrderArr);
@@ -39,6 +49,14 @@ public class FindKthLargestValue {
     return inOrderArr.get(idx);
   }
 
+  /**
+   * Traverses BST using in-order.
+   * Complexity: O(n) time | O(n) space
+   *
+   * @param tree  - a BST object.
+   * @param array - result array containing tree's values, Integer array.
+   * @return array of Integers.
+   */
   public void inOrderBST(BST tree, List<Integer> array) {
     if (tree != null) {
       inOrderBST(tree.left, array);

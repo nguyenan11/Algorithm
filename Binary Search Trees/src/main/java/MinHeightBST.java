@@ -20,11 +20,27 @@ import java.util.List;
 */
 public class MinHeightBST {
 
+  /**
+   * Initializes the reconstruction of BST.
+   * Complexity: O(n) time | O(n) space.
+   * Important: array is sorted.
+   *
+   * @param array - non-empty sorted array of Integers.
+   * @return a valid BST with the minimum height possible.
+   */
   public static BST minHeightBst(List<Integer> array) {
     return reconstructBST(array, null, 0, array.size() - 1);
   }
 
-  // O(n) time | O(n) space
+  /**
+   * Helper method to recursively reconstruct the BST.
+   *
+   * @param array    - input array of Integers.
+   * @param bst      - current BST node.
+   * @param startIdx - the start index on array, an int.
+   * @param endIdx   - the end index on array, an int.
+   * @return the BST node after it's been reconstructed.
+   */
   public static BST reconstructBST(List<Integer> array, BST bst, int startIdx, int endIdx) {
     if (endIdx < startIdx) {
       return null;

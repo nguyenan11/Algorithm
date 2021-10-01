@@ -14,7 +14,14 @@ import java.util.List;
 */
 public class BSTTraversal {
 
-  // O(n) time | O(n) space
+  /**
+   * Traverses BST using in-order.
+   * Complexity: O(n) time | O(n) space
+   *
+   * @param tree  - a BST object.
+   * @param array - result array containing tree's values, Integer array.
+   * @return array of Integers.
+   */
   public static List<Integer> inOrderTraverse(BST tree, List<Integer> array) {
     // left, root, right
     if (tree != null) {
@@ -25,7 +32,14 @@ public class BSTTraversal {
     return array;
   }
 
-  // O(n) time | O(n) space
+  /**
+   * Traverses BST using pre-order.
+   * Complexity: O(n) time | O(n) space
+   *
+   * @param tree  - a BST object.
+   * @param array - result array containing tree's values, Integer array.
+   * @return array of Integers.
+   */
   public static List<Integer> preOrderTraverse(BST tree, List<Integer> array) {
     // root, left, right
     if (tree != null) {
@@ -36,7 +50,14 @@ public class BSTTraversal {
     return array;
   }
 
-  // O(n) time | O(n) space
+  /**
+   * Traverses BST using post-order.
+   * Complexity: O(n) time | O(n) space
+   *
+   * @param tree  - a BST object.
+   * @param array - result array containing tree's values, Integer array.
+   * @return array of Integers.
+   */
   public static List<Integer> postOrderTraverse(BST tree, List<Integer> array) {
     // left, right, root
     if (tree != null) {
