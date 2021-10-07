@@ -130,11 +130,46 @@ public void inOrderBST(BST tree, List<Integer> array) {
 
 #### Level: Medium 📘
 
+> The pre-order traversal of a Binary Tree is a traversal technique that starts at the tree's root node and visits nodes in the following order:
+> * Current node
+> * Left subtree
+> * Right subtree
+> Given a non-empty array of integers representing the pre-order traversal of a Binary Search Tree (BST), write a function that creates the relevant BST and returns its root node.
+> The input array will contain the values of BST nodes in the order in which these nodes would be visited with a pre-order traversal.
+
 ```java
-solved - need to redo and add prompts
+class Index {
+  int index;
+  public Index(int index) {
+    this.index = index;
+  }
+}
+
+public BST reconstructBst(ArrayList<Integer> pre) {
+  return constructBst(pre, Integer.MIN_VALUE, Integer.MAX_VALUE, new Index(0));
+}
+
+public BST constructBst(List<Integer> pre, int lowerBound, int upperBound, Index index) {
+  // base case
+  if (index.index == pre.size()) {
+    return null;
+  }
+
+  int value = pre.get(index.index);
+  if (value < lowerBound || value >= upperBound) {
+    return null;
+  }
+  index.index += 1;
+  BST leftSubtree = constructBst(pre, lowerBound, value, index);
+  BST rightSubtree = constructBst(pre, value, upperBound, index);
+  BST currNode = new BST(value);
+  currNode.left = leftSubtree;
+  currNode.right = rightSubtree;
+  return currNode;
+}
 ```
 
-### Complexity??
+### O(n) time | O(n) space
 
 ## [Leetcode #783 - Minimum Distance Between BST Nodes](https://leetcode.com/problems/minimum-distance-between-bst-nodes/)
 * *Python*
@@ -143,17 +178,26 @@ solved - need to redo and add prompts
 
 ```python
 class Solution(object):
-  pre = -float('inf')
-  res = float('inf')
+  previous = -float('inf')
+  result = float('inf')
 
   def minDiffInBST(self, root):
+    '''
+    Function -- minDiffInBST
+      Finds the minimum difference between the values of any two different nodes
+      in the tree.
+    Parameter:
+      root - the root of a BST.
+    Return:
+      The minimum different, an int.
+    '''
     if root.left:
       self.minDiffInBST(root.left)
-    self.res = min(self.res, root.val - self.pre)
-    self.pre = root.val
+    self.result = min(self.result, root.val - self.previous)
+    self.previous = root.val
     if root.right:
       self.minDiffInBST(root.right)
-    return self.res
+    return self.result
 ```
 
-### Complexity???
+### O(n) time | O(h) space - n is number of elements, h is the height of BST
