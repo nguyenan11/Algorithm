@@ -61,3 +61,10 @@ hs_err_pid*
 *.properties
 *.bat
 *.lock
+
+# System files
+/target/
+/.classpath
+/*.project
+/.settings
+/*.springBeans
