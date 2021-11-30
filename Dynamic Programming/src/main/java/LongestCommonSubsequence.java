@@ -14,13 +14,21 @@ import java.util.List;
 */
 public class LongestCommonSubsequence {
 
-  // O(nm) time | O(nm) space
+  /**
+   * Finds and builds a longest common subsequence between 2 strings.
+   * Complexity: O(nm) time | O(nm) space - n and m is length of str1 and str2 respectively.
+   * Assumption: only 1 longest common subsequence.
+   *
+   * @param str1 - input String number 1.
+   * @param str2 - input String number 2.
+   * @return a longest common subsequence, a String.
+   */
   public static List<Character> longestCommonSubsequence(String str1, String str2) {
 
     // +1 b/c empty string at the beginning (first row, first col)
-    int[][] lengths = new int[str2.length() +1][str1.length() + 1];
+    int[][] lengths = new int[str2.length() + 1][str1.length() + 1];
     for (int i = 1; i < str2.length() + 1; i++) {
-      for (int j = 1; j < str1.length() + 1; j ++) {
+      for (int j = 1; j < str1.length() + 1; j++) {
 
         // Check if is the last letter of current substring of str2 equals to last letter at current substring of str1
         if (str2.charAt(i - 1) == str1.charAt(j - 1)) {
@@ -36,6 +44,13 @@ public class LongestCommonSubsequence {
     return buildSequence(lengths, str1);
   }
 
+  /**
+   * Helper method acting as a String builder to build the longest common subsequence.
+   *
+   * @param lengths - list of 2 integers representing final position of character in lcs table.
+   * @param str     - input String.
+   * @return the longest common subsequence built from input str, a String.
+   */
   public static List<Character> buildSequence(int[][] lengths, String str) {
     List<Character> sequence = new ArrayList<Character>();
     int i = lengths.length - 1; // final row of lcs

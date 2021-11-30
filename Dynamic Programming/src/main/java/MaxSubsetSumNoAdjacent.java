@@ -6,10 +6,21 @@
 */
 public class MaxSubsetSumNoAdjacent {
 
-  // O(n) time | O(1) space
+  /**
+   * Calculates the maximum sum of non adjacent elements in the array.
+   * Complexity: O(n) time | O(1) space
+   * Assumption: positive integers only.
+   *
+   * @param array - input array of positive integers.
+   * @return an int representing sum of non adjacent numbers from array, 0 if array is empty.
+   */
   public static int maxSubsetSumNoAdjacent(int[] array) {
-    if (array.length == 0) return 0;
-    if (array.length == 1) return array[0];
+    if (array.length == 0) {
+      return 0;
+    }
+    if (array.length == 1) {
+      return array[0];
+    }
     int second = array[0];
     int first = Math.max(array[0], array[1]);
     for (int i = 2; i < array.length; i++) {

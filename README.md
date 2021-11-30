@@ -17,7 +17,7 @@
 ## [Week 7: 06/21 - 06/27/2021](Readmes/week7_06.21-06.27.21.md) &nbsp; &nbsp; ✅
 ## [Week 8: 06/28 - 07/04/2021](Readmes/week8_06.28-07.04.21.md) &nbsp; &nbsp; ✅
 ## [Week 9: 07/05 - 07/11/2021](Readmes/week9_07.05-07.11.21.md) &nbsp; &nbsp; ✅
-## [Week 10: 07/12 - 07/18/2021](Readmes/week10_07.12-07.18.21.md)
+## [Week 10: 07/12 - 07/18/2021](Readmes/week10_07.12-07.18.21.md) &nbsp; &nbsp; ✅
 ## [Week 11: 07/19 - 07/25/2021](Readmes/week11_07.19-07.25.21.md)
 ## [Week 12: 07/26 - 08/01/2021](Readmes/week12_07.26-08.01.21.md)
 ## [Week 13: 08/02 - 08/08/2021](Readmes/week13_08.02-08.08.21.md)
