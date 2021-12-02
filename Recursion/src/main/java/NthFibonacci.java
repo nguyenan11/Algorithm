@@ -9,8 +9,24 @@
  */
 public class NthFibonacci {
 
+  /* O(n) time | O(n) space
+  public static int getNthFib(int n) {
+    Map<Integer, Integer> memory = new HashMap<Integer, Integer>();
+    memory.put(1, 0);
+    memory.put(2, 1);
+    return getNthFib(n, memory);
+  }
 
-  // Brute force: O(n^2) time | O(n) space
+  public static int getNthFib(int n, Map<Integer, Integer> memory) {
+    if (memory.containsKey(n)) {
+      return memory.get(n);
+    }
+    memory.put(n, getNthFib(n - 1, memory) + getNthFib(n - 2, memory));
+    return memory.get(n);
+  }
+  */
+
+  /* Brute force: O(2^n) time | O(n) space
   public static int getNthFib(int n) {
     if (n == 2) {
       return 1;
@@ -19,5 +35,6 @@ public class NthFibonacci {
     }
     return getNthFib(n - 1) + getNthFib(n - 2);
   }
+  */
 
 }
