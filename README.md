@@ -1,6 +1,5 @@
 # Algorithm practice
-* Practice algorithm mainly using *Java*
-* Leetcode problems are in *Python* (will be indicated under problem's title)
+* Practice algorithm using **Java** (None LeetCode) and **Python** (LeetCode)
 
 #### Please let me know if there're any bugs or any of the link isn't working. Thank you!
 
