@@ -26,4 +26,22 @@ public class StaircaseTraversal {
     return waysToTop[height];
   }
 
+  /*
+  // O(k^n) time | O(n) space - n is height of staircases and k is number of allowed steps
+  public int staircaseTraversal(int height, int maxSteps) {
+    return numWaysToTop(height, maxSteps);
+  }
+
+	public int numWaysToTop(int height, int maxSteps) {
+		if (height <= 1) {
+			return 1;
+		}
+		int numWays = 0;
+		for (int step =1; step < Math.min(maxSteps, height) + 1; step++) {
+			numWays += numWaysToTop(height - step, maxSteps);
+		}
+		return numWays;
+	}
+  */
+
 }
