@@ -1,11 +1,16 @@
-# Algorithm practice
+<h1 align="center">
+  Algorithm practice  
+</h1>
+
 * Practice algorithm using **Java** (None LeetCode) and **Python** (LeetCode)
+* Please let me know if there're any bugs or any of the link isn't working. Thank you!
 
-#### Please let me know if there're any bugs or any of the link isn't working. Thank you!
-
-### Goal: 1 - 3 problems per day
+#### Goal: 1 - 3 problems per day
 
 > Check mark (✅): fully documented.
+
+<details>
+<summary>2021</summary>
 
 ## [Week 1: 05/10 - 05/16/2021](Readmes/week1_05.10-05.16.21.md) &nbsp; &nbsp; ✅
 ## [Week 2: 05/17 - 05/23/2021](Readmes/week2_05.17-05.23.21.md) &nbsp; &nbsp; ✅
@@ -34,6 +39,8 @@
 ## [Week 25: 11/15 - 11/21/2021](Readmes/week25_11.15-11.21.21.md) &nbsp; ⭐
 ## [Week 26: 11/29 - 12/05/2021](Readmes/week26_11.29-12.05.21.md)
 ## [Week 27: 12/06 - 12/12/2021](Readmes/week27_12.06-12.12.21.md)
+</details>
+
 ## [Week 28: 01/03 - 01/09/2022](Readmes/week28_01.03-01.09.22.md)
 ## [Week 29: 01/10 - 01/16/2022](Readmes/week29_01.10-01.16.22.md)
 ## [Week 30: 01/17 - 01/23/2022](Readmes/week30_01.17-01.23.22.md)
