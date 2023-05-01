@@ -30,4 +30,91 @@ def containsDuplicate(self, nums):
 
 ### O(n) time | O(n) space
 
+## [Leetcode #242 - Valid Anagram](https://leetcode.com/problems/valid-anagram/)
+
+#### Level: Easy 📗
+
+```python
+def isAnagram(self, s, t):
+  """
+  :type s: str
+  :type t: str
+  :rtype: bool
+  """
+  map_s = {}
+  for char in s:
+    map_s[char] = map_s.get(char, 0) + 1
+  map_t = {}
+  for char in t:
+    map_t[char] = map_t.get(char, 0) + 1
+  return map_s == map_t
+```
+
+### O(n + m) time | O(n + m) space - where n and m is length of s and t respectively
+
+Other solution
+
+```python
+def isAnagram(self, s, t):
+  """
+  :type s: str
+  :type t: str
+  :rtype: bool
+  """
+  if len(s) != len(t):
+    return False
+  map_s, map_t = {}, {}
+  for i in range(len(s)):
+    map_s[s[i]] = map_s.get(s[i], 0) + 1
+    map_t[t[i]] = map_t.get(t[i], 0) + 1
+  return map_s == map_t
+```
+
+### O(n) time | O(2n) space - n is minimum length between s and t
+
+## [Leetcode #1 - Two Sum](https://leetcode.com/problems/two-sum/)
+
+#### Level: Easy 📗
+
+```python
+def twoSum(self, nums, target):
+  """
+  :type nums: List[int]
+  :type target: int
+  :rtype: List[int]
+  """
+  target_cache = {}
+    for i, num in enumerate(nums):
+      search_num = target - num
+      if search_num in target_cache:
+        return [i, target_cache[search_num]]
+      target_cache[num] = i
+```
+
+### O(n) time | O(n) space
+
+## [Leetcode #49 - Group Anagrams](https://leetcode.com/problems/group-anagrams/)
+
+#### Level: Medium 📘
+
+```python
+def groupAnagrams(self, strs):
+  """
+  :type strs: List[str]
+  :rtype: List[List[str]]
+  """
+  if len(strs) == 0:
+    return
+  if len(strs) == 1:
+    return [strs]
+  anagrams_group = {}
+  for word in strs:
+    key = "".join(sorted(word))
+    if key not in anagrams_group:
+      anagrams_group[key] = []
+    anagrams_group[key].append(word)
+  return anagrams_group.values()
+```
+
+### O(w * n * log(n)) time | O(wn) space - where w is the number of words and n is the length of the longest word
 
