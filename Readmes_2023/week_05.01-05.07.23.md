@@ -118,3 +118,30 @@ def groupAnagrams(self, strs):
 
 ### O(w * n * log(n)) time | O(wn) space - where w is the number of words and n is the length of the longest word
 
+## [Leetcode #347 - Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
+
+#### Level: Medium 📘
+
+```python
+def topKFrequent(self, nums, k):
+  """
+  :type nums: List[int]
+  :type k: int
+  :rtype: List[int]
+  """
+  count = {}
+  freq = [[] for i in range(len(nums) + 1)]
+  for num in nums:
+    count[num] = count.get(num, 0) + 1
+  for key, value in count.items():
+    freq[value].append(key)
+
+  result = []
+  for i in range(len(freq) - 1, 0, -1):
+    for num in freq[i]: # num can be list of null or null
+      result.append(num)
+      if len(result) == k:
+        return result
+```
+
+### O(n) time | O(n) space
