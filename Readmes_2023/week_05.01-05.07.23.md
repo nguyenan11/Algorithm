@@ -145,3 +145,36 @@ def topKFrequent(self, nums, k):
 ```
 
 ### O(n) time | O(n) space
+
+## [Leetcode #238 - Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
+
+#### Level: Medium 📘
+
+```python
+def productExceptSelf(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: List[int]
+  """
+  products = [1 for i in range(len(nums))]
+  leftProducts = [1 for i in range(len(nums))]
+  rightProducts = [1 for i in range(len(nums))]
+
+  leftRunningProduct = 1
+  for i in range(len(nums)):
+    leftProducts[i] = leftRunningProduct
+    leftRunningProduct *= nums[i]
+
+  rightRunningProduct = 1
+  for i in reversed(range(len(nums))):
+    rightProducts[i] = rightRunningProduct
+    rightRunningProduct *= nums[i]
+
+  for i in range(len(nums)):
+    products[i] = leftProducts[i] * rightProducts[i]
+
+  return products
+```
+
+### O(n) time | O(n) space
+
