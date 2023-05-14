@@ -81,4 +81,41 @@ def isValidSudoku(self, board):
 ### Which is O(9^2) time and O(9^2) space
 
 For sub_matrix_value, the sudoku is divided into big squares - 3 squares instead of 9
+
 ![LC36](../2023_images/LC36.png)
+
+## [Leetcode #659 - Encode and Decode String](https://leetcode.com/problems/encode-and-decode-strings/)
+> Premium
+
+#### Level: Medium 📘
+
+```python
+class Solution:
+
+  def encode(self, strs):
+    """
+    @param: strs: a list of strings
+    @return: encodes a list of strings to a single string.
+    """
+    res = ""
+    for s in strs:
+      res += str(len(s)) + "#" + s
+    return res
+
+  def decode(self, s):
+    """
+    @param: s: A string
+    @return: decodes a single string to a list of strings
+    """
+    res, i = [], 0
+    while i < len(s):
+      j = i
+      while s[j] != "#":
+        j += 1
+      length = int(s[i:j])
+      res.append(s[j + 1 : j + 1 + length])
+      i = j + 1 + length
+    return res
+```
+
+### O(m) time | O(n) space - m is total number of char in all strings, n is number of items in list
