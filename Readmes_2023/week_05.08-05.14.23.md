@@ -119,3 +119,55 @@ class Solution:
 ```
 
 ### O(m) time | O(n) space - m is total number of char in all strings, n is number of items in list
+
+## [Leetcode #128 - Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
+
+#### Level: Medium 📘
+
+```python
+def longestConsecutive(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  if not nums:
+    return 0
+
+  nums = sorted(nums)
+  prevNum, currCount, maxCount = nums[0], 1, 1
+  for num in nums[1:]:
+    if num == prevNum:
+      continue
+    if num - prevNum == 1:
+      currCount += 1
+    else:
+      currCount = 1
+    prevNum = num
+    maxCount = max(currCount, maxCount)
+  return maxCount
+```
+
+### O(nlogn) time | O(3) = O(1) space
+
+```python
+def longestConsecutive(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  if not nums:
+    return 0
+  
+  maxCount = 0
+  nums = set(nums)
+  for num in nums:
+    # check if num is the start of a sequence
+    if num - 1 not in nums:
+      currCount = 0
+      while num + currCount in nums:
+        currCount += 1
+      maxCount = max(maxCount, currCount)
+  return maxCount
+```
+
+### O(n) time | O(n) space if we're not allowed to modify nums, O(1) if we're allowed
