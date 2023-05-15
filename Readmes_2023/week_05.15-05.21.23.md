@@ -41,3 +41,27 @@ def isPalindrome(self, s):
 ```
 
 ### O(n) time | O(1) space
+
+## [Leetcode #167 - Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+
+#### Level: Medium 📘
+
+```python
+def twoSum(self, numbers, target):
+  """
+  :type numbers: List[int]
+  :type target: int
+  :rtype: List[int]
+  """
+  leftPtr, rightPtr = 0, len(numbers) - 1
+  while leftPtr < rightPtr:
+    val = numbers[leftPtr], numbers[rightPtr]
+    if val > target:
+      rightPtr -= 1
+    elif val < target:
+      leftPtr += 1
+    else:
+      return [leftPtr + 1, rightPtr + 1]
+```
+
+### O(n) time | O(1) space
