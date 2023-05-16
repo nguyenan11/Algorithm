@@ -105,3 +105,27 @@ def threeSum(self, nums):
 ```
 
 ### O(n^2) time - from O(nlogn) + O(n^2) | O(1) space - in some libraries, sorting might store additional memory, which could result in O(n) space due to sort()
+
+## [Leetcode #11 - Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+
+#### Level: Medium 📘
+
+```python
+def maxArea(self, height):
+  """
+  :type height: List[int]
+  :rtype: int
+  """
+  maxArea = 0
+  leftWall, rightWall = 0, len(height) - 1
+  while leftWall != rightWall:
+    currArea = min(height[leftWall], height[rightWall]) * (rightWall - leftWall)
+    maxArea = max(maxArea, currArea)
+    if height[leftWall] < height[rightWall]:
+      leftWall += 1
+    else:
+      rightWall -= 1
+  return maxArea
+```
+
+### O(n) time | O(1) space - n is number of elements in the list (height)
