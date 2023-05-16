@@ -65,3 +65,43 @@ def twoSum(self, numbers, target):
 ```
 
 ### O(n) time | O(1) space
+
+
+## [Leetcode #15 - 3Sum](https://leetcode.com/problems/3sum/)
+
+#### Level: Medium 📘
+
+```python
+def threeSum(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: List[List[int]]
+  """
+  TARGET = 0
+
+  result = []
+  nums.sort()
+
+  for i, num in enumerate(nums):
+    # only count the FIRST appearance of repeated number
+    # the rest repetition will be ignored
+    if i > 0 and num == nums[i - 1]:
+      continue
+
+    leftPtr, rightPtr = i + 1, len(nums) - 1
+    while leftPtr < rightPtr:
+      threeSum = num + nums[leftPtr] + nums[rightPtr]
+      if threeSum > TARGET:
+        rightPtr -= 1
+      elif threeSum < TARGET:
+        leftPtr += 1
+      else:
+        result.append([num, nums[leftPtr], nums[rightPtr]])
+        leftPtr += 1
+        while nums[leftPtr] == nums[leftPtr - 1] and leftPtr < rightPtr:
+          leftPtr += 1
+              
+  return result
+```
+
+### O(n^2) time - from O(nlogn) + O(n^2) | O(1) space - in some libraries, sorting might store additional memory, which could result in O(n) space due to sort()
