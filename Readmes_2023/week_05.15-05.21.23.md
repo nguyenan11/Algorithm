@@ -129,3 +129,43 @@ def maxArea(self, height):
 ```
 
 ### O(n) time | O(1) space - n is number of elements in the list (height)
+
+## [Leetcode #42 - Trapping Rain Water](https://leetcode.com/problems/container-with-most-water/)
+
+#### Level: Hard 📕
+
+> O(n) memory allocation
+> IMPORTANT: The formula is min(L, R) - height[i] to get trapped water at i
+
+![LC42](../2023_images/LC42.png)
+
+```python
+def trap(self, height):
+  """
+  :type height: List[int]
+  :rtype: int
+  """
+  size = len(height)
+
+  leftMax = [0 for i in range(size)]
+  rightMax = [0 for i in range(size)]
+  runningLeftMax, runningRightMax = 0, 0
+
+  for i, num in enumerate(height):
+    leftMax[i] = runningLeftMax
+    runningLeftMax = max(runningLeftMax, num)
+
+  for i in range(size - 1, -1, -1):
+    rightMax[i] = runningRightMax
+    runningRightMax = max(runningRightMax, height[i])
+
+  result = 0
+  for i, num in enumerate(height):
+    trappedWater = min(leftMax[i], rightMax[i]) - num
+    if trappedWater > 0:
+      result += trappedWater
+
+  return result
+```
+
+### O(n) time | O(n) space
