@@ -195,3 +195,34 @@ def trap(self, height):
 ```
 
 ### O(n) time | O(1) space
+
+## [Leetcode #20 - Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
+
+#### Level: Easy 📗
+
+```python
+def isValid(self, s):
+  """
+  :type s: str
+  :rtype: bool
+  """
+  OPEN_BRACKETS = ['(', '{', '[']
+  CLOSE_BRACKETS = [')', '}', ']']
+  stack = []
+
+  for bracket in s:
+    if bracket in OPEN_BRACKETS:
+      stack.append(bracket)
+    else:
+      if not stack:
+        return False
+
+      topOfStack = stack.pop()
+      index = OPEN_BRACKETS.index(topOfStack)
+      if CLOSE_BRACKETS[index] != bracket:
+        return False
+  
+  return len(stack) == 0
+```
+
+### O(n) time | O(n) space
