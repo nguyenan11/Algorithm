@@ -226,3 +226,48 @@ def isValid(self, s):
 ```
 
 ### O(n) time | O(n) space
+
+## [Leetcode #155 - Min Stack](https://leetcode.com/problems/min-stack/)
+
+#### Level: Medium 📘
+
+> The idea for O(1) time is that to actually have 2 stacks - 1 for all regular stack (FILO) operations and 1 for keeping track of current minimum value
+
+```python
+class MinStack(object):
+  def __init__(self):
+    self.stack = []
+    self.minStack = []
+
+  def push(self, val):
+    """
+    :type val: int
+    :rtype: None
+    """
+    self.stack.append(val)
+    val = min(val, self.minStack[-1] if self.minStack else val)
+    self.minStack.append(val)
+      
+
+  def pop(self):
+    """
+    :rtype: None
+    """
+    self.stack.pop()
+    self.minStack.pop()
+      
+
+  def top(self):
+    """
+    :rtype: int
+    """
+    return self.stack[-1]
+
+  def getMin(self):
+    """
+    :rtype: int
+    """
+    return self.minStack[-1]
+```
+
+### O(1) time as required
