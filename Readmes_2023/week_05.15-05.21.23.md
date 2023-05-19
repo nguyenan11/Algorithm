@@ -271,3 +271,65 @@ class MinStack(object):
 ```
 
 ### O(1) time as required
+
+## [Leetcode #150 - Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
+
+#### Level: Medium 📘
+
+> This below implementation won't work due to negative int check, but logic should be that way
+
+```python
+def evalRPN(self, tokens):
+  """
+  :type tokens: List[str]
+  :rtype: int
+  """
+  stack = []
+  for token in tokens:
+    # this won't work because of this lstrip function here
+    if token.lstrip('-').isnumeric():
+      stack.append(int(token))
+    else:
+      topOfStack = stack.pop()
+      secondTopOfStack = stack.pop()
+      num = self.doOperation(token, secondTopOfStack, topOfStack)
+      stack.append(num)
+  return stack.pop()
+
+def doOperation(self, operator, num1, num2):
+  if operator == "+":
+    return num1 + num2
+  elif operator == '-':
+    return num1 - num2
+  elif operator == '*':
+    return num1 * num2
+  else:
+    return int(num1 / num2)
+```
+
+> This version will work - ONLY in Python3, not Python -> Above should work in Python3 as well
+
+```python
+def evalRPN(self, tokens):
+  """
+  :type tokens: List[str]
+  :rtype: int
+  """
+  stack = []
+  for c in tokens:
+    if c == "+":
+      stack.append(stack.pop() + stack.pop())
+    elif c == "-":
+      a, b = stack.pop(), stack.pop()
+      stack.append(b - a)
+    elif c == "*":
+      stack.append(stack.pop() * stack.pop())
+    elif c == "/":
+      a, b = stack.pop(), stack.pop()
+      stack.append(int(b / a))
+    else:
+      stack.append(int(c))
+  return stack[0]
+```
+
+### O(n) time | O(n) space 
