@@ -5,6 +5,7 @@
 
 # Category for this week:
 **[Two Pointers](#two~pointers)**<br>
+**[Stack](#stack)**<br>
 
 ---
 
@@ -196,6 +197,10 @@ def trap(self, height):
 
 ### O(n) time | O(1) space
 
+---
+
+# Stack
+
 ## [Leetcode #20 - Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
 
 #### Level: Easy 📗
@@ -333,3 +338,42 @@ def evalRPN(self, tokens):
 ```
 
 ### O(n) time | O(n) space 
+
+## [Leetcode #22 - Generate Parentheses](https://leetcode.com/problems/generate-parentheses/)
+
+#### Level: Medium 📘
+
+> Backtracking or DFS
+> 3 conditions:
+> 1. Add open parentheses if open < n
+> 2. add close parentheses if close < open
+> 3. valid if open == close == n
+
+```python
+def generateParenthesis(self, n):
+  """
+  :type n: int
+  :rtype: List[str]
+  """
+  stack = []
+  res = []
+
+  def backtrack(openN, closedN):
+    if openN == closedN == n:
+      res.append("".join(stack))
+      return
+
+    if openN < n:
+      stack.append("(")
+      backtrack(openN + 1, closedN)
+      stack.pop()
+    if closedN < openN:
+      stack.append(")")
+      backtrack(openN, closedN + 1)
+      stack.pop()
+
+  backtrack(0, 0)
+  return res
+```
+
+### O(2n) time ~ O(n) time | O(2n) space ~ O(n) space
