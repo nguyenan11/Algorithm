@@ -37,6 +37,10 @@ def dailyTemperatures(self, temperatures):
 
 #### Level: Medium 📘
 
+Linear equation -> intersection
+
+![LC853](../2023_images/LC853.png)
+
 > Success run on Python3
 
 ```python
@@ -50,3 +54,5 @@ def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
       stack.pop()
   return len(stack)
 ```
+
+### O(n log(n)) time | O(n) space
