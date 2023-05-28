@@ -62,13 +62,18 @@ def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
 #### Level: Hard 📕
 
 ```python
-def largestRectangleArea(self, heights: List[int]) -> int:
+def largestRectangleArea(self, heights):
+  """
+  :type heights: List[int]
+  :rtype: int
+  """
+  HEIGHT = 1
   maxArea = 0
   stack = []  # pair: (index, height)
 
   for i, h in enumerate(heights):
     start = i
-    while stack and stack[-1][1] > h:
+    while stack and stack[-1][HEIGHT] > h:
       index, height = stack.pop()
       maxArea = max(maxArea, height * (i - index))
       start = index
@@ -78,3 +83,5 @@ def largestRectangleArea(self, heights: List[int]) -> int:
     maxArea = max(maxArea, h * (len(heights) - i))
   return maxArea
 ```
+
+### O(n) time | O(n) space
