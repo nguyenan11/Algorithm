@@ -5,6 +5,7 @@
 
 # Category for this week:
 **[Stack](#stack)**<br>
+**[Linked List](#linked-list)**<br>
 
 ---
 
@@ -85,3 +86,35 @@ def largestRectangleArea(self, heights):
 ```
 
 ### O(n) time | O(n) space
+
+---
+
+# Linked List
+
+## [Leetcode #206 - Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
+
+#### Level: Easy 📗
+
+```python
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+  def reverseList(self, head):
+    """
+    :type head: ListNode
+    :rtype: ListNode
+    """
+    prevNode = None
+    currNode = head
+    while currNode != None:
+      nextNode = currNode.next
+      currNode.next = prevNode
+      prevNode = currNode
+      currNode = nextNode
+    return prevNode
+```
+
+### O(n) time | O(1) space
