@@ -144,3 +144,39 @@ def mergeTwoLists(self, list1, list2):
 ```
 
 ### O(n1 + n2) time | O(n1 + n2) space
+
+## [Leetcode #143 - Reorder List](https://leetcode.com/problems/reorder-list/)
+
+#### Level: Medium 📘
+
+```python
+def reorderList(self, head):
+  """
+  :type head: ListNode
+  :rtype: None Do not return anything, modify head in-place instead.
+  """
+  # find mid point
+  slowPtr, fastPtr = head, head.next
+  while fastPtr and fastPtr.next:
+    slowPtr = slowPtr.next
+    fastPtr = fastPtr.next.next
+
+  # reverse second half
+  second = slowPtr.next
+  prevNode = slowPtr.next = None
+  while second:
+    nextNode = second.next
+    second.next = prevNode
+    prevNode = second
+    second = nextNode
+  
+  # merge
+  first, second = head, prevNode
+  while second:
+    temp1, temp2 = first.next, second.next
+    first.next = second
+    second.next = temp1
+    first, second = temp1, temp2
+```
+
+### O(n) time | O(1) space
