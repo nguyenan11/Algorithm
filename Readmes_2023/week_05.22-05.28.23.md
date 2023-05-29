@@ -118,3 +118,29 @@ class Solution(object):
 ```
 
 ### O(n) time | O(1) space
+
+## [Leetcode #21 - Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+
+#### Level: Easy 📗
+
+```python
+def mergeTwoLists(self, list1, list2):
+  """
+  :type list1: Optional[ListNode]
+  :type list2: Optional[ListNode]
+  :rtype: Optional[ListNode]
+  """
+  head = currNode = ListNode(0)
+  while list1 and list2:
+    if list1.val < list2.val:
+      currNode.next = list1
+      list1 = list1.next
+    else:
+      currNode.next = list2
+      list2 = list2.next
+    currNode = currNode.next
+  currNode.next = list1 or list2
+  return head.next
+```
+
+### O(n1 + n2) time | O(n1 + n2) space
