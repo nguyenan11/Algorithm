@@ -73,3 +73,39 @@ def removeNthFromEnd(self, head, n):
 ```
 
 ### O(n) time | O(1) space
+
+
+## [Leetcode #138 - Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/)
+
+#### Level: Medium 📘
+
+```python
+def copyRandomList(self, head):
+  """
+  :type head: Node
+  :rtype: Node
+  """
+  # reference for original node to new copy
+  copyReference = {}
+  
+  # could point to null 
+  copyReference[None] = None
+
+  # 2 loops
+  currNode = head
+  while currNode:
+    copy = Node(currNode.val)
+    copyReference[currNode] = copy
+    currNode = currNode.next
+
+  currNode = head
+  while currNode:
+    copy = copyReference[currNode]
+    copy.next = copyReference[currNode.next]
+    copy.random = copyReference[currNode.random]
+    currNode = currNode.next
+
+  return copyReference[head]
+```
+
+### O(n) time | O(n) space
