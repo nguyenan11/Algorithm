@@ -109,3 +109,33 @@ def copyRandomList(self, head):
 ```
 
 ### O(n) time | O(n) space
+
+## [Leetcode #2 - Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
+
+#### Level: Medium 📘
+
+```python
+def addTwoNumbers(self, l1, l2):
+  """
+  :type l1: ListNode
+  :type l2: ListNode
+  :rtype: ListNode
+  """
+  dummy = currNode = ListNode(0)
+  needAddOne = 0
+  while l1 or l2 or needAddOne:
+    val1 = val2 = 0
+    if l1:
+      val1 = l1.val
+      l1 = l1.next
+    if l2:
+      val2 = l2.val
+      l2 = l2.next
+    needAddOne, val = divmod(val1 + val2 + needAddOne, 10)
+    currNode.next = ListNode(val)
+    currNode = currNode.next
+
+  return dummy.next
+```
+
+### O(max(m, n)) time | O(max(m, n)) space - where m is length of linked list 1 and n is length of linked list 2
