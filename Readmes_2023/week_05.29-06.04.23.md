@@ -14,6 +14,40 @@
 
 #### Level: Medium 📘
 
+> Brute force
+
+```python
+def removeNthFromEnd(self, head, n):
+  """
+  :type head: ListNode
+  :type n: int
+  :rtype: ListNode
+  """
+  currNode = head
+  listLength = 0
+  while currNode:
+    listLength += 1
+    currNode = currNode.next
+
+  removedNodeIdx = listLength - n
+
+  i = 0
+  dummy = ListNode(0, head)
+  currNode = dummy
+  while i < listLength:
+    if i == removedNodeIdx:
+      currNode.next = currNode.next.next            
+      break
+    currNode = currNode.next
+    i += 1
+
+  return dummy.next
+```
+
+### O(n) time | O(1) space
+
+> Cleaner version
+
 ```python
 def removeNthFromEnd(self, head, n):
   """
