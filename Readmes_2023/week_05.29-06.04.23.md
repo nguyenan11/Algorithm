@@ -160,3 +160,30 @@ def hasCycle(self, head):
 ```
 
 ### O(n) time | O(1) space
+
+## [Leetcode #287 - Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)
+
+#### Level: Medium 📘
+
+```python
+def findDuplicate(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  slowPtr, fastPtr = 0, 0
+  while True:
+    slowPtr = nums[slowPtr]
+    fastPtr = nums[nums[fastPtr]]
+    if slowPtr == fastPtr:
+      break
+
+  slowPtr2 = 0
+  while True:
+    slowPtr = nums[slowPtr]
+    slowPtr2 = nums[slowPtr2]
+    if slowPtr == slowPtr2:
+      return slowPtr
+```
+
+### O(n) time | O(1) space
