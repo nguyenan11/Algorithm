@@ -139,3 +139,24 @@ def addTwoNumbers(self, l1, l2):
 ```
 
 ### O(max(m, n)) time | O(max(m, n)) space - where m is length of linked list 1 and n is length of linked list 2
+
+## [Leetcode #141 - Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+
+#### Level: Easy 📗
+
+```python
+def hasCycle(self, head):
+  """
+  :type head: ListNode
+  :rtype: bool
+  """
+  slowPtr, fastPtr = head, head
+  while fastPtr and fastPtr.next:
+    slowPtr = slowPtr.next
+    fastPtr = fastPtr.next.next
+    if slowPtr == fastPtr:
+      return True
+  return False
+```
+
+### O(n) time | O(1) space
