@@ -187,3 +187,71 @@ def findDuplicate(self, nums):
 ```
 
 ### O(n) time | O(1) space
+
+## [Leetcode #146 - LRU Cache](https://leetcode.com/problems/lru-cache/)
+
+#### Level: Medium 📘
+
+```python
+class Node:
+  def __init__(self, key, value):
+    self.key, self.value = key, value
+    self.prev = self.next = None
+
+# solve with Double LinkedList (node) and 2 pointers left and right
+# with left to be LRU, and right as Most RU
+class LRUCache(object):
+
+  def __init__(self, capacity):
+    """
+    :type capacity: int
+    """
+    self.cap = capacity
+    self.cache = {} # map key to node
+
+    self.left, self.right = Node(0, 0), Node(0, 0)
+    self.left.next, self.right.prev = self.right, self.left
+      
+  # helper - remove from left
+  def remove(self, node):
+    prev, nxt = node.prev, node.next
+    prev.next, nxt.prev = nxt, prev
+
+  # helper - insert at right
+  def insert(self, node):
+    prev, nxt = self.right.prev, self.right
+    prev.next = nxt.prev = node
+    node.next, node.prev = nxt, prev
+
+  def get(self, key):
+    """
+    :type key: int
+    :rtype: int
+    """
+    if key in self.cache:
+      self.remove(self.cache[key])
+      self.insert(self.cache[key])
+      return self.cache[key].value
+
+    return -1
+      
+
+  def put(self, key, value):
+    """
+    :type key: int
+    :type value: int
+    :rtype: None
+    """
+    if key in self.cache:
+      self.remove(self.cache[key])
+    self.cache[key] = Node(key, value)
+    self.insert(self.cache[key])
+
+    if len(self.cache) > self.cap:
+      # remove from the list and delete the LRU from hashmap
+      lru = self.left.next
+      self.remove(lru)
+      del self.cache[lru.key]
+```
+
+### O(1) time | O(1) space - as expected from the question
