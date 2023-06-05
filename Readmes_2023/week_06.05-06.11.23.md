@@ -48,3 +48,47 @@ def merge2Lists(self, list1, list2):
 
 ### O(n * log k) time | O(n) space
 
+
+## [Leetcode #25 - Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/)
+
+#### Level: Hard 📕
+
+```python
+def reverseKGroup(self, head, k):
+  """
+  :type head: ListNode
+  :type k: int
+  :rtype: ListNode
+  """
+  dummy = ListNode(0, head)
+  groupPrev = dummy # 1 node before the start of group
+
+  while True:
+    kth = self.getKth(groupPrev, k)
+    if not kth: # k is 0 or None node (not enough to reverse)
+      break
+    groupNext = kth.next
+
+    # reverse group
+    prev, curr = kth.next, groupPrev.next
+
+    while curr != groupNext:
+      temp = curr.next
+      curr.next = prev
+      prev = curr
+      curr = temp
+
+    temp = groupPrev.next # 1st node in group, then later will be last
+    groupPrev.next = kth
+    groupPrev = temp
+
+  return dummy.next
+
+def getKth(self, currNode, k):
+  while currNode and k > 0:
+    currNode = currNode.next
+    k -= 1
+  return currNode
+```
+
+### O(n) time | O(1) space
