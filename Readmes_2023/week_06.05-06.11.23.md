@@ -5,6 +5,7 @@
 
 # Category for this week:
 **[Linked List](#linked-list)**<br>
+**[Sliding Window](#sliding-window)**<br>
 
 ---
 
@@ -89,6 +90,30 @@ def getKth(self, currNode, k):
     currNode = currNode.next
     k -= 1
   return currNode
+```
+
+### O(n) time | O(1) space
+
+---
+
+# Sliding Window
+
+## [Leetcode #121 - Best Time To Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+
+#### Level: Easy 📗
+
+```python
+def maxProfit(self, prices):
+  """
+  :type prices: List[int]
+  :rtype: int
+  """
+  maxProfit, minPrice = 0, float('inf')
+  for price in prices:
+    minPrice = min(minPrice, price)
+    profit = price - minPrice
+    maxProfit = max(maxProfit, profit)
+  return maxProfit
 ```
 
 ### O(n) time | O(1) space
