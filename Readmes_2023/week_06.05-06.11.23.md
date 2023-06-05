@@ -142,3 +142,25 @@ def lengthOfLongestSubstring(self, s):
 ```
 
 ### O(n) time | O(min(n, a)) - n is the length of input string and a is the length of the character alphabet represented in the input string
+
+> Sliding window with 2 pointers
+
+```python
+def lengthOfLongestSubstring(self, s):
+  """
+  :type s: str
+  :rtype: int
+  """
+  # sliding window using 2 pointers
+  charSet = set()
+  left, longest = 0, 0
+  for right, char in enumerate(s):
+    while char in charSet:
+      charSet.remove(s[left])
+      left += 1
+    charSet.add(char)
+    longest = max(longest, right - left + 1)
+  return longest
+```
+
+### O(n) time | O(n) space
