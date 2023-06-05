@@ -117,3 +117,28 @@ def maxProfit(self, prices):
 ```
 
 ### O(n) time | O(1) space
+
+## [Leetcode #3 - Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+
+#### Level: Medium 📘
+
+> Old approach, but still nicely done
+
+```python
+def lengthOfLongestSubstring(self, s):
+  """
+  :type s: str
+  :rtype: int
+  """
+  lastSeen = {}
+  startIdx, longest = 0, 0
+
+  for idx, char in enumerate(s):
+    if char in lastSeen:
+      startIdx = max(startIdx, lastSeen[char] + 1)
+    longest = max(longest, idx - startIdx + 1)
+    lastSeen[char] = idx
+  return longest
+```
+
+### O(n) time | O(min(n, a)) - n is the length of input string and a is the length of the character alphabet represented in the input string
