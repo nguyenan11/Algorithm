@@ -164,3 +164,27 @@ def lengthOfLongestSubstring(self, s):
 ```
 
 ### O(n) time | O(n) space
+
+## [Leetcode #424 - Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
+
+#### Level: Medium 📘
+
+```python
+def characterReplacement(self, s, k):
+  """
+  :type s: str
+  :type k: int
+  :rtype: int
+  """
+  count = {}
+  left, result = 0, 0
+  for right, char in enumerate(s):
+    count[char] = count.get(char, 0) + 1
+    while (right - left + 1) - max(count.values()) > k:
+      count[s[left]] -= 1
+      left += 1
+    result = max(result, right - left + 1)
+  return result
+```
+
+### O(n) time - from O(26n) | O(1) space - from O(26)
