@@ -188,3 +188,31 @@ def characterReplacement(self, s, k):
 ```
 
 ### O(n) time - from O(26n) | O(1) space - from O(26)
+
+## [Leetcode #567 - Permutation in String](https://leetcode.com/problems/permutation-in-string/)
+
+#### Level: Medium 📘
+
+```python
+def checkInclusion(self, s1, s2):
+  """
+  :type s1: str
+  :type s2: str
+  :rtype: bool
+  """
+  s1Size, s2Size = len(s1), len(s2)
+  s1Counter, s2Counter = Counter(s1), Counter(s2[:s1Size])
+
+  for i in range(s1Size, s2Size):
+    if s1Counter == s2Counter:
+      return True
+    # Move window by removing prev and adding curr character
+    s2Counter[s2[i - s1Size]] -= 1
+    if s2Counter[s2[i - s1Size]] == 0:
+      del s2Counter[s2[i - s1Size]]
+    s2Counter[s2[i]] += 1
+
+  return s1Counter == s2Counter
+```
+
+### O(max(n1, n2)) time - from O(26n) | O(n1 + n2) space
