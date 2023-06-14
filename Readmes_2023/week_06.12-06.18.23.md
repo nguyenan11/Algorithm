@@ -36,3 +36,33 @@ def search(self, nums, target):
 Notes on finding mid: If you are setting mid = *(left + right) / 2*, you have to be very careful. Unless you are using a language that does not support overflow such as Python, left + right could overflow. 1 way to fix this is *left + ((right - left) // 2)* instead
 
 ### O(log n) time | O(1) space
+
+## [Leetcode #74 - Search a 2d Matrix](https://leetcode.com/problems/search-a-2d-matrix/)
+
+#### Level: Medium 📘
+
+```python
+def searchMatrix(self, matrix, target):
+  """
+  :type matrix: List[List[int]]
+  :type target: int
+  :rtype: bool
+  """
+  if not matrix or target is None:
+      return False
+
+  rows, cols = len(matrix), len(matrix[0])
+  low, high = 0, rows * cols - 1
+  while low <= high:
+    mid = low + ((high - low) // 2)
+    num = matrix[mid / cols][mid % cols]
+    if num < target:
+      low = mid + 1
+    elif num > target:
+      high = mid - 1
+    else:
+      return True
+  return False
+```
+
+### O(log(mn)) time | O(1) space
