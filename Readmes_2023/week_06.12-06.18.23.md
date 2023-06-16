@@ -66,3 +66,31 @@ def searchMatrix(self, matrix, target):
 ```
 
 ### O(log(mn)) time | O(1) space
+
+## [Leetcode #153 - Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+
+#### Level: Medium 📘
+
+```python
+def findMin(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  left, right = 0, len(nums) - 1
+  currMin = nums[0]
+  while left <= right:
+    if nums[left] <= nums[right]:
+      currMin = min(currMin, nums[left])
+      break
+    else:
+      mid = left + (right - left) / 2
+      currMin = min(currMin, nums[mid])
+      if nums[mid] >= nums[left]:
+        left = mid + 1
+      else:
+        right = mid - 1
+  return currMin
+```
+
+### O(log n) time | O(1) space
