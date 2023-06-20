@@ -2,15 +2,14 @@
   Algorithm practice  
 </h1>
 
-* Practice algorithm using **Java** (None LeetCode) and **Python** (LeetCode)
-* Please let me know if there're any bugs or any of the link isn't working. Thank you!
-
 #### Goal: 1 - 3 problems per day
 
 > Check mark (✅): fully documented.
 
 <details>
 <summary>2021</summary>
+
+None LeetCode problems will be in **Java** and LeetCode ones will be in **Python**
 
 ## [Week 1: 05/10 - 05/16/2021](Readmes/week1_05.10-05.16.21.md) &nbsp; &nbsp; ✅
 ## [Week 2: 05/17 - 05/23/2021](Readmes/week2_05.17-05.23.21.md) &nbsp; &nbsp; ✅
@@ -52,6 +51,8 @@
 
 ---
 
+# 2023
+
 ## [Week 05/01 - 05/07/2023](Readmes_2023/week_05.01-05.07.23.md)
 ## [Week 05/08 - 05/14/2023](Readmes_2023/week_05.08-05.14.23.md)
 ## [Week 05/15 - 05/21/2023](Readmes_2023/week_05.15-05.21.23.md)
@@ -59,3 +60,4 @@
 ## [Week 05/29 - 06/04/2023](Readmes_2023/week_05.29-06.04.23.md)
 ## [Week 06/05 - 06/11/2023](Readmes_2023/week_06.05-06.11.23.md)
 ## [Week 06/12 - 06/18/2023](Readmes_2023/week_06.12-06.18.23.md)
+## [Week 06/18 - 06/25/2023](Readmes_2023/week_06.18-06.25.23.md)
