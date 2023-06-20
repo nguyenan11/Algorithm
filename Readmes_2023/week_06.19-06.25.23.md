@@ -47,3 +47,47 @@ def search(self, nums, target):
 ```
 
 ### O(log n) time | O(1) space
+
+## [Leetcode #981 - Time Based Key-Value Store](https://leetcode.com/problems/time-based-key-value-store/)
+
+#### Level: Medium 📘
+
+> Important details: All the timestamps of set are strictly increasing.
+
+```python
+class TimeMap(object):
+
+  def __init__(self):
+    self.keyValues = {} 
+    # map where key is key and value is list of [value, timestamp]
+      
+
+  def set(self, key, value, timestamp):
+    """
+    :type key: str
+    :type value: str
+    :type timestamp: int
+    :rtype: None
+    """
+    if key not in self.keyValues:
+      self.keyValues[key] = []
+    self.keyValues[key].append([value, timestamp])
+
+  def get(self, key, timestamp):
+    """
+    :type key: str
+    :type timestamp: int
+    :rtype: str
+    """
+    result, values = "", self.keyValues.get(key, [])
+    left, right = 0, len(values) - 1
+    while left <= right:
+      mid = left + (right - left) / 2
+      if values[mid][1] <= timestamp:
+        result = values[mid][0]
+        left = mid + 1
+      else:
+        right = mid - 1
+    return result
+```
+
