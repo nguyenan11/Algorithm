@@ -83,11 +83,31 @@ class TimeMap(object):
     left, right = 0, len(values) - 1
     while left <= right:
       mid = left + (right - left) / 2
-      if values[mid][1] <= timestamp:
-        result = values[mid][0]
+      if values[mid][1] <= timestamp: # [1] is timestamp
+        result = values[mid][0] # [0] is value
         left = mid + 1
       else:
         right = mid - 1
     return result
 ```
 
+## [Leetcode #4 - Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)
+
+#### Level: Hard 📕
+
+```python
+def findMedianSortedArrays(self, nums1, nums2):
+  """
+  :type nums1: List[int]
+  :type nums2: List[int]
+  :rtype: float
+  """
+  nums = nums1 + nums2
+  nums = sorted(nums)
+  mid = len(nums) / 2
+  if len(nums) % 2 == 0:
+    return (nums[mid] + nums[mid -1]) / 2.0
+  return nums[mid]
+```
+
+### O(log(n + m)) time | O(n + m) space
