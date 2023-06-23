@@ -5,6 +5,7 @@
 
 # Category for this week:
 **[Binary Search](#binary-search)**<br>
+**[Trees](#trees)**<br>
 
 ---
 
@@ -95,6 +96,8 @@ class TimeMap(object):
 
 #### Level: Hard 📕
 
+> Brute force
+
 ```python
 def findMedianSortedArrays(self, nums1, nums2):
   """
@@ -111,3 +114,29 @@ def findMedianSortedArrays(self, nums1, nums2):
 ```
 
 ### O(log(n + m)) time | O(n + m) space
+
+---
+
+# Trees
+
+## [Leetcode #226 - Invert Binary Tree](https://leetcode.com/problems/invert-binary-tree/)
+
+#### Level: Easy 📗
+
+> DFS recursive
+
+```python
+def invertTree(self, root):
+  """
+  :type root: TreeNode
+  :rtype: TreeNode
+  """
+  if not root:
+    return
+  root.left, root.right = root.right, root.left
+  root.left = self.invertTree(root.left)
+  root.right = self.invertTree(root.right)
+  return root
+```
+
+### O(n) time | O(1) space
