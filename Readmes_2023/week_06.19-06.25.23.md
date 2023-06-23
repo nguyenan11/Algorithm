@@ -140,3 +140,70 @@ def invertTree(self, root):
 ```
 
 ### O(n) time | O(1) space
+
+## [Leetcode #104 - Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/)
+
+#### Level: Easy 📗
+
+> DFS recursive
+
+```python
+def maxDepth(self, root):
+  """
+  :type root: TreeNode
+  :rtype: int
+  """
+  if not root:
+    return 0
+  return self.dfs(root)
+
+def dfs(self, root):
+  count, left, right = 1, 0, 0
+  if root.left:
+    left = self.dfs(root.left)
+  if root.right:
+    right = self.dfs(root.right)
+  count += max(left, right)
+  return count
+```
+
+### O(n) time | O(1) space
+
+> DFS iterative - go through all the nodes at each level before going down
+
+```python
+def maxDepth(self, root):
+  stack = [[root, 1]]
+  result = 0
+  while stack:
+    node, depth = stack.pop() # depth is level
+    if node:
+      result = max(result, depth)
+      stack.append([node.left, depth + 1])
+      stack.append([node.right, depth + 1])
+  return result
+```
+
+### O(n) time | O(n) space
+
+> BFS iterative
+
+```python
+def maxDepth(self, root):
+  if not root:
+    return 0
+      
+  depth = 0
+  q = deque([root])
+  while q:
+    for i in range(len(q)): # this is important for queue to work
+      node = q.popleft() # using stack won't work because pop on right
+      if node.left:
+        q.append(node.left)
+      if node.right:
+        q.append(node.right)
+    depth += 1
+  return depth
+```
+
+### O(n) time | O(n) space
