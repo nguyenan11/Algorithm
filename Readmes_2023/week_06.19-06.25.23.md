@@ -207,3 +207,31 @@ def maxDepth(self, root):
 ```
 
 ### O(n) time | O(n) space
+
+## [Leetcode #543 - Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/)
+
+#### Level: Easy 📗
+
+```python
+def diameterOfBinaryTree(self, root):
+  """
+  :type root: TreeNode
+  :rtype: int
+  """
+  self.diameter = 0
+
+  def dfs(root):
+
+    if not root:
+      return 0
+    left = dfs(root.left)
+    right = dfs(root.right)
+    self.diameter = max(self.diameter, left + right)
+
+    return 1 + max(left, right)
+
+  dfs(root)
+  return self.diameter
+```
+
+### O(n) time | O(1) space
