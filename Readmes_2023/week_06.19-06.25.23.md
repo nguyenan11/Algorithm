@@ -339,3 +339,34 @@ def lowestCommonAncestor(self, root, p, q):
 ```
 
 ### O(log root) time | O(1) space
+
+## [Leetcode #102 - Binary Tree Level Order Traversal](https://leetcode.com/problems/binary-tree-level-order-traversal/)
+
+#### Level: Medium 📘
+
+```python
+def levelOrder(self, root):
+  """
+  :type root: TreeNode
+  :rtype: List[List[int]]
+  """
+  result = []
+
+  if not root:
+    return result
+  
+  q = deque([root])
+  while q:
+    sameLevelNodes = []
+    for i in range(len(q)):
+      node = q.popleft()
+      sameLevelNodes.append(node.val)
+      if node.left:
+        q.append(node.left)
+      if node.right:
+        q.append(node.right)
+    result.append(sameLevelNodes)
+  return result
+```
+
+### O(n) time | O(n) space
