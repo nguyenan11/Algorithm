@@ -311,3 +311,31 @@ def sameTree(self, root, subRoot):
 ```
 
 ### O(root + subRoot) time | O(1) space
+
+### [Leetcode #235 - Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
+
+#### Level: Easy 📗
+
+> Important assumption:
+> * All values are unique
+> * Follow the character of Binary Search Tree, left < right
+
+```python
+def lowestCommonAncestor(self, root, p, q):
+  """
+  :type root: TreeNode
+  :type p: TreeNode
+  :type q: TreeNode
+  :rtype: TreeNode
+  """
+  while root:
+    if max(p.val, q.val) < root.val:
+      root = root.left
+    elif min(p.val, q.val) > root.val:
+      root = root.right
+    else:
+      return root
+  return None # edge case when root is None
+```
+
+### O(log root) time | O(1) space
