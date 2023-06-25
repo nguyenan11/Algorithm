@@ -497,3 +497,32 @@ def buildTree(self, preorder, inorder):
 ```
 
 ### O(n) time | O(n) space
+
+## [Leetcode #124 - Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+
+#### Level: Hard 📕
+
+```python
+def maxPathSum(self, root):
+  """
+  :type root: TreeNode
+  :rtype: int
+  """
+  self.maxSum = root.val
+
+  def dfs(node):
+    if not node:
+      return 0
+    
+    leftMax, rightMax = dfs(node.left), dfs(node.right)
+    leftMax, rightMax = max(leftMax, 0), max(rightMax, 0)
+
+    # computer at each split
+    self.maxSum = max(self.maxSum, node.val + leftMax + rightMax)
+    return node.val + max(leftMax, rightMax)
+
+  dfs(root)
+  return self.maxSum
+```
+
+### O(n) time | O(n) space
