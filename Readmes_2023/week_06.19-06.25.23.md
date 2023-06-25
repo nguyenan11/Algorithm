@@ -447,3 +447,28 @@ def validateBst(self, node, minVal, maxVal):
 ```
 
 ### O(n) time | O(h) space - h is height
+
+## [Leetcode #230 - Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
+
+#### Level: Medium 📘
+
+```python
+def kthSmallest(self, root, k):
+  """
+  :type root: TreeNode
+  :type k: int
+  :rtype: int
+  """
+  smallestToLargest = []
+  self.inorderTraversal(root, smallestToLargest)
+  return smallestToLargest[k - 1]
+
+def inorderTraversal(self, node, smallestToLargest):
+  if not node:
+    return smallestToLargest
+  self.inorderTraversal(node.left, smallestToLargest)
+  smallestToLargest.append(node.val)
+  self.inorderTraversal(node.right, smallestToLargest)
+```
+
+### O(n) time | O(n) space
