@@ -425,3 +425,25 @@ def dfs(self, node, maxValue):
 ```
 
 ### O(n) time | O(1) space
+
+## [Leetcode #98 - Validate Binary Search Tree](https://leetcode.com/problems/validate-binary-search-tree/)
+
+#### Level: Medium 📘
+
+```python
+def isValidBST(self, root):
+  """
+  :type root: TreeNode
+  :rtype: bool
+  """
+  return self.validateBst(root, float("-inf"), float("inf"))
+  
+def validateBst(self, node, minVal, maxVal):
+  if not node:
+    return True
+  if not (minVal < node.val < maxVal):
+    return False
+  return self.validateBst(node.left, minVal, node.val) and self.validateBst(node.right, node.val, maxVal)
+```
+
+### O(n) time | O(h) space - h is height
