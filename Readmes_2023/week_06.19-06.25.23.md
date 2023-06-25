@@ -472,3 +472,28 @@ def inorderTraversal(self, node, smallestToLargest):
 ```
 
 ### O(n) time | O(n) space
+
+## [Leetcode #105 - Construct Binary Tree from Preorder and Inorder Traversal](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+
+#### Level: Medium 📘
+
+```python
+def buildTree(self, preorder, inorder):
+  """
+  :type preorder: List[int]
+  :type inorder: List[int]
+  :rtype: TreeNode
+  """
+  if not (preorder and inorder):
+    return None
+
+  rootValue = preorder.pop(0)
+  root = TreeNode(rootValue)
+  inorderIdx = inorder.index(rootValue)
+
+  root.left = self.buildTree(preorder, inorder[:inorderIdx]) # left of node
+  root.right = self.buildTree(preorder, inorder[inorderIdx + 1:]) # right of node
+  return root
+```
+
+### O(n) time | O(n) space
