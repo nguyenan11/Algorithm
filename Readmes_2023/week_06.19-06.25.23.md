@@ -401,3 +401,27 @@ def rightSideView(self, root):
 ```
 
 ### O(n) time | O(n) space
+
+## [Leetcode #1448 - Count Good Nodes in Binary Tree](https://leetcode.com/problems/count-good-nodes-in-binary-tree/)
+
+#### Level: Medium 📘
+
+```python
+def goodNodes(self, root):
+  """
+  :type root: TreeNode
+  :rtype: int
+  """
+  return self.dfs(root, root.val)
+
+def dfs(self, node, maxValue):
+  if not node:
+    return 0
+  result = 1 if node.val >= maxValue else 0
+  maxValue = max(node.val, maxValue)
+  result += self.dfs(node.left, maxValue)
+  result += self.dfs(node.right, maxValue)
+  return result
+```
+
+### O(n) time | O(1) space
