@@ -370,3 +370,34 @@ def levelOrder(self, root):
 ```
 
 ### O(n) time | O(n) space
+
+## [Leetcode #199 - Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/)
+
+#### Level: Medium 📘
+
+```python
+def rightSideView(self, root):
+  """
+  :type root: TreeNode
+  :rtype: List[int]
+  """
+  rightView = []
+  if not root:
+    return rightView
+  
+  q = deque([root])
+  while q:
+    tempLength = len(q) - 1
+    for i in range(len(q)):
+      node = q.popleft()
+      if i == tempLength:
+        rightView.append(node.val)
+      if node.left:
+        q.append(node.left)
+      if node.right:
+        q.append(node.right)
+
+  return rightView
+```
+
+### O(n) time | O(n) space
