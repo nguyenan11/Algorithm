@@ -502,6 +502,8 @@ def buildTree(self, preorder, inorder):
 
 #### Level: Hard 📕
 
+> Please see lc #543 (above)
+
 ```python
 def maxPathSum(self, root):
   """
@@ -519,7 +521,7 @@ def maxPathSum(self, root):
 
     # computer at each split
     self.maxSum = max(self.maxSum, node.val + leftMax + rightMax)
-    return node.val + max(leftMax, rightMax)
+    return node.val + max(leftMax, rightMax) # no split - meaning 1 straight path
 
   dfs(root)
   return self.maxSum
