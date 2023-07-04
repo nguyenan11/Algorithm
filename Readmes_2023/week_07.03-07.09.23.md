@@ -5,6 +5,7 @@
 
 # Category for this week:
 **[Tries](#tries)**<br>
+**[Backtracking](#backtracking)**<br>
 
 ---
 
@@ -175,3 +176,37 @@ class Solution(object):
 ```
 
 ### O(n * m * 4^n) time | O(w) space - w is number of characters of all words
+
+---
+
+# Backtracking
+
+## [Leetcode #78 - Subsets](https://leetcode.com/problems/subsets/)
+
+#### Level: Medium 📘
+
+![LC78](../2023_images/LC78.png)
+
+```python
+def subsets(self, nums: List[int]) -> List[List[int]]:
+  result = []
+  subset = []
+
+  def dfs(i):
+    if i >= len(nums): # done iterating
+      result.append(subset.copy()) # copy to get the global variable, other subset is just []
+      return
+    
+    # decision to include nums[i] - left side
+    subset.append(nums[i])
+    dfs(i + 1)
+
+    # decision NOT to include nums[i] - right side
+    subset.pop()
+    dfs(i + 1)
+
+  dfs(0)
+  return result
+```
+
+### O(n * 2^n) time | O(2^n) space
