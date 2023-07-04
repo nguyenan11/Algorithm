@@ -1,6 +1,6 @@
 # Algorithm practice
 
-# Week 06/26 - 07/02/2023
+# Week 07/03 - 07/09/2023
 
 
 # Category for this week:
@@ -118,3 +118,60 @@ class WordDictionary(object):
 ```
 
 ### O(n) time - n is number of characters in word/prefix
+
+## [Leetcode #212. Word Search II](https://leetcode.com/problems/word-search-ii/)
+
+#### Level: Hard 📕
+
+```python
+class TrieNode(object):
+  def __init__(self):
+    self.children = {}
+    self.endOfWord = False
+      
+  def addWord(self, word):
+    curr = self
+    for c in word:
+      if c not in curr.children:
+        curr.children[c] = TrieNode()
+      curr = curr.children[c]
+    curr.endOfWord = True
+
+class Solution(object):
+  def findWords(self, board, words):
+    """
+    :type board: List[List[str]]
+    :type words: List[str]
+    :rtype: List[str]
+    """
+    root = TrieNode()
+    for w in words:
+      root.addWord(w)
+        
+    ROWS, COLS = len(board), len(board[0])
+    result, visited = set(), set()
+    
+    def dfs(r, c, node, word):
+      if r < 0 or c < 0 or r >= ROWS or c >= COLS or (r, c) in visited or board[r][c] not in node.children:
+        return
+      visited.add((r, c))
+      node = node.children[board[r][c]]
+      word += board[r][c]
+      if node.endOfWord:
+        result.add(word)
+
+      dfs(r - 1, c, node, word)
+      dfs(r + 1, c, node, word)
+      dfs(r, c - 1, node, word)
+      dfs(r, c + 1, node, word)
+      
+      visited.remove((r, c))
+        
+    for r in range(ROWS):
+        for c in range(COLS):
+            dfs(r, c, root, "")
+    
+    return list(result) # used set for result b/c list might contain duplicate
+```
+
+### O(n * m * 4^n) time | O(w) space - w is number of characters of all words
