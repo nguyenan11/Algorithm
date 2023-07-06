@@ -247,3 +247,29 @@ def combinationSum(self, candidates, target):
 ```
 
 ### O(2^target) time | O(target) space
+
+> Optimized
+
+```python
+def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+  result = []
+  
+  # backtracking approach
+  def dfs(i, currCombination, total):
+    if total == target:
+      result.append(currCombination.copy()) # we will continue to use itit below
+      return
+    if i >= len(candidates) or total > target:
+      return
+      
+    # create 2 branches, to avoid DUPLICATED combination
+    currCombination.append(candidates[i]) # including curr number
+    dfs(i, currCombination, total + candidates[i])
+    currCombination.pop() # exclude curr number
+    dfs(i + 1, currCombination, total)
+  
+  dfs(0, [], 0)
+  return result
+```
+
+### O(2^target) time | O(target) space
