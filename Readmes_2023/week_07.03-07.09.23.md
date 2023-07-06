@@ -210,3 +210,40 @@ def subsets(self, nums: List[int]) -> List[List[int]]:
 ```
 
 ### O(n * 2^n) time | O(2^n) space
+
+## [Leetcode #39 - Combination Sum](https://leetcode.com/problems/combination-sum/)
+
+#### Level: Medium 📘
+
+
+> Brute force approach
+
+```python
+def combinationSum(self, candidates, target):
+  """
+  :type candidates: List[int]
+  :type target: int
+  :rtype: List[List[int]]
+  """
+  result = []
+
+  def dfs(subset):
+    sumSubset = sum(subset)
+    if sumSubset == target:
+      subset.sort()
+      if subset not in result:
+        result.append(subset)
+      return
+    if sumSubset > target:
+      return
+    else:
+      for num in candidates:
+        dfs(subset + [num])
+  
+  for num in candidates:
+    dfs([num])
+
+  return result
+```
+
+### O(2^target) time | O(target) space
