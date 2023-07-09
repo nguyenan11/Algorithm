@@ -273,3 +273,32 @@ def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
 ```
 
 ### O(2^target) time | O(target) space
+
+## [Leetcode #46 - Permutations](https://leetcode.com/problems/permutations/)
+
+#### Level: Medium 📘
+
+```python
+def permute(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: List[List[int]]
+  """
+  res = []
+
+  # base case
+  if len(nums) == 1:
+    return [nums[:]]  # nums[:] is a deep copy
+
+  for i in range(len(nums)):
+    n = nums.pop(0)
+    perms = self.permute(nums)
+
+    for perm in perms:
+      perm.append(n)
+    res.extend(perms)
+    nums.append(n)
+  return res
+```
+
+### complexity | space
