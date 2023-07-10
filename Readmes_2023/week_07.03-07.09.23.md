@@ -302,3 +302,51 @@ def permute(self, nums):
 ```
 
 ### complexity | space
+
+## [Leetcode #79 - Word Search](https://leetcode.com/problems/word-search/)
+
+#### Level: Medium 📘
+
+```python
+def exist(self, board, word):
+  """
+  :type board: List[List[str]]
+  :type word: str
+  :rtype: bool
+  """
+  ROWS, COLS = len(board), len(board[0])
+  WORD_SIZE = len(word)
+  path = set()
+
+  def dfs(r, c, i):
+    if i == WORD_SIZE:
+      return True
+    if (
+      r < 0 or
+      c < 0 or
+      r >= ROWS or
+      c >= COLS or
+      word[i] != board[r][c] or
+      (r, c) in path # already visited
+    ):
+      return False
+
+    path.add((r, c))
+    result = (
+      dfs(r - 1, c, i + 1) or
+      dfs(r + 1, c, i + 1) or
+      dfs(r, c - 1, i + 1) or
+      dfs(r, c + 1, i + 1)
+    )
+    path.remove((r, c))
+    return result
+
+  for r in range(len(board)):
+    for c in range(len(board[0])):
+      if dfs(r, c, 0):
+        return True
+
+  return False
+```
+
+### O(n * m * 4^n) time | O(len(word)) space
