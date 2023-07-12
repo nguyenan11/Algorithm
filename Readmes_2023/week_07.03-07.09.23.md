@@ -289,19 +289,22 @@ def permute(self, nums):
   # base case
   if len(nums) == 1:
     return [nums[:]]  # nums[:] is a deep copy
+    # return list of list for base case
 
   for i in range(len(nums)):
-    n = nums.pop(0)
+    n = nums.pop(0) # remove
     perms = self.permute(nums)
 
+    # perms are permutation without 1st number
+    # Ex: [1, 2, 3] -> perms will be [2, 3] and [3, 2]
     for perm in perms:
       perm.append(n)
     res.extend(perms)
-    nums.append(n)
+    nums.append(n) # then add back here
   return res
 ```
 
-### complexity | space
+### O(n!) time | O(2^n) space - maybe
 
 ## [Leetcode #79 - Word Search](https://leetcode.com/problems/word-search/)
 
