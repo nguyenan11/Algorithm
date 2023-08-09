@@ -103,4 +103,43 @@ def numIslands(self, grid):
         return neighborNodes
 ```
 
-## 
+## 33 https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+
+```python
+def search(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        # [1, 2, 3, 4, 5, 6, 7]
+        # target = 1 and later 6
+        # [5, 6, 7, 1, 2, 3, 4]
+        # target = 6 and later 3
+        if not nums or len(nums) == 0:
+            return -1
+        if len(nums) == 1:
+            return 0 if target in nums else -1
+
+        left, right = 0, len(nums) - 1
+        while left <= right:
+            mid = left + (right - left) / 2
+
+            if nums[mid] == target:
+                return mid
+
+            # sorted left
+            if nums[left] <= nums[mid]:
+                if nums[left] <= target and target <= nums[mid]:
+                    right = mid - 1
+                else:
+                    left = mid + 1
+            
+            # sorted right
+            else:
+                if nums[mid] <= target and target <= nums[right]:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+        return -1
+```
