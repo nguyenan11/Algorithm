@@ -51,4 +51,56 @@ def merge2Lists(self, list1, list2):
   return head.next
 ```
 
-# 
+## 200 https://leetcode.com/problems/number-of-islands/description/
+
+```python
+def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        islandNum = 0
+        visited = [[False for col in row] for row in grid]
+        for row in range(len(grid)):
+            for col in range(len(grid[0])):
+                if visited[row][col]:
+                    continue
+                hasLand = self.traverseNode(row, col, grid, visited)
+                if hasLand:
+                    islandNum += 1
+        return islandNum
+
+    
+    def traverseNode(self, row, col, grid, visited):
+        hasLand = False
+        nodeToExplore = [[row, col]] # stack
+        while nodeToExplore:
+            node = nodeToExplore.pop()
+            tempRow = node[0]
+            tempCol = node[1]
+            if visited[tempRow][tempCol]:
+                continue
+            visited[tempRow][tempCol] = True
+            if grid[tempRow][tempCol] == "0":
+                continue
+            hasLand = True
+            neighborNodes = self.findAllPossibleNeighbor(tempRow, tempCol, visited, grid)
+            for neighbor in neighborNodes:
+                nodeToExplore.append(neighbor)
+        return hasLand
+
+    
+    def findAllPossibleNeighbor(self, row, col, visited, grid):
+        neighborNodes = []
+        if row > 0 and not visited[row - 1][col]:
+            neighborNodes.append([row - 1, col])
+        if row + 1 < len(grid) and not visited[row + 1][col]:
+            neighborNodes.append([row + 1, col])
+        if col > 0 and not visited[row][col -1]:
+            neighborNodes.append([row, col -1])
+        if col + 1 < len(grid[0]) and not visited[row][col + 1]:
+            neighborNodes.append([row, col + 1])
+        return neighborNodes
+```
+
+## 
