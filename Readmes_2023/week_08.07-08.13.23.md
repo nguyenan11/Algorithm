@@ -105,6 +105,8 @@ def numIslands(self, grid):
 
 ## 33 https://leetcode.com/problems/search-in-rotated-sorted-array/description/
 
+> Make sure to include = sign
+
 ```python
 def search(self, nums, target):
         """
@@ -142,4 +144,29 @@ def search(self, nums, target):
                 else:
                     right = mid - 1
         return -1
+```
+
+## 124 https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
+
+```python
+def maxPathSum(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        self.maxSum = root.val
+
+        def dfs(node):
+            if not node:
+                return 0
+
+            leftMax, rightMax = dfs(node.left), dfs(node.right)
+            leftMax, rightMax = max(leftMax, 0), max(rightMax, 0)
+
+            # check for max at each split
+            self.maxSum = max(self.maxSum, node.val + leftMax + rightMax)
+            return node.val + max(leftMax, rightMax)
+        
+        dfs(root)
+        return self.maxSum
 ```
