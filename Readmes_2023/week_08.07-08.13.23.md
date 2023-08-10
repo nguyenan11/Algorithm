@@ -331,4 +331,62 @@ class LRUCache(object):
   return result
 ```
 
-## 
+## 239 https://leetcode.com/problems/sliding-window-maximum/description/
+
+Attempt - failed due to time running out
+
+```python
+def maxSlidingWindow(self, nums, k):
+  """
+  :type nums: List[int]
+  :type k: int
+  :rtype: List[int]
+  """
+  result = []
+  left = 0
+  while left + k <= len(nums):
+      right = left + k
+      maxNum = max(nums[left:right])
+      result.append(maxNum)
+      left += 1
+  return result
+```
+
+Solution
+Monotonically Decreasing Queue
+
+```python
+def maxSlidingWindow(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        # storing max value on the left
+        # <-> keep popping if value on outter less than current value
+        # <-> less value than max will be appended to right
+
+        result = []
+        q = deque() # storing indexes / IMPORTANT
+        left = right = 0
+        while right < len(nums):
+            # check outter right
+            while q and nums[q[-1]] < nums[right]:
+                q.pop()
+            q.append(right)
+
+            # if left is out of bound - remove left value from window
+            if left > q[0]:
+                q.popleft()
+            
+            # make sure window is at least size k
+            if (right + 1) >= k:
+                result.append(nums[q[0]])
+                # only increment left when k is reached
+                left += 1
+            right += 1
+        
+        return result
+```
+
+### O(n) time | O(n) space
