@@ -439,3 +439,18 @@ def numberOfWeakCharacters(self, properties):
         return ans
 ```
 
+## 122 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+
+```python
+def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        # IMPORTANT: you can buy it then immediately sell it on the same day
+        maxProfit = 0
+        for i in range(len(prices)):
+            if i + 1 < len(prices) and prices[i + 1] > prices[i]:
+                maxProfit += prices[i + 1] - prices[i]
+        return maxProfit
+```
