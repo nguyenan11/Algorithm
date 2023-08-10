@@ -289,3 +289,46 @@ class LRUCache(object):
             self.remove(lru)
             del self.cache[lru.key]
 ```
+
+## 227 https://leetcode.com/problems/basic-calculator-ii/description/
+
+```python
+ def calculate(self, s):
+  """
+  :type s: str
+  :rtype: int
+  """
+  if not s or len(s) == 0:
+      return 0
+
+  stack = []
+  num = 0
+  sign = '+'
+  for i in range(len(s)):
+      if s[i].isnumeric():
+          # important keeping track of number here
+          num = num * 10 + int(s[i])
+      if not s[i].isnumeric() and ' ' != s[i] or i == len(s) - 1:
+          # i == len(s) - 1 to check when string is ended
+          if sign == '+':
+              stack.append(num)
+          elif sign == '-':
+              stack.append(-num)
+          elif sign == '/':
+              tempNum = stack.pop()
+              if tempNum < 0:
+                  tempNum = -1 * tempNum / num
+                  stack.append(-1 * tempNum)
+              else:   
+                  stack.append(tempNum / num)
+          else:
+              stack.append(stack.pop() * num)
+          sign = s[i]
+          num = 0
+  result = 0
+  while stack:
+      result += stack.pop()
+  return result
+```
+
+## 
