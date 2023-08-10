@@ -390,3 +390,52 @@ def maxSlidingWindow(self, nums, k):
 ```
 
 ### O(n) time | O(n) space
+
+## 1996 https://leetcode.com/problems/the-number-of-weak-characters-in-the-game/description/
+
+Time Limit Exceeded
+
+```python
+def numberOfWeakCharacters(self, properties):
+        """
+        :type properties: List[List[int]]
+        :rtype: int
+        """
+        weakCount = [0] * len(properties)
+        for i in range(len(properties)):
+            j = i + 1
+            while j < len(properties):
+                prop1, prop2 = properties[i], properties[j]
+                check = (prop1[0] - prop2[0]) * (prop1[1] - prop2[1])
+                # 0 mean there's equal, -1 mean not both increasing or decreasing
+                if check >= 1:
+                    if prop1[0] < prop2[0]:
+                        weakCount[i] = 1
+                    else:
+                        weakCount[j] = 1
+                j += 1
+        return sum(weakCount)
+```
+
+Solution
+
+```python
+def numberOfWeakCharacters(self, properties):
+        """
+        :type properties: List[List[int]]
+        :rtype: int
+        """
+        # sort ascending by 1st property, if 1st props are same, sort descending by 2nd property
+        properties.sort(key=lambda x: (x[0], -x[1]))
+        
+        stack = []
+        ans = 0
+        
+        for a, d in properties:
+            while stack and stack[-1] < d:
+                stack.pop()
+                ans += 1
+            stack.append(d)
+        return ans
+```
+
