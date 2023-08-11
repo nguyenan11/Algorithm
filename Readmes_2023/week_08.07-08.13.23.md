@@ -454,3 +454,43 @@ def maxProfit(self, prices):
                 maxProfit += prices[i + 1] - prices[i]
         return maxProfit
 ```
+
+## 207 https://leetcode.com/problems/course-schedule/
+
+```python
+def canFinish(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: bool
+        """
+        # dfs
+        preMap = [[] for i in range(numCourses)]
+
+        # map each course to : prereq list
+        for crs, pre in prerequisites:
+            preMap[crs].append(pre)
+
+        visiting = set()
+
+        def dfs(crs):
+            # already visited
+            if crs in visiting:
+                return False
+            # no prereq
+            if preMap[crs] == []:
+                return True
+
+            visiting.add(crs)
+            for pre in preMap[crs]:
+                if not dfs(pre):
+                    return False
+            visiting.remove(crs)
+            preMap[crs] = []
+            return True
+
+        for c in range(numCourses):
+            if not dfs(c):
+                return False
+        return True
+```
