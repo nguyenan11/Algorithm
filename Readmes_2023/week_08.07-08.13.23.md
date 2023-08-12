@@ -494,3 +494,27 @@ def canFinish(self, numCourses, prerequisites):
                 return False
         return True
 ```
+
+## 32 https://leetcode.com/problems/longest-valid-parentheses/description/
+
+```python
+def longestValidParentheses(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        stack = [0]
+        maxCount = 0
+        for c in s:
+            if c == ")":
+                if len(stack) > 1:
+                    val = stack.pop()
+                    stack[-1] += val + 2
+                    maxCount = max(maxCount, stack[-1])
+                else:
+                    stack = [0]
+            else:
+                stack.append(0)
+        return maxCount
+```
+
