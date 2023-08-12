@@ -653,3 +653,37 @@ def closestCost(self, baseCosts, toppingCosts, target):
         return self.closest
 ```
 
+## 15 https://leetcode.com/problems/3sum/description/
+
+```python
+def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        TARGET = 0
+        result = []
+
+        nums.sort()
+
+        for i, num in enumerate(nums):
+            if i > 0 and num == nums[i - 1]:
+                continue
+
+            match = TARGET - num
+            leftPtr, rightPtr = i + 1, len(nums) - 1
+            while leftPtr < rightPtr:
+                twoSum = nums[leftPtr] + nums[rightPtr]
+                if twoSum == match:
+                    result.append([num, nums[leftPtr], nums[rightPtr]])
+                    leftPtr += 1
+                    rightPtr -= 1
+                    while nums[leftPtr] == nums[leftPtr - 1] and leftPtr < rightPtr:
+                        leftPtr += 1
+                elif twoSum < match:
+                    leftPtr += 1
+                else:
+                    rightPtr -= 1
+
+        return result
+```
