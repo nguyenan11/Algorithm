@@ -565,3 +565,19 @@ def maxSubArray(self, nums):
             maxSum = max(maxSum, currSum)
         return maxSum
 ```
+
+### 121 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+
+```python
+def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        maxProfit, minPrice = 0, prices[0]
+        for p in prices:
+            minPrice = min(p, minPrice)
+            profit = p - minPrice
+            maxProfit = max(maxProfit, profit)
+        return maxProfit
+```
