@@ -581,3 +581,39 @@ def maxProfit(self, prices):
             maxProfit = max(maxProfit, profit)
         return maxProfit
 ```
+
+## 148 https://leetcode.com/problems/sort-list/description/
+
+```python
+def sortList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if not head or not head.next:
+            return head
+        fastPtr, slowPtr = head.next, head
+        while fastPtr and fastPtr.next:
+            fastPtr = fastPtr.next.next
+            slowPtr = slowPtr.next
+        mid = slowPtr.next
+        slowPtr.next = None # break it in half
+        l1, l2 = self.sortList(head), self.sortList(mid)
+        return self.merge(l1, l2)
+
+
+    def merge(self, l1, l2):
+        if not l1 or not l2:
+            return l1 or l2
+        dummy = currNode = ListNode()
+        while l1 and l2:
+            if l1.val < l2.val:
+                currNode.next = l1
+                l1 = l1.next
+            else:
+                currNode.next = l2
+                l2 = l2.next
+            currNode = currNode.next
+        currNode.next = l1 or l2
+        return dummy.next
+```
