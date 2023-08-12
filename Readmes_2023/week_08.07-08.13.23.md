@@ -617,3 +617,39 @@ def sortList(self, head):
         currNode.next = l1 or l2
         return dummy.next
 ```
+
+## 1774 https://leetcode.com/problems/closest-dessert-cost/description/
+
+Unsolved problem
+
+```python
+def closestCost(self, baseCosts, toppingCosts, target):
+        """
+        :type baseCosts: List[int]
+        :type toppingCosts: List[int]
+        :type target: int
+        :rtype: int
+        """
+        self.closest = baseCosts[0]        
+
+        def dfs(cost, index):
+            if (
+                abs(cost - target) < abs(self.closest - target) or
+                abs(cost - target) < abs(self.closest - target) and 
+                cost == self.closest
+            ):
+                self.closest = cost
+            if index == len(toppingCosts) or cost >= target:
+                return
+            dfs(cost, index + 1)
+            dfs(cost + toppingCosts[index], index + 1)
+            dfs(cost + toppingCosts[index] * 2, index + 1)
+            
+    
+        
+        for cost in baseCosts:
+            dfs(cost, 0)
+        
+        return self.closest
+```
+
