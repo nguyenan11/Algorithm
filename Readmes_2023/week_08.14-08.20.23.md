@@ -52,3 +52,43 @@ def topKFrequent(self, nums, k):
                 if len(result) == k:
                     return result
 ```
+
+## 300 https://leetcode.com/problems/longest-increasing-subsequence/description/
+
+```python
+def lengthOfLIS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        LIS = [1 for i in range(len(nums))]
+
+        for i in range(len(nums) - 1, -1, -1):
+            for j in range(i + 1, len(nums)):
+                if nums[i] < nums[j]:
+                    LIS[i] = max(LIS[i], 1 + LIS[j])
+        return max(LIS)
+```
+
+## 133 Clone Graph
+
+```python
+def cloneGraph(self, node):
+        """
+        :type node: Node
+        :rtype: Node
+        """
+        oldToNew = {}
+
+        def dfs(node):
+            if node in oldToNew:
+                return oldToNew[node]
+            
+            copy = Node(node.val)
+            oldToNew[node] = copy
+            for nei in node.neighbors:
+                copy.neighbors.append(dfs(nei))
+            return copy
+        
+        return dfs(node) if node else None
+````
