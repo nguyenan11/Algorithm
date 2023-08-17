@@ -11,8 +11,9 @@
 
 ### Follow this list: https://github.com/hxu296/leetcode-company-wise-problems-2022#bytedance
 
-## 23 https://leetcode.com/problems/merge-k-sorted-lists/description/
+## [Leetcode #23 - Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
 
+#### Level: Hard 📕
 ```python
 def mergeKLists(self, lists):
   """
@@ -51,7 +52,11 @@ def merge2Lists(self, list1, list2):
   return head.next
 ```
 
-## 200 https://leetcode.com/problems/number-of-islands/description/
+### O(n * log k) time | O(n) space
+
+## [Leetcode #200 - Number of Islands](https://leetcode.com/problems/number-of-islands/)
+
+#### Level: Medium 📘
 
 ```python
 def numIslands(self, grid):
@@ -103,7 +108,11 @@ def numIslands(self, grid):
         return neighborNodes
 ```
 
-## 33 https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+### O(wh) time | O(wh) space - where w and h are the width and height of the input matrix
+
+## [Leetcode #33 - Search In Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+#### Level: Medium 📘
 
 > Make sure to include = sign
 
@@ -146,7 +155,11 @@ def search(self, nums, target):
         return -1
 ```
 
-## 124 https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
+### O(log n) time | O(1) space
+
+## [Leetcode #124 - Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+
+#### Level: Hard 📕
 
 ```python
 def maxPathSum(self, root):
@@ -171,9 +184,13 @@ def maxPathSum(self, root):
         return self.maxSum
 ```
 
-## 146 https://leetcode.com/problems/lru-cache/
+### O(n) time | O(n) space
 
-Approach
+## [Leetcode #146 - LRU Cache](https://leetcode.com/problems/lru-cache/)
+
+#### Level: Medium 📘
+
+> Approach
 
 ```python
 class Node():
@@ -226,7 +243,7 @@ class LRUCache(object):
             del self.cache[lru.key]
 ```
 
-Solution
+> Solution
 
 ```python
 class Node():
@@ -290,7 +307,11 @@ class LRUCache(object):
             del self.cache[lru.key]
 ```
 
-## 227 https://leetcode.com/problems/basic-calculator-ii/description/
+### O(1) time | O(1) space - as expected from the question
+
+## [Leetcode #227 - Basic Calculator II](https://leetcode.com/problems/basic-calculator-ii/)
+
+#### Level: Medium 📘
 
 ```python
  def calculate(self, s):
@@ -331,9 +352,13 @@ class LRUCache(object):
   return result
 ```
 
-## 239 https://leetcode.com/problems/sliding-window-maximum/description/
+### O(n) time | O(num) space where num is all the numbers in s
 
-Attempt - failed due to time running out
+## [Leetcode #239 - Sliding Window Maximum](https://leetcode.com/problems/sliding-window-maximum/)
+
+#### Level: Hard 📕
+
+> Attempt - failed due to time running out
 
 ```python
 def maxSlidingWindow(self, nums, k):
@@ -352,8 +377,8 @@ def maxSlidingWindow(self, nums, k):
   return result
 ```
 
-Solution
-Monotonically Decreasing Queue
+> Solution
+> *Monotonically Decreasing Queue*
 
 ```python
 def maxSlidingWindow(self, nums, k):
@@ -391,9 +416,11 @@ def maxSlidingWindow(self, nums, k):
 
 ### O(n) time | O(n) space
 
-## 1996 https://leetcode.com/problems/the-number-of-weak-characters-in-the-game/description/
+## [Leetcode #1996 - The Number of Weak Characters in the Game](https://leetcode.com/problems/the-number-of-weak-characters-in-the-game/)
 
-Time Limit Exceeded
+#### Level: Medium 📘
+
+> Time Limit Exceeded
 
 ```python
 def numberOfWeakCharacters(self, properties):
@@ -417,7 +444,7 @@ def numberOfWeakCharacters(self, properties):
         return sum(weakCount)
 ```
 
-Solution
+> Solution
 
 ```python
 def numberOfWeakCharacters(self, properties):
@@ -439,7 +466,11 @@ def numberOfWeakCharacters(self, properties):
         return ans
 ```
 
-## 122 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+### O(n) time | O(n) space
+
+## [Leetcode #122 - Best Time to Buy and Sell Stock II](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
+
+#### Level: Medium 📘
 
 ```python
 def maxProfit(self, prices):
@@ -455,7 +486,11 @@ def maxProfit(self, prices):
         return maxProfit
 ```
 
-## 207 https://leetcode.com/problems/course-schedule/
+### O(n) time | O(1) space
+
+## [Leetcode #207 - Course Schedule](https://leetcode.com/problems/course-schedule/)
+
+#### Level: Medium 📘
 
 ```python
 def canFinish(self, numCourses, prerequisites):
@@ -495,7 +530,11 @@ def canFinish(self, numCourses, prerequisites):
         return True
 ```
 
-## 32 https://leetcode.com/problems/longest-valid-parentheses/description/
+### Complexity???
+
+## [Leetcode #32 - Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/)
+
+#### Level: Hard 📕
 
 ```python
 def longestValidParentheses(self, s):
@@ -518,7 +557,11 @@ def longestValidParentheses(self, s):
         return maxCount
 ```
 
-## 39 https://leetcode.com/problems/combination-sum/submissions/
+### O(n) time | O(n) space
+
+## [Leetcode #39 - Combination Sum](https://leetcode.com/problems/combination-sum/)
+
+#### Level: Medium 📘
 
 ```python
 def combinationSum(self, candidates, target):
@@ -548,7 +591,11 @@ def combinationSum(self, candidates, target):
         return result
 ```
 
-## 53 https://leetcode.com/problems/maximum-subarray/description/
+### Complexity????
+
+## [Leetcode #53 - Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+
+#### Level: Medium 📘
 
 ```python
 def maxSubArray(self, nums):
@@ -566,7 +613,11 @@ def maxSubArray(self, nums):
         return maxSum
 ```
 
-### 121 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+### O(n) time | O(1) space
+
+## [Leetcode #121 - Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+
+#### Level: Easy 📗
 
 ```python
 def maxProfit(self, prices):
@@ -582,7 +633,11 @@ def maxProfit(self, prices):
         return maxProfit
 ```
 
-## 148 https://leetcode.com/problems/sort-list/description/
+### O(n) time | O(1) space
+
+## [Leetcode #148 - Sort List](https://leetcode.com/problems/sort-list/)
+
+#### Level: Medium 📘
 
 ```python
 def sortList(self, head):
@@ -618,9 +673,13 @@ def sortList(self, head):
         return dummy.next
 ```
 
-## 1774 https://leetcode.com/problems/closest-dessert-cost/description/
+### Complexity????
 
-Unsolved problem
+## [Leetcode #1774 - Closest Dessert Cost](https://leetcode.com/problems/closest-dessert-cost/)
+
+#### Level: Medium 📘
+
+> Unsolved problem
 
 ```python
 def closestCost(self, baseCosts, toppingCosts, target):
@@ -653,7 +712,11 @@ def closestCost(self, baseCosts, toppingCosts, target):
         return self.closest
 ```
 
-## 15 https://leetcode.com/problems/3sum/description/
+### Complexity???
+
+## [Leetcode #15 - 3Sum](https://leetcode.com/problems/3sum/)
+
+#### Level: Medium 📘
 
 ```python
 def threeSum(self, nums):
@@ -687,3 +750,5 @@ def threeSum(self, nums):
 
         return result
 ```
+
+### O(nlog(n)) time | O(len(result)) space
