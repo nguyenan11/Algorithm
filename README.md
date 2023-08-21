@@ -63,3 +63,6 @@ None LeetCode problems will be in **Java** and LeetCode ones will be in **Python
 ## [Week 06/18 - 06/25/2023](Readmes_2023/week_06.18-06.25.23.md) &nbsp; ⭐ BST heavily focused
 ## [Week 07/03 - 07/09/2023](Readmes_2023/week_07.03-07.09.23.md)
 ## [Week 07/10 - 07/16/2023](Readmes_2023/week_07.10-07.16.23.md)
+## [Week 08/07 - 08/13/2023](Readmes_2023/week_08.07-08.13.23.md)
+## [Week 08/14 - 08/20/2023](Readmes_2023/week_08.14-07.20.23.md)
+## [Week 07/10 - 07/16/2023](Readmes_2023/week_07.10-07.16.23.md)
