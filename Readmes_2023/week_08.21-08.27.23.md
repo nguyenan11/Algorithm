@@ -7,7 +7,10 @@
 
 ---
 
+
 # Microsoft
+
+### Follow this list: https://github.com/hxu296/leetcode-company-wise-problems-2022#microsoft
 
 ## [Leetcode #1822 - Sign of the Product of an Array](https://leetcode.com/problems/sign-of-the-product-of-an-array/)
 
@@ -85,3 +88,46 @@ def reverseWords(self, s):
 ```
 
 ### Complexity: Time: would be O(n) WITHOUT the consideration of string concatenation, and strip(), and calling string[start:end] | Need to be careful with space: modified s, using list
+
+## [Leetcode #54 - Spiral Matrix](https://leetcode.com/problems/spiral-matrix/)
+
+#### Level: Medium 📘
+
+```python
+def spiralOrder(self, matrix):
+  """
+  :type matrix: List[List[int]]
+  :rtype: List[int]
+  """
+  result = []
+  top, bot = 0, len(matrix)
+  left, right = 0, len(matrix[0])
+  # right and bot boundaries are actually outside of matrix/ not equal len - 1
+
+  # while iterating thru the loop, important to include -1 sometimes to avoid duplication (already visited node)
+  while top < bot and left < right:
+    # all num in top row
+    # range in Python right input is non-inclusive | go from left to right - 1
+    for i in range(left, right):
+      result.append(matrix[top][i])
+    top += 1
+    # all num on outer right col
+    for i in range(top, bot):
+      result.append(matrix[i][right - 1])
+    right -= 1
+    # crossed pointers | single row, or single column matrix
+    if not (top < bot and left < right):
+      break
+    # all num on bottom row
+    for i in range(right - 1, left - 1, -1):
+      result.append(matrix[bot -1][i])
+    bot -= 1
+    # all num on outer left col
+    for i in range(bot - 1, top - 1, -1):
+      result.append(matrix[i][left])
+    left += 1
+
+  return result
+```
+
+### O(row * col) time | O(1) runtime space | O(row * col) result space
