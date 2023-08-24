@@ -156,3 +156,40 @@ def sumZero(self, n):
 ```
 
 #### O(n / 2) time ~~ O(n) time | O(n) space
+
+## [Leetcode #17 - Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
+
+#### Level: Medium 📘
+
+```python
+def letterCombinations(self, digits):
+  """
+  :type digits: str
+  :rtype: List[str]
+  """
+  res = []
+  digitToChar = {
+    "2": "abc",
+    "3": "def",
+    "4": "ghi",
+    "5": "jkl",
+    "6": "mno",
+    "7": "qprs",
+    "8": "tuv",
+    "9": "wxyz",
+  }
+
+  def backtracking(i, currStr):
+    if len(currStr) == len(digits):
+      res.append(currStr)
+      return
+    for char in digitToChar[digits[i]]:
+      backtracking(i + 1, currStr + char)
+
+  if digits: # in case digits is null
+    backtracking(0, "")
+  
+  return res
+```
+
+#### O(n * 4^n) time | O(4^n) space worst / O(3^n) space average
