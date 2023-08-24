@@ -131,3 +131,28 @@ def spiralOrder(self, matrix):
 ```
 
 ### O(row * col) time | O(1) runtime space | O(row * col) result space
+
+## [Leetcode #1304 - Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/)
+
+#### Level: Easy 📗
+
+```python
+def sumZero(self, n):
+  """
+  :type n: int
+  :rtype: List[int]
+  """
+  result = []
+  if n % 2 != 0:
+    result.append(0)
+    n -= 1
+  uniqueInt = 1
+  while n > 0:
+    result.append(uniqueInt)
+    result.append(-1 * uniqueInt)
+    uniqueInt += 1
+    n -= 2
+  return result
+```
+
+#### O(n / 2) time ~~ O(n) time | O(n) space
