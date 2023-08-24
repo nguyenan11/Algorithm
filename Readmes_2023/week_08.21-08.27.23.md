@@ -193,3 +193,52 @@ def letterCombinations(self, digits):
 ```
 
 #### O(n * 4^n) time | O(4^n) space worst / O(3^n) space average
+
+## [Leetcode #297 - Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
+
+#### Level: Hard 📕
+
+```python
+def serialize(self, root):
+  """Encodes a tree to a single string.
+  
+  :type root: TreeNode
+  :rtype: str
+  """
+  tempList = [] # check function below for global characteristics
+
+  def dfs(node):
+    if not node:
+      tempList.append("N")
+      return
+    tempList.append(str(node.val))
+    dfs(node.left)
+    dfs(node.right)
+
+  dfs(root)
+  return ".".join(tempList)
+  
+
+def deserialize(self, data):
+  """Decodes your encoded data to tree.
+  
+  :type data: str
+  :rtype: TreeNode
+  """
+  valsList = data.split(".")
+  self.level = 0 # MAKE SURE to include self. - int var different from list [], look at above function, don't need self.
+
+  def dfs():
+    if valsList[self.level] == "N":
+      self.level += 1
+      return None
+    node = TreeNode(int(valsList[self.level]))
+    self.level += 1
+    node.left = dfs()
+    node.right = dfs()
+    return node
+
+  return dfs()
+```
+
+#### O(n) time | ~ O(2n) ~~ O(n) space
