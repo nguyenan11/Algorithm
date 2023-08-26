@@ -242,3 +242,33 @@ def deserialize(self, data):
 ```
 
 #### O(n) time | ~ O(2n) ~~ O(n) space
+
+## [Leetcode #5 - Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
+
+#### Level: Medium 📘
+
+```python
+def longestPalindrome(self, s):
+  """
+  :type s: str
+  :rtype: str
+  """
+  longest = [0, 1]
+  for i in range(1, len(s)):
+    odd = self.findLongestPalindrome(s, i - 1, i + 1)
+    even = self.findLongestPalindrome(s, i - 1, i)
+    currLongest = odd if odd[1] - odd[0] > even[1] - even[0] else even
+    longest = longest if longest[1] - longest[0] > currLongest[1] - currLongest[0] else currLongest
+  
+  return s[longest[0]:longest[1]]
+
+def findLongestPalindrome(self, s, left, right):
+  while left >= 0 and right < len(s):
+    if s[left] != s[right]:
+      break
+    left -= 1
+    right += 1
+  return [left + 1, right] # +1 is important so you can exclude the unmatched | right] already excludes right
+```
+
+#### O(n^2) time - but be considerable of string slice operation at the end (which is believed to cost linear time) | O(1) space
