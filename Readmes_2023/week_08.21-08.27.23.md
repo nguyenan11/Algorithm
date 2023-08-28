@@ -342,3 +342,41 @@ def merge2Lists(self, l1, l2):
 ```
 
 ### O(n * log k) time | O(n) space
+
+## [Leetcode #1386 - Cinema Seat Allocation](https://leetcode.com/problems/cinema-seat-allocation/)
+
+#### Level: Medium 📘
+
+```python
+def maxNumberOfFamilies(self, n, reservedSeats):
+  """
+  :type n: int
+  :type reservedSeats: List[List[int]]
+  :rtype: int
+  """
+  reservedInRow = {}
+  for key, value in reservedSeats:
+    if key not in reservedInRow:
+      reservedInRow[key] = set()
+    reservedInRow[key].add(value)
+  
+  # whole non-reserved row - max 2 groups of 4
+  count = (n - len(reservedInRow)) * 2
+
+  for row in reservedInRow.values():
+    # == 6 can be included for seat 4 to 7
+    if len(row) > 6: # no possible group of 4
+      continue
+    if all(num not in row for num in range(2, 10)):
+      count += 2
+    elif all(num not in row for num in range(4, 8)):
+      count += 1
+    elif all(num not in row for num in range(2, 6)):
+      count += 1
+    elif all(num not in row for num in range(6, 10)):
+      count += 1
+
+  return count
+```
+
+#### O(m) time | O(n) space - m is the total number of item in reservedSeats list
