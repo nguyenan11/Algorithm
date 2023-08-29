@@ -406,6 +406,36 @@ def firstMissingPositive(self, nums):
 > IMPORTANT concept: first missing positive will ALWAYS be between 1 and len(nums) + 1
 
 ```python
+def firstMissingPositive(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  # loop 1 - set negative num to 0
+  for i in range(len(nums)):
+    if nums[i] < 0:
+      nums[i] = 0
+  
+  # loop 2 IMPORTANT - check inbound and set appeared number to negative
+  # this will help with loop 3
+  # if value is 0 due to loop 1, set to default value of out of bound
+  for i in range(len(nums)):
+    # abs is also important here - we might mark future num as negative while using the index based of current num
+    val = abs(nums[i])
+    if 1 <= val <= len(nums):
+      if nums[val - 1] > 0:
+        nums[val - 1] *= -1
+      elif nums[val - 1] == 0:
+        # set to out of bound here for worst case scenario
+        nums[val - 1] = -1 * (len(nums) + 1)
 
+  # loop 3 - if num is negative, meaning it already appear somewhere in nums
+  for i in range(1, len(nums) + 1):
+    if nums[i - 1] >= 0:
+      return i
+      
+  return len(nums) + 1 
+  # worst case. Ex: [1, 2, 3] -> return 4
 ```
 
+#### O(n) time | O(1) space
