@@ -380,3 +380,32 @@ def maxNumberOfFamilies(self, n, reservedSeats):
 ```
 
 #### O(m) time | O(n) space - m is the total number of item in reservedSeats list
+
+## [Leetcode #41 - First Missing Positive](https://leetcode.com/problems/first-missing-positive/)
+
+#### Level: Hard 📕
+
+> Brute force
+
+```python
+def firstMissingPositive(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  constantTimeLookUp = set(nums)
+  i = 1
+  while i in constantTimeLookUp:
+    i += 1
+  return i
+```
+
+#### O(n) time | O(n) space
+
+> Optimized
+> IMPORTANT concept: first missing positive will ALWAYS be between 1 and len(nums) + 1
+
+```python
+
+```
+
