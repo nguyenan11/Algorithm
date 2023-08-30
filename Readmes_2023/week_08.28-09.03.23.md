@@ -157,3 +157,46 @@ def findKthLargest(self, nums, k):
 ```
 
 #### O(n log k) time | O(k) space
+
+> Optimized solution - nice concept
+
+```python
+def findKthLargest(self, nums, k):
+  """
+  :type nums: List[int]
+  :type k: int
+  :rtype: int
+  """
+  # find the right index in respect to array - help with moving Pointer
+  k = len(nums) - k
+  left, right = 0, len(nums) - 1
+  while left < right:
+    pivot = self.partition(nums, left, right)
+    
+    # move left
+    if pivot > k:
+      right = pivot - 1
+    
+    # move right
+    elif pivot < k:
+      left = pivot + 1
+
+    else:
+      break
+  
+  return nums[k]
+
+# Quickselect (similar to QuickSort)
+def partition(self, nums, left, right): 
+  pivot, movingPointer = nums[right], left
+  for i in range(left, right):
+    if nums[i] <= pivot:
+      # all less/equal num to left of pivot, bigger to right of pivot
+      nums[i], nums[movingPointer] = nums[movingPointer], nums[i]
+      movingPointer += 1
+  # final swap to ensure values left are smaller and right are bigger
+  nums[movingPointer], nums[right] = nums[right], nums[movingPointer]
+  return movingPointer
+```
+
+#### O(n) + O(n/2) + O(n/4) + ... = O(2n) = O(n) time | O(1) space
