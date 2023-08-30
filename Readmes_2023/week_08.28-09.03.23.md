@@ -76,3 +76,32 @@ class KthLargest(object):
 #### O(log n) time | O(n) - n is total number of elements in nums (because of the heap initialization based on nums, even though heap is reduced to k size later)
 
 > heappush(), heappop(), and heappushpop() from Python has O(log n) time complexity
+
+## [Leetcode #1046 - Last Stone Weight](https://leetcode.com/problems/last-stone-weight/)
+
+#### Level: Easy 📗
+
+```python
+import heapq
+
+class Solution(object):
+  def lastStoneWeight(self, stones):
+    """
+    :type stones: List[int]
+    :rtype: int
+    """
+    maxHeap = [-s for s in stones]
+    heapq.heapify(maxHeap)
+    while len(maxHeap) > 1:
+      stone1, stone2 = -1 * heapq.heappop(maxHeap), -1 * heapq.heappop(maxHeap)
+      if stone1 != stone2:
+        # stone1 is guaranteed to be bigger than stone2 if they're different due to maxHeap
+        newWeight = stone1 - stone2
+        heapq.heappush(maxHeap, -1 * newWeight)
+    maxHeap.append(0) # edge case when stones is [2, 2]
+    return -1 * maxHeap[0]
+```
+
+#### O(nlog n) time (I'm not fully convinced) | O(n) space
+
+> heapify() take O(n)
