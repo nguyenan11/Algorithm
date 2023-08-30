@@ -334,3 +334,27 @@ def insert(self, intervals, newInterval):
 ```
 
 ### O(n) time | O(n) space
+
+## [Leetcode #56 - Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+
+#### Level: Medium 📘
+
+```python
+def merge(self, intervals):
+  """
+  :type intervals: List[List[int]]
+  :rtype: List[List[int]]
+  """
+  # sort is important here becasue there's no guarantee that all starts are in ascending order
+  intervals.sort(key=lambda interval: interval[0])
+  result = [intervals[0]]
+  for start, end in intervals[1:]:
+    prevEnd = result[-1][1]
+    if prevEnd >= start: # overlapping detected
+      result[-1][1] = max(prevEnd, end)
+    else:
+      result.append([start, end])
+  return result
+```
+
+### O(n * log n) time | O(n) space
