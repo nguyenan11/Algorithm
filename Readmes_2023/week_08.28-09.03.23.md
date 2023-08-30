@@ -5,6 +5,7 @@
 
 # Category for this week:
 **[Heap](#heap)**<br>
+**[Intervals](#intervals)**<br>
 
 ---
 
@@ -299,3 +300,37 @@ class MedianFinder(object):
 ```
 
 #### O(log n) time for heapq operations and O(1) for peek
+
+---
+
+# Intervals
+
+## [Leetcode #57 - Insert Interval](https://leetcode.com/problems/insert-interval/)
+
+#### Level: Medium 📘
+
+```python
+def insert(self, intervals, newInterval):
+  """
+  :type intervals: List[List[int]]
+  :type newInterval: List[int]
+  :rtype: List[List[int]]
+  """
+  if not intervals or len(intervals) == 0:
+    return [newInterval]
+  result = []
+  for i in range(len(intervals)):
+    if newInterval[1] < intervals[i][0]:
+      result.append(newInterval)
+      return result + intervals[i:]
+    if newInterval[0] > intervals[i][1]:
+      result.append(intervals[i])
+    else:
+      start = min(newInterval[0], intervals[i][0])
+      end = max(newInterval[1], intervals[i][1])
+      newInterval = [start, end]
+  result.append(newInterval)
+  return result
+```
+
+### O(n) time | O(n) space
