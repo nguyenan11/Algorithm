@@ -135,3 +135,25 @@ def kClosest(self, points, k):
 ```
 
 #### O(n) time | O(n) space
+
+## [Leetcode #215 - Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+
+#### Level: Medium 📘
+
+```python
+def findKthLargest(self, nums, k):
+  """
+  :type nums: List[int]
+  :type k: int
+  :rtype: int
+  """
+  minHeap = []
+  for num in nums:
+    if len(minHeap) == k:
+      heapq.heappushpop(minHeap, num)
+    else:
+      heapq.heappush(minHeap, num)
+  return minHeap[0]
+```
+
+#### O(n log k) time | O(k) space
