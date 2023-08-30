@@ -245,3 +245,57 @@ def leastInterval(self, tasks, n):
 ```
 
 #### O(m * n) worst - O(m) time where m is num of tasks | O(m) space
+
+## [Leetcode #295 - Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
+
+#### Level: Hard 📕
+
+```python
+class MedianFinder(object):
+
+  def __init__(self):
+    # left is maxHeap, right is minHeap
+    # right values are ALWAYS bigger than left values
+    self.leftHeap, self.rightHeap = [],[]
+      
+
+  def addNum(self, num):
+    """
+    :type num: int
+    :rtype: None
+    """
+    if self.rightHeap and num > self.rightHeap[0]:
+      heapq.heappush(self.rightHeap, num)
+    else:
+      heapq.heappush(self.leftHeap, -1* num)
+
+    # check if order of number is correct - left < right
+    if (
+      self.leftHeap and 
+      self.rightHeap and 
+      -1 * self.leftHeap[0] > self.rightHeap[0]
+    ):
+      val = -1 * heapq.heappop(self.leftHeap)
+      heapq.heappush(self.rightHeap, val)
+    
+    # check unven size
+    if len(self.leftHeap) > len(self.rightHeap) + 1:
+      val = -1 * heapq.heappop(self.leftHeap)
+      heapq.heappush(self.rightHeap, val)
+    if len(self.rightHeap) > len(self.leftHeap) + 1:
+      val = heapq.heappop(self.rightHeap)
+      heapq.heappush(self.leftHeap, -1 * val)
+      
+
+  def findMedian(self):
+    """
+    :rtype: float
+    """
+    if len(self.leftHeap) > len(self.rightHeap):
+      return -1 * self.leftHeap[0]
+    if len(self.rightHeap) > len(self.leftHeap):
+      return self.rightHeap[0]
+    return (-1 * self.leftHeap[0] + self.rightHeap[0]) / 2.0
+```
+
+#### O(log n) time for heapq operations and O(1) for peek
