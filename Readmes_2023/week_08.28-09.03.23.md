@@ -358,3 +358,27 @@ def merge(self, intervals):
 ```
 
 ### O(n * log n) time | O(n) space
+
+## [Leetcode #435 - Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
+
+#### Level: Medium 📘
+
+```python
+def eraseOverlapIntervals(self, intervals):
+  """
+  :type intervals: List[List[int]]
+  :rtype: int
+  """
+  intervals.sort() # sort based on 1st ele, if 1st ele equalled then 2nd
+  removal = 0
+  prevEnd = intervals[0][1]
+  for start, end in intervals[1:]:
+    if start >= prevEnd: # no removal needed
+      prevEnd = end
+    else:
+      removal += 1
+      prevEnd = min(prevEnd, end)
+  return removal
+```
+
+### O(n * log n) time | O(1) space
