@@ -105,3 +105,33 @@ class Solution(object):
 #### O(nlog n) time (I'm not fully convinced) | O(n) space
 
 > heapify() take O(n)
+
+## [Leetcode #973 - K Closest Points to Origin](https://leetcode.com/problems/k-closest-points-to-origin/)
+
+#### Level: Medium 📘
+
+```python
+def kClosest(self, points, k):
+  """
+  :type points: List[List[int]]
+  :type k: int
+  :rtype: List[List[int]]
+  """
+  minHeap = []
+
+  for (x, y) in points:
+    dist = x*x + y*y
+    minHeap.append([dist, x, y])
+  
+  heapq.heapify(minHeap) # this is possible because Python library heapq only sort base on first element
+      
+  result = []
+  while k > 0:
+    dist, x, y = heapq.heappop(minHeap)
+    result.append([x, y])
+    k -= 1
+
+  return result
+```
+
+#### O(n) time | O(n) space
