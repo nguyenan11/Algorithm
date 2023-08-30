@@ -200,3 +200,48 @@ def partition(self, nums, left, right):
 ```
 
 #### O(n) + O(n/2) + O(n/4) + ... = O(2n) = O(n) time | O(1) space
+
+## [Leetcode #621 - Task Scheduler](https://leetcode.com/problems/task-scheduler/)
+
+#### Level: Medium 📘
+
+```python
+def leastInterval(self, tasks, n):
+  """
+  :type tasks: List[str]
+  :type n: int
+  :rtype: int
+  """
+  freq = Counter(tasks)
+  # freq = {}
+  # for task in tasks:
+  #     freq[task] = freq.get(task, 0) + 1
+  
+  maxHeap = [-count for count in freq.values()]
+  heapq.heapify(maxHeap)
+
+  time = 0
+
+  # pairs of [-count, idleTime] - this is important
+  # idleTime is IMPORTANT (key of this algo) and will be used to keep track and add back to heap
+  q = deque() 
+  while maxHeap or q:
+    # plus 1 for each iteration
+    # treat time as an index/turn when to be processed
+    time += 1
+
+    if not maxHeap:
+      time = q[0][1]
+    else:
+      # to decrease number of freq
+      # since maxHeap with - value, we +1 | Otherwise we -1
+      count = 1 + heapq.heappop(maxHeap)
+      if count: # not equal 0 ~~ we still have to process
+        q.append([count, time + n])
+    
+    if q and q[0][1] == time: # time to process
+      heapq.heappush(maxHeap, q.popleft()[0])
+  return time
+```
+
+#### O(m * n) worst - O(m) time where m is num of tasks | O(m) space
