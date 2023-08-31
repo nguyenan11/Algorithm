@@ -382,3 +382,28 @@ def eraseOverlapIntervals(self, intervals):
 ```
 
 ### O(n * log n) time | O(1) space
+
+## [Leetcode #1851 - Minimum Interval to Include Each Query](https://leetcode.com/problems/minimum-interval-to-include-each-query/)
+
+#### Level: Hard 📕
+
+> Brute force - failed b/c time limit exceed, which was expected
+
+```python
+def minInterval(self, intervals, queries):
+  """
+  :type intervals: List[List[int]]
+  :type queries: List[int]
+  :rtype: List[int]
+  """
+  result = [-1 for i in range(len(queries))]
+  for i in range(len(queries)):
+    for start, end in intervals:
+      if queries[i] in range(start, end + 1):
+        val = result[i]
+        newVal = end - start + 1
+        result[i] = min(val, newVal) if val != -1 else newVal
+  return result
+```
+
+#### O(i * m)q time | O(q) space where i is length of intervals and q is length of queries
