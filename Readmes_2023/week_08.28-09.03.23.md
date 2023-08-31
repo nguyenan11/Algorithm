@@ -467,3 +467,35 @@ def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
 ```
 
 ### O(2^target) time | O(target) space
+
+## [Leetcode #131 - Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/)
+
+#### Level: Medium 📘
+
+```python
+def partition(self, s: str) -> List[List[str]]:
+  res, partition = [], []
+
+  def dfs(i):
+    if i >= len(s):
+      res.append(partition.copy())
+      return
+    for j in range(i, len(s)):
+      if self.isPalin(s, i, j):
+        partition.append(s[i: j + 1])
+        dfs(j + 1)
+        partition.pop()
+
+  dfs(0)
+  return res
+
+def isPalin(self, s, l, r):
+  while l < r:
+    if s[l] != s[r]:
+      return False
+    l += 1
+    r -= 1
+  return True
+```
+
+#### O(2^n) time | O(palindromes) space
