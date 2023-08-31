@@ -7,6 +7,7 @@
 **[Heap](#heap)**<br>
 **[Intervals](#intervals)**<br>
 **[Backtracking](#backtracking)**<br>
+**[Graphs](#graphs)**<br>
 
 ---
 
@@ -551,3 +552,54 @@ def solveNQueens(self, n: int) -> List[List[str]]:
 #### O(n^2) or O(n * n!) time | O(n^2) space
 > n! space because we might skip through col that's already blocked
 > Be mindful that make a clone/copy might take O(n^2) time as well
+
+
+---
+
+# Graphs
+
+## [Leetcode #417 - Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/)
+
+#### Level: Medium 📘
+
+```python
+def pacificAtlantic(self, heights):
+  """
+  :type heights: List[List[int]]
+  :rtype: List[List[int]]
+  """
+  # idea: go backward
+  # start from both pac and alt to go inward, if currVal < prevVal -> elimiated
+  ROWS, COLS = len(heights), len(heights[0])
+  pac, atl = set(), set()
+
+  # trick see if water can go upward
+  def dfs(r, c, visited, prevHeight):
+    if (
+      r < 0 or
+      r == ROWS or
+      c < 0 or
+      c == COLS or
+      heights[r][c] < prevHeight or
+      (r, c) in visited
+    ):
+      return
+    visited.add((r, c))
+    currHeight = heights[r][c]
+    dfs(r - 1, c, visited, currHeight)
+    dfs(r + 1, c, visited, currHeight)
+    dfs(r, c - 1, visited, currHeight)
+    dfs(r, c + 1, visited, currHeight)
+
+  for r in range(ROWS):
+    dfs(r, 0, pac, heights[r][0])
+    dfs(r, COLS - 1, atl, heights[r][COLS - 1])
+
+  for c in range(COLS):
+    dfs(0, c, pac, heights[0][c])
+    dfs(ROWS - 1, c, atl, heights[ROWS - 1][c])
+
+  return list(pac.intersection(atl))
+```
+
+#### O(n * m) time | O(n * m) space
