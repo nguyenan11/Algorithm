@@ -406,4 +406,33 @@ def minInterval(self, intervals, queries):
   return result
 ```
 
-#### O(i * m)q time | O(q) space where i is length of intervals and q is length of queries
+#### O(i * q) time | O(q) space where i is length of intervals and q is length of queries
+
+> Optimized and success
+
+```python
+def minInterval(self, intervals, queries):
+  """
+  :type intervals: List[List[int]]
+  :type queries: List[int]
+  :rtype: List[int]
+  """
+  intervals.sort() # sort on 1st ele, if equal then 2nd ele
+  minHeap = [] # IMPORTANT: minHeap of pair (size, rightIdx)
+  i = 0
+  result = {}
+  sortedQueries = sorted(queries) # we need correct order when return final answer
+  for q in sortedQueries:
+    # compare query to start of interval - if query is less than start meaning query is out of bound
+    while i < len(intervals) and intervals[i][0] <= q:
+      l, r = intervals[i]
+      heapq.heappush(minHeap, [r - l + 1, r])
+      i += 1
+      
+    while minHeap and minHeap[0][1] < q: # < q means q is outside of right -> out of bound
+      heapq.heappop(minHeap)
+    result[q] = minHeap[0][0] if minHeap else -1
+  return [result[q] for q in queries] # with correct order
+```
+
+#### O(n log n + q log q) time | O(n + q) space
