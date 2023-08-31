@@ -499,3 +499,55 @@ def isPalin(self, s, l, r):
 ```
 
 #### O(2^n) time | O(palindromes) space
+
+## [Leetcode #51 - N-Queens](https://leetcode.com/problems/n-queens/)
+
+#### Level: Hard 📕
+
+```python
+def solveNQueens(self, n: int) -> List[List[str]]:
+  # no needed to keep track of row as we move Q along col
+  # can't have Q on same row anyway
+  blockedCols = set()
+  
+  # Diagnoses ALWAYS same value - same straight line (WOAH!!!)
+  blockedUpDiags = set() # (r + c)
+  blockedDownDiags = set() # (r -c) 
+
+  res = []
+  board = [["."] * n for i in range(n)] # ["."] * n is 1 row
+
+  def backtrack(r):
+    if r == n:
+      # want answer as string for row
+      copy = ["".join(row) for row in board]
+      res.append(copy)
+      return
+    for c in range(n):
+      if (
+        c in blockedCols or
+        r + c in blockedUpDiags or
+        r - c in blockedDownDiags
+      ):
+        continue
+
+      blockedCols.add(c)
+      blockedUpDiags.add(r + c)
+      blockedDownDiags.add(r - c)
+      board[r][c] = "Q"
+
+      backtrack(r + 1) 
+
+      # this is backtrack
+      blockedCols.remove(c)
+      blockedUpDiags.remove(r + c)
+      blockedDownDiags.remove(r - c)
+      board[r][c] = "."
+
+  backtrack(0)
+  return res
+```
+
+#### O(n^2) or O(n * n!) time | O(n^2) space
+> n! space because we might skip through col that's already blocked
+> Be mindful that make a clone/copy might take O(n^2) time as well
