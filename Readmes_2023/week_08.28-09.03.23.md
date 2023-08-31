@@ -6,6 +6,7 @@
 # Category for this week:
 **[Heap](#heap)**<br>
 **[Intervals](#intervals)**<br>
+**[Backtracking](#backtracking)**<br>
 
 ---
 
@@ -436,3 +437,33 @@ def minInterval(self, intervals, queries):
 ```
 
 #### O(n log n + q log q) time | O(n + q) space
+
+---
+
+# Backtracking
+
+## [Leetcode #39 - Combination Sum](https://leetcode.com/problems/combination-sum/)
+
+#### Level: Medium 📘
+
+```python
+def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+  result, combination = [], []
+
+  def dfs(i, total):
+    if total == target:
+      result.append(combination.copy())
+      return
+    if i >= len(candidates) or total > target:
+      return
+
+    combination.append(candidates[i])
+    dfs(i, total + candidates[i])
+    combination.pop()
+    dfs(i + 1, total)
+
+  dfs(0, 0)
+  return result
+```
+
+### O(2^target) time | O(target) space
