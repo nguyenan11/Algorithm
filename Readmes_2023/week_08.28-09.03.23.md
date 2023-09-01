@@ -701,3 +701,51 @@ def orangesRotting(self, grid):
 ```
 
 #### O(r * c) time | O(rotten oranges) space
+
+## [Leetcode #210 - Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
+
+#### Level: Medium 📘
+
+```python
+def findOrder(self, numCourses, prerequisites):
+  """
+  :type numCourses: int
+  :type prerequisites: List[List[int]]
+  :rtype: List[int]
+  """
+  prere = {i: [] for i in range(numCourses)}
+  for c, pre in prerequisites:
+    prere[c].append(pre)
+
+  output = []
+  cycle, visited = set(), set() # cycle tell if node is along path
+
+  '''
+  courses has 3 stages:
+  1. visited - course has been added to output
+  2. visiting - course not added to output, but added to cycle
+  3. unvisited - course not added to output nor cycle
+  '''
+
+  def dfs(course):
+    if course in cycle: # mean we're visiting this twice
+      return False
+    if course in visited: # don't need to visited twice
+      return True
+    cycle.add(course)
+    for pre in prere[course]:
+      if not dfs(pre): # cycle detected
+        return False
+    cycle.remove(course) # done with the path - IMPORTANT
+    visited.add(course) # all good to go
+    output.append(course)
+    return True
+
+  for c in range(numCourses):
+    if not dfs(c):
+      return []
+  
+  return output
+```
+
+#### O(Prere + Courses) or O(Edge + Vertex (Node)) time | O(numCourse) space
