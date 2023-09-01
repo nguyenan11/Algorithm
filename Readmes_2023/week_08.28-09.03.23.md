@@ -654,3 +654,50 @@ def solve(self, board):
 ```
 
 #### O(r * c) time
+
+## [Leetcode #994 - Rotting Oranges](https://leetcode.com/problems/rotting-oranges/)
+
+#### Level: Medium 📘
+
+```python
+def orangesRotting(self, grid):
+  """
+  :type grid: List[List[int]]
+  :rtype: int
+  """
+  minute, fresh = 0, 0
+  ROWS, COLS = len(grid), len(grid[0])
+  q = deque()
+
+  for r in range(ROWS):
+    for c in range(COLS):
+      if grid[r][c] == 1:
+        fresh += 1
+      if grid[r][c] == 2:
+        q.append((r, c))
+
+  DIRECTIONS = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+  
+  # still freshness and potential spread rotton
+  while fresh > 0 and q:
+    length = len(q)
+    for i in range(length):
+      r, c = q.popleft()
+      for dr, dc in DIRECTIONS:
+        row, col = r + dr, c + dc
+
+        # if inbound and nonrotten - make rotten
+        if (
+          row in range(ROWS) and
+          col in range(COLS) and
+          grid[row][col] == 1
+        ):
+          grid[row][col] = 2
+          q.append((row, col))
+          fresh -= 1
+      minute += 1
+
+  return minute if fresh == 0 else -1
+```
+
+#### O(r * c) time | O(rotten oranges) space
