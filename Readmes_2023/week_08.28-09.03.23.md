@@ -603,3 +603,54 @@ def pacificAtlantic(self, heights):
 ```
 
 #### O(n * m) time | O(n * m) space
+
+## [Leetcode #130 - Surrounded Regions](https://leetcode.com/problems/surrounded-regions/)
+
+#### Level: Medium 📘
+
+```python
+def solve(self, board):
+  """
+  :type board: List[List[str]]
+  :rtype: None Do not return anything, modify board in-place instead.
+  """
+  # Reverse Thinking
+  # brilliant logic: start from outside
+  # anything inside and not connect outside will for sure be surrounded
+  ROWS, COLS = len(board), len(board[0])
+
+  # DFS
+  def capture(r, c):
+    if (
+      r < 0 or r == ROWS or
+      c < 0 or c == COLS or
+      board[r][c] != "O"
+    ):
+      return
+    board[r][c] = "C" # this will avoid duplicated scan
+    capture(r - 1, c)
+    capture(r + 1, c)
+    capture(r, c - 1)
+    capture(r, c + 1)
+
+  # 1. DFS - Capture all unsurrounded region
+  for r in range(ROWS):
+    for c in range(COLS):
+      # check if border - check only 2 values here - check in list
+      if board[r][c] and (r in [0, ROWS - 1] or c in [0, COLS - 1]):
+        capture(r, c)
+
+  # 2. Capture surrounded region
+  for r in range(ROWS):
+    for c in range(COLS):
+      if board[r][c] == "O":
+        board[r][c] = "X"
+
+  # 3. Uncapture unsurrounded region
+  for r in range(ROWS):
+    for c in range(COLS):
+      if board[r][c] == "C":
+        board[r][c] = "O"
+```
+
+#### O(r * c) time
