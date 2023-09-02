@@ -10,6 +10,7 @@
 
 # Advanced Graphs
 
+## Prim's
 ## [Leetcode #1584 - Min Cost to Connect All Points](https://leetcode.com/problems/min-cost-to-connect-all-points/)
 
 #### Level: Medium 📘
@@ -53,3 +54,41 @@ def minCostConnectPoints(self, points):
 ```
 
 #### O(n^2 * log n) time | O(n) space
+
+## Djkstra
+## [Leetcode #743 - Network Delay Time](https://leetcode.com/problems/network-delay-time/)
+
+#### Level: Medium 📘
+
+```python
+def networkDelayTime(self, times, n, k):
+  """
+  :type times: List[List[int]]
+  :type n: int
+  :type k: int
+  :rtype: int
+  """
+  edges = defaultdict(list)
+  for u, v, w in times:
+    edges[u].append((v, w))
+
+  minHeap = [(0, k)] # dist, node
+  visited = set()
+  time = 0
+  while minHeap:
+    dist1, node1 = heapq.heappop(minHeap)
+    if node1 in visited:
+      continue
+    visited.add(node1)
+    time = max(time, dist1)
+
+    # BFS
+    for node2, dist2 in edges[node1]:
+      # sum the distance
+      heapq.heappush(minHeap, (dist1 + dist2, node2))
+
+  return time if len(visited) == n else -1
+```
+
+#### O(E * log V^20) ~~ O(2E * log V) ~~ O(E * log V) time
+#### E is edges, V is nodes/vertexes
