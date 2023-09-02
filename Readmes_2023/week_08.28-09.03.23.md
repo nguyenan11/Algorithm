@@ -1029,3 +1029,30 @@ def wordBreak(self, s, wordDict):
 
 #### O(n * m) time | O(n) space where n is length of string s and m is maximum length of word in wordDict
 > Time is augured to be O(n^2 * m) since string slicing takes O(n)
+
+## [Leetcode #91 - Decode Ways](https://leetcode.com/problems/decode-ways/)
+
+#### Level: Medium 📘
+
+```python
+def numDecodings(self, s):
+  """
+  :type s: str
+  :rtype: int
+  """
+  dp = [0] * (len(s) + 1)
+  dp[len(s)] = 1
+
+  for i in range(len(s) - 1, -1, -1):
+    if s[i] == "0":
+      continue
+    dp[i] = dp[i + 1]
+    if i + 1 < len(s) and (
+      s[i] == "1" or s[i] == "2" and s[i + 1] in "0123456"
+    ):
+      dp[i] += dp[i + 2]
+  
+  return dp[0]
+```
+
+#### O(n) time | O(n) space
