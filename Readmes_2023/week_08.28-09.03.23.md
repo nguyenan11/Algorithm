@@ -977,3 +977,27 @@ def countPalSub(self, s, l, r):
 ```
 
 #### O(n^2) time | O(1) space
+
+## [Leetcode #152 - Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
+
+#### Level: Medium 📘
+
+```python
+def maxProduct(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  res = nums[0]
+  currMin, currMax = 1, 1
+
+  for num in nums:
+    temp = num * currMax
+    currMax = max(num, temp, num * currMin)
+    currMin = min(num, temp, num * currMin)
+    res = max(currMax, res)
+  
+  return res
+```
+
+#### O(n) time | O(1) space
