@@ -778,9 +778,9 @@ def findRedundantConnection(self, edges):
     return False
 
   for u, v in edges:
-    cycle = set()
+    cycle = set() # this gets reset every time
     if dfs(u, v):
-      output = [u, v]
+      output = [u, v] # output got updated to latest element in edges
     graphs[u].add(v)
     graphs[v].add(u)
 
@@ -788,3 +788,51 @@ def findRedundantConnection(self, edges):
 ```
 
 #### O(2n) = O(n) time | O(n) space for recursion stack
+
+## [Leetcode #127 - Word Ladder](https://leetcode.com/problems/word-ladder/)
+
+#### Level: Hard 📕
+
+```python
+def ladderLength(self, beginWord, endWord, wordList):
+  """
+  :type beginWord: str
+  :type endWord: str
+  :type wordList: List[str]
+  :rtype: int
+  """
+  # 1 replacement at a time
+  # all words have same length
+  if endWord not in wordList:
+    return 0
+
+  neighbors = defaultdict(list)
+  wordList.append(beginWord)
+
+  # populate the dict. Ex: neighbors[*ot] = [hot, dot, lot]
+  for word in wordList:
+    for j in range(len(word)):
+      pattern = word[:j] + "*" + word[j + 1:]
+      neighbors[pattern].append(word)
+
+  visited = set(beginWord)
+  q = deque([beginWord])
+
+  change = 1
+  while q:
+    for i in range(len(q)):
+      word = q.popleft()
+      if word == endWord:
+        return change # shortest path
+      for j in range(len(word)):
+        pattern = word[:j] + "*" + word[j + 1:]
+        for nei in neighbors[pattern]:
+          if nei not in visited:
+            visited.add(nei)
+            q.append(nei)
+      change += 1
+
+  return 0
+```
+
+#### O(n * m^2) time | O(n * m^2) space
