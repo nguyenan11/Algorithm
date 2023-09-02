@@ -882,3 +882,22 @@ def climbStairs(self, n):
 ```
 
 #### O(n) time | O(1) space
+
+## [Leetcode #746 - Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/)
+
+#### Level: Easy 📗
+
+```python
+def minCostClimbingStairs(self, cost):
+  """
+  :type cost: List[int]
+  :rtype: int
+  """
+  # compare 2 prev cost when reaching new cost
+  for i in range(2, len(cost)):
+    cost[i] += min(cost[i - 1], cost[i - 2])
+
+  return min(cost[len(cost) - 1], cost[len(cost) - 2])
+```
+
+#### O(n) time | O(n) space
