@@ -749,3 +749,42 @@ def findOrder(self, numCourses, prerequisites):
 ```
 
 #### O(Prere + Courses) or O(Edge + Vertex (Node)) time | O(numCourse) space
+
+## [Leetcode #684 - Redundant Connection](https://leetcode.com/problems/redundant-connection/)
+
+#### Level: Medium 📘
+
+```python
+def findRedundantConnection(self, edges):
+  """
+  :type edges: List[List[int]]
+  :rtype: List[int]
+  """
+  # Ideal, remove edge that can break the cycle
+  # if multiple solution, return latest one in input edges
+  
+  graphs = defaultdict(set)
+  output = []
+
+  def dfs(u, v):
+    if u in cycle:
+      return False
+    if u == v:
+      return True
+    cycle.add(u)
+    for neighbor in graphs[u]:
+      if dfs(neighbor, v):
+        return True
+    return False
+
+  for u, v in edges:
+    cycle = set()
+    if dfs(u, v):
+      output = [u, v]
+    graphs[u].add(v)
+    graphs[v].add(u)
+
+  return output
+```
+
+#### O(2n) = O(n) time | O(n) space for recursion stack
