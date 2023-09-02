@@ -947,3 +947,33 @@ def robber1(self, nums):
 ```
 
 #### O(n) time | O(1) space
+
+## [Leetcode #647 - Palindromic Substrings](https://leetcode.com/problems/palindromic-substrings/)
+
+#### Level: Medium 📘
+
+```python
+def countSubstrings(self, s):
+  """
+  :type s: str
+  :rtype: int
+  """
+  count = len(s)
+  for i in range(1, len(s)):
+    odd = self.countPalSub(s, i - 1, i + 1)
+    even = self.countPalSub(s, i - 1, i)
+    count += odd + even
+  return count
+  
+def countPalSub(self, s, l, r):
+  count = 0
+  while l >= 0 and r < len(s):
+    if s[l] != s[r]:
+      break
+    l -= 1
+    r += 1
+    count += 1
+  return count
+```
+
+#### O(n^2) time | O(1) space
