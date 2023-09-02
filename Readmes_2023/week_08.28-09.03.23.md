@@ -922,3 +922,28 @@ def rob(self, nums):
 ```
 
 #### O(n) time | O(1) space
+
+## [Leetcode #213 - House Robber II](https://leetcode.com/problems/house-robber-ii/)
+
+#### Level: Medium 📘
+
+```python
+def rob(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  # cases: 1 value, skip first house, skip last house
+  return max(nums[0], self.robber1(nums[1:]), self.robber1(nums[:-1]))
+  
+# this is House Robber I
+def robber1(self, nums):
+  max1, max2 = 0, 0
+  for num in nums:
+    temp = max(num + max1, max2)
+    max1 = max2
+    max2 = temp
+  return max2
+```
+
+#### O(n) time | O(1) space
