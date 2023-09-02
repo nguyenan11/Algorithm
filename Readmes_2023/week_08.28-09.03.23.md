@@ -1080,3 +1080,33 @@ def coinChange(self, coins, amount):
 ```
 
 #### O(n) time | O(n) space
+
+## [Leetcode #416 - Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)
+
+#### Level: Medium 📘
+
+```python
+def canPartition(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: bool
+  """
+  if sum(nums) % 2 != 0: # ONLY: has to be even to split
+      return False 
+
+  dp = set()
+  dp.add(0)
+  target = sum(nums) // 2
+
+  for i in range(len(nums) - 1, -1 ,-1):
+    newDp = set() # avoid adding to dp while still iterating
+    for val in dp:
+      if val + nums[i] == target:
+        return True
+      newDp.add(val + nums[i])
+      newDp.add(val)
+    dp = newDp
+  return False
+```
+
+#### O(n) time | O(n) space
