@@ -8,6 +8,7 @@
 **[Intervals](#intervals)**<br>
 **[Backtracking](#backtracking)**<br>
 **[Graphs](#graphs)**<br>
+**[Dynamic Programming](#dynamic-programming)**<br>
 
 ---
 
@@ -836,3 +837,48 @@ def ladderLength(self, beginWord, endWord, wordList):
 ```
 
 #### O(n * m^2) time | O(n * m^2) space
+
+---
+
+# Dynamic Programming
+
+## [Leetcode #70 - Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+
+#### Level: Easy 📗
+
+> Brute force
+
+```python
+def climbStairs(self, n):
+  """
+  :type n: int
+  :rtype: int
+  """
+  if n == 1:
+    return 1
+  if n == 2:
+    return 2
+  return self.climbStairs(n - 1) + self.climbStairs(n - 2)
+```
+
+#### O(2^n) time | O(n) space
+
+> Optimized
+
+```python
+def climbStairs(self, n):
+  """
+  :type n: int
+  :rtype: int
+  """
+  if n <= 3:
+    return n
+  n1, n2 = 2, 3
+  for i in range(4, n + 1):
+    temp = n1 + n2
+    n1 = n2
+    n2 = temp
+  return n2
+```
+
+#### O(n) time | O(1) space
