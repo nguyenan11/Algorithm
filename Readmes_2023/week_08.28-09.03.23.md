@@ -901,3 +901,24 @@ def minCostClimbingStairs(self, cost):
 ```
 
 #### O(n) time | O(n) space
+
+## [Leetcode #198 - House Robber](https://leetcode.com/problems/house-robber/)
+
+#### Level: Medium 📘
+
+```python
+def rob(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  max1, max2 = 0, 0
+  for num in nums:
+    # can't + max with num because they can't be adjacent
+    temp = max(max1 + num, max2) 
+    max1 = max2
+    max2 = temp
+  return max2
+```
+
+#### O(n) time | O(1) space
