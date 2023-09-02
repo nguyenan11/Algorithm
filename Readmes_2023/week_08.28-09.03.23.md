@@ -1001,3 +1001,31 @@ def maxProduct(self, nums):
 ```
 
 #### O(n) time | O(1) space
+
+## [Leetcode #139 - Word Break](https://leetcode.com/problems/word-break/)
+
+#### Level: Medium 📘
+
+```python
+def wordBreak(self, s, wordDict):
+  """
+  :type s: str
+  :type wordDict: List[str]
+  :rtype: bool
+  """
+  dp = [False] * (len(s) + 1) # + 1 for base case
+  dp[len(s)] = True
+
+  # backward # bottom-up # top-down would work - return dp[len(s) - 1]
+  for i in range(len(s), -1, -1):
+    for w in wordDict:
+      if (i + len(w)) <= len(s) and s[i:i+len(w)] == w:
+        dp[i] = dp[i + len(w)]
+      if dp[i]:
+        break # found matched word, move onto next
+      
+  return dp[0]
+```
+
+#### O(n * m) time | O(n) space where n is length of string s and m is maximum length of word in wordDict
+> Time is augured to be O(n^2 * m) since string slicing takes O(n)
