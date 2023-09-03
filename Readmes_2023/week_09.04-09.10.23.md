@@ -5,6 +5,7 @@
 
 # Category for this week:
 **[Advanced Graphs](#advanced-graphs)**<br>
+**[Bit Manipulation](#bit-manipulation)**<br>
 
 ---
 
@@ -92,3 +93,43 @@ def networkDelayTime(self, times, n, k):
 
 #### O(E * log V^20) ~~ O(2E * log V) ~~ O(E * log V) time
 #### E is edges, V is nodes/vertexes
+
+## Bellman-Ford
+
+---
+
+# Bit Manipulation
+
+## [Leetcode #268 - Missing Number](https://leetcode.com/problems/missing-number/)
+
+#### Level: Easy 📗
+
+> sln 1
+```python
+def missingNumber(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  expectedSum = 0
+  for i in range(len(nums) + 1):
+    expectedSum += i
+  actualSum = sum(nums)
+  return expectedSum - actualSum
+```
+
+> sln 2
+```python
+def missingNumber(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  res = len(nums)
+  for i in range(len(nums)):
+    # we'll be left with the missing num
+    res += (i - nums[i])
+  return res
+```
+
+#### Both O(n) time | O(1) space
