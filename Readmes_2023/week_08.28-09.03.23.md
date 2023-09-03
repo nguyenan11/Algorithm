@@ -9,6 +9,7 @@
 **[Backtracking](#backtracking)**<br>
 **[Graphs](#graphs)**<br>
 **[Dynamic Programming](#dynamic-programming)**<br>
+**[2D Dynamic Programming](#2d-dynamic-programming)**<br>
 
 ---
 
@@ -1110,3 +1111,34 @@ def canPartition(self, nums):
 ```
 
 #### O(n) time | O(n) space
+
+---
+
+# 2D Dynamic Programming
+
+## [Leetcode #62 - Unique Paths](https://leetcode.com/problems/unique-paths/)
+
+#### Level: Medium 📘
+
+```python
+def uniquePaths(self, m, n):
+  """
+  :type m: int
+  :type n: int
+  :rtype: int
+  """
+  # only right and down - bottom up approach
+  # bottom row and outer right col has val 1
+  row = [1] * n
+
+  # just to iterate i times, doesn't actually use i
+  for i in range(m - 1): # exclude last row
+    newRow = [1] * n
+    for j in range(n - 2, -1, -1): # exclude outer right col
+      newRow[j] = newRow[j + 1] + row[j]
+      # newRow[j + 1]: right | row[j]: bot
+    row = newRow
+  return row[0]
+```
+
+#### O(n * m) time | O(n) space
