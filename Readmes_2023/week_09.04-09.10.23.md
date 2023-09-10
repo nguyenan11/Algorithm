@@ -133,3 +133,27 @@ def missingNumber(self, nums):
 ```
 
 #### Both O(n) time | O(1) space
+
+## [Leetcode #136 - Single Number](https://leetcode.com/problems/single-number/)
+
+#### Level: Easy 📗
+
+> Brute force
+
+```python
+def singleNumber(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  repeated = set()
+  for num in nums:
+    # appear TWICE
+    if num in repeated:
+      repeated.remove(num)
+    else:
+      repeated.add(num)
+  return repeated.pop()
+```
+
+#### O(n) time | O(n) space
