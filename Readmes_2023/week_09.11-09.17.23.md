@@ -34,3 +34,26 @@ def hammingWeight(self, n):
 ```
 
 #### O(len) time - len is binary string length of 32  | O(1) space
+
+## [Leetcode #338 - Counting Bits](https://leetcode.com/problems/counting-bits/)
+
+#### Level: Easy 📗
+
+```python
+def countBits(self, n):
+  """
+  :type n: int
+  :rtype: List[int]
+  """
+  dp = [0] * (n + 1)
+  offset = 1 # power of 2 - 2^0, 2^1, 2^2,...
+
+  for i in range(1, n + 1): # exclude n + 1 actually
+    if offset * 2 == i: # check if we have new offset
+      offset = i
+    dp[i] = 1 + dp[i - offset]
+  
+  return dp
+```
+
+#### O(n) time | O(n + 1) space
