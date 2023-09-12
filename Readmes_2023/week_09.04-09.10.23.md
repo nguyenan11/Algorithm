@@ -157,3 +157,25 @@ def singleNumber(self, nums):
 ```
 
 #### O(n) time | O(n) space
+
+> Optimized
+
+```python
+def singleNumber(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+
+  Using binary number
+  Each number is represent by 0 and 1
+  And the number multiplies itself will be 0, otherwise it will be the number
+  XOR principle | 1 ^ 1 = 0
+  n ^ 0 = n
+  """
+  result = 0
+  for num in nums:
+    result = num ^ result
+  return result
+```
+
+#### O(n) time | O(1) space
