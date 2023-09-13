@@ -5,6 +5,7 @@
 
 # Category for this week:
 **[Bit Manipulation](#bit-manipulation)**<br>
+**[Math And Geometry](#math-and-geometry)**<br>
 
 ---
 
@@ -57,3 +58,44 @@ def countBits(self, n):
 ```
 
 #### O(n) time | O(n + 1) space
+
+---
+
+# Math And Geometry
+
+## [Leetcode #48 - Rotate Image](https://leetcode.com/problems/rotate-image/)
+
+#### Level: Medium 📘
+
+```python
+def rotate(self, matrix):
+  """
+  :type matrix: List[List[int]]
+  :rtype: None Do not return anything, modify matrix in-place instead.
+  """
+  # important to note: n x n matrix
+  l, r = 0, len(matrix) - 1
+  while l < r:
+    for i in range(r - l):
+      top, bot = l, r
+
+      # save top left
+      topLeft = matrix[top][l + i]
+
+      # move bot left to top left
+      matrix[top][l + i] = matrix[bot - i][l]
+
+      # move bot right to bot left
+      matrix[bot - i][l] = matrix[bot][r - i]
+
+      # move top right to bot right
+      matrix[bot][r - i] = matrix[top + i][r]
+
+      # move top left to top right
+      matrix[top + i][r] = topLeft
+
+    l += 1
+    r -= 1
+```
+
+#### O(n x n) time | O(1) space
