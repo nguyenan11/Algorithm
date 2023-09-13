@@ -99,3 +99,33 @@ def rotate(self, matrix):
 ```
 
 #### O(n x n) time | O(1) space
+
+## [Leetcode #73 - Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/)
+
+#### Level: Medium 📘
+
+> Brute force
+
+```python
+def setZeroes(self, matrix):
+  """
+  :type matrix: List[List[int]]
+  :rtype: None Do not return anything, modify matrix in-place instead.
+  """
+  colsZero, rowsZero = set(), set()
+  
+  for r in range(len(matrix)):
+    for c in range(len(matrix[0])):
+      if matrix[r][c] == 0:
+        colsZero.add(c)
+        rowsZero.add(r)
+
+  for r in range(len(matrix)):
+    for c in range(len(matrix[0])):
+      if matrix[r][c] == 0:
+        continue
+      if r in rowsZero or c in colsZero:
+        matrix[r][c] = 0
+```
+
+#### O(m x n) time | O(m + n) space
