@@ -76,7 +76,7 @@ def rotate(self, matrix):
   # important to note: n x n matrix
   l, r = 0, len(matrix) - 1
   while l < r:
-    for i in range(r - l):
+    for i in range(r - l): # range (l, r - 1) | Num rotations are less than r
       top, bot = l, r
 
       # save top left
@@ -129,3 +129,81 @@ def setZeroes(self, matrix):
 ```
 
 #### O(m x n) time | O(m + n) space
+
+## [Leetcode #202 - Happy Number](https://leetcode.com/problems/happy-number/)
+
+#### Level: Easy 📗
+
+> Failed approach due to repeated nest loop
+
+```python
+def isHappy(self, n):
+  """
+  :type n: int
+  :rtype: bool
+  """
+  if n // 10 == 0:
+    return n == 1
+  newNum = 0
+  while n:
+    newNum += (n % 10) ** 2 # get last number on right
+    n = n // 10 # shift to the left
+  return self.isHappy(newNum)
+```
+
+#### complexity?
+
+> Another approach is to use hash set to store - LinkedList cycle
+
+```python
+def isHappy(self, n):
+  """
+  :type n: int
+  :rtype: bool
+  """
+  # loops endlessly FROM the prompt - important piece
+  loop = set()
+  while n not in loop:
+    loop.add(n)
+    n = self.sumOfSquares(n)
+    if n == 1:
+      return True
+  return False
+
+
+def sumOfSquares(self, n):
+  result = 0
+  while n:
+    result += (n % 10) ** 2
+    n = n // 10 # shift left
+  return result
+```
+
+#### O(n) time | O(n) space - n is the number of unique numbers
+
+> Optimized
+
+```python
+def isHappy(self, n):
+  """
+  :type n: int
+  :rtype: bool
+  """
+  # loops endlessly FROM the prompt - important piece
+  slow, fast = n, self.sumOfSquares(n)
+  while slow != fast:
+    fast = self.sumOfSquares(fast)
+    fast = self.sumOfSquares(fast)
+    slow = self.sumOfSquares(slow)
+  
+  return True if fast == 1 else False
+
+def sumOfSquares(self, n):
+  result = 0
+  while n:
+    result += (n % 10) ** 2
+    n = n // 10 # shift left
+  return result 
+```
+
+#### O(1) space
