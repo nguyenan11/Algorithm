@@ -234,3 +234,32 @@ def plusOne(self, digits):
 ```
 
 #### O(n) time | O(1) space
+
+## [Leetcode #50 - Pow(x, n)](https://leetcode.com/problems/powx-n/)
+
+#### Level: Medium 📘
+
+> First attempt - failed with time limit exceeded
+
+```python
+def myPow(self, x, n):
+  """
+  :type x: float
+  :type n: int
+  :rtype: float
+  """
+  if x == 0:
+    return 0
+  if n == 0:
+    return 1
+  if n < 0:
+    x = 1 / x
+    n *= -1
+  result = 1
+  while n > 0:
+    result *= x
+    n -= 1
+  return result
+```
+
+#### O(n) time | O(1) space
