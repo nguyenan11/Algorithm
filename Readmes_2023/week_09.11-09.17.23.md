@@ -207,3 +207,30 @@ def sumOfSquares(self, n):
 ```
 
 #### O(1) space
+
+## [Leetcode #66 - Plus One](https://leetcode.com/problems/plus-one/)
+
+#### Level: Easy 📗
+
+```python
+def plusOne(self, digits):
+  """
+  :type digits: List[int]
+  :rtype: List[int]
+  """
+  result = []
+  addOne = 1
+  for i in range(len(digits) - 1, -1, -1):
+    num = addOne + digits[i]
+    if num == 10:
+      addOne = 1
+      num = 0
+    else:
+      addOne = 0
+    result.insert(0, num)
+  if addOne:
+    result.insert(0, addOne)
+  return result
+```
+
+#### O(n) time | O(1) space
