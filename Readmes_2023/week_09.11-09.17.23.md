@@ -263,3 +263,27 @@ def myPow(self, x, n):
 ```
 
 #### O(n) time | O(1) space
+
+> Divide and Conquer
+
+```python
+def myPow(self, x, n):
+  """
+  :type x: float
+  :type n: int
+  :rtype: float
+  """
+  def divideAndConquer(x, n):
+    if x == 0: return 0
+    if n == 0: return 1
+    res = divideAndConquer(x, n // 2)
+    res = res * res
+
+    # Ex: n = 5 | x * x^2 * x^2 = x^5
+    return x * res if n % 2 else res
+      
+  result = divideAndConquer(x, abs(n))
+  return result if n >= 0 else 1 / result
+```
+
+#### O(log n) time | O(log n) space
