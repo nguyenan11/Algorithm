@@ -335,3 +335,41 @@ def multiply(self, num1, num2):
 ```
 
 #### O(num1 * num2) time | O(num1 + num2) space
+
+## [Leetcode #2013 - Detect Squares](https://leetcode.com/problems/detect-squares/)
+
+#### Level: Medium 📘
+
+```python
+class DetectSquares(object):
+
+  def __init__(self):
+    # better than {} | if key is not there, value will just be 0
+    self.pointCount = defaultdict(int)
+    self.points = [] # not necessary need this - can just use keys from map    
+
+  def add(self, point):
+    """
+    :type point: List[int]
+    :rtype: None
+    """
+    # list can't be key in Python
+    self.pointCount[tuple(point)] += 1
+    self.points.append(point)
+      
+  def count(self, point):
+    """
+    :type point: List[int]
+    :rtype: int
+    """
+    count = 0
+    px, py = point
+    for x, y in self.points:
+      # not equal length, or SAME points
+      if abs(x - px) != abs(y - py) or x == px or y == py:
+        continue
+      count += self.pointCount[(x, py)] * self.pointCount[(px, y)]
+    return count
+```
+
+#### O(n) time | O(n) space
