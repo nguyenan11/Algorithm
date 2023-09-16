@@ -287,3 +287,51 @@ def myPow(self, x, n):
 ```
 
 #### O(log n) time | O(log n) space
+
+## [Leetcode #43 - Multiply Strings](https://leetcode.com/problems/multiply-strings/)
+
+#### Level: Medium 📘
+
+```python
+def multiply(self, num1, num2):
+  """
+  :type num1: str
+  :type num2: str
+  :rtype: str
+
+  Note: 
+  - max length of multiplication is the sum of 2 num
+  - make sure to know how to do multiplication, the carry
+  - the shift to left when multiply next digit in 2nd num
+  - use array, go backward
+  - 81 % 10 = 1 | 81 / 10 = 8
+  """
+  if "0" in [num1, num2]:
+    return "0"
+
+  # max length of multiplication
+  res = [0] * (len(num1) + len(num2))
+  num1, num2 = num1[::-1], num2[::-1]
+
+  for i1 in range(len(num1)):
+    for i2 in range(len(num2)):
+      digit = int(num1[i1]) * int(num2[i2])
+
+      # these next 3 lines are extremely important
+
+      # i1 + i2 is brilliant | add with the carry first
+      res[i1 + i2] += digit
+      # save carry directly into the next position
+      res[i1 + i2 + 1] += res[i1 + i2] // 10
+      # make sure no tenth in the current iteration
+      res[i1 + i2] = res[i1 + i2] % 10
+
+  res, start = res[::-1], 0
+  while start < len(res) and res[start] == 0:
+    start += 1
+  
+  res = map(str, res[start:])
+  return "".join(res)
+```
+
+#### O(num1 * num2) time | O(num1 + num2) space
