@@ -421,3 +421,35 @@ def jump(self, nums):
 ```
 
 #### O(n) time | O(1) space
+
+## [Leetcode #134 - Gas Station](https://leetcode.com/problems/gas-station/)
+
+#### Level: Medium 📘
+
+```python
+def canCompleteCircuit(self, gas, cost):
+  """
+  :type gas: List[int]
+  :type cost: List[int]
+  :rtype: int
+
+  diff: [-2, -2, -2, 3, 3]
+  [0, 1, 2, 8, 4]
+
+  note: sum(gas) >= sum(cost)
+  """
+  if sum(gas) < sum(cost):
+    return -1
+
+  totalGas, startIdx = 0, 0
+  for i in range(len(gas)):
+    totalGas += gas[i] - cost[i]
+
+    if totalGas < 0:
+      totalGas = 0
+      startIdx = i + 1
+
+  return startIdx
+```
+
+#### O(n) time | O(1) space
