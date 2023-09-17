@@ -6,6 +6,7 @@
 # Category for this week:
 **[Bit Manipulation](#bit-manipulation)**<br>
 **[Math And Geometry](#math-and-geometry)**<br>
+**[Greedy](#greedy)**<br>
 
 ---
 
@@ -373,3 +374,26 @@ class DetectSquares(object):
 ```
 
 #### O(n) time | O(n) space
+
+---
+
+# Greedy
+
+## [Leetcode #55 - Jump Game](https://leetcode.com/problems/jump-game/)
+
+#### Level: Medium 📘
+
+```python
+def canJump(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: bool
+  """
+  goal = len(nums) - 1 # goal is index, last value doesn't really matter
+  for i in range(len(nums) - 2, -1, -1):
+    if i + nums[i] >= goal:
+      goal = i
+  return goal == 0
+```
+
+#### O(n) time | O(1) space
