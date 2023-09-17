@@ -397,3 +397,27 @@ def canJump(self, nums):
 ```
 
 #### O(n) time | O(1) space
+
+## [Leetcode #45 - Jump Game II](https://leetcode.com/problems/jump-game-ii/)
+
+#### Level: Medium 📘
+
+```python
+def jump(self, nums):
+  """
+  :type nums: List[int]
+  :rtype: int
+  """
+  jumps = 0
+  l, r = 0, 0
+  while r < len(nums) - 1: # this will exit once last num reached
+    maxJump = 0
+    for i in range(l, r + 1):
+      maxJump = max(maxJump, i + nums[i])
+    l = r + 1
+    r = maxJump
+    jumps += 1
+  return jumps
+```
+
+#### O(n) time | O(1) space
