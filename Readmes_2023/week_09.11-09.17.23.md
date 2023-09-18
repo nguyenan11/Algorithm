@@ -492,3 +492,48 @@ def isNStraightHand(self, hand, groupSize):
 ```
 
 #### O(n * log n) time | O(n) space
+
+## [Leetcode #1899 - Merge Triplets to Form Target Triplet](https://leetcode.com/problems/merge-triplets-to-form-target-triplet/)
+
+#### Level: Medium 📘
+
+> Brute force
+
+```python
+def mergeTriplets(self, triplets, target):
+  """
+  :type triplets: List[List[int]]
+  :type target: List[int]
+  :rtype: bool
+  """
+  result = [0] * 3
+  for t in triplets:
+    if t[0] > target[0] or t[1] > target[1] or t[2] > target[2]:
+      continue
+    for i, v in enumerate(t):
+      result[i] = max(result[i], v)
+
+  return result == target
+```
+
+> Slightly better
+
+```python
+def mergeTriplets(self, triplets, target):
+  """
+  :type triplets: List[List[int]]
+  :type target: List[int]
+  :rtype: bool
+  """
+  goodIdx = set()
+  for t in triplets:
+    if t[0] > target[0] or t[1] > target[1] or t[2] > target[2]:
+      continue
+    for i, v in enumerate(t):
+      if v == target[i]:
+        goodIdx.add(i)
+
+  return len(goodIdx) == 3
+```
+
+#### O(n) time | O(n) space
