@@ -537,3 +537,34 @@ def mergeTriplets(self, triplets, target):
 ```
 
 #### O(n) time | O(n) space
+
+## [Leetcode #678 - Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/)
+
+#### Level: Medium 📘
+
+```python
+def checkValidString(self, s):
+  """
+  :type s: str
+  :rtype: bool
+  num left parenthesis can never be less than right
+  """
+  leftMin, leftMax = 0, 0
+  for c in s:
+    if c == "(":
+      leftMin, leftMax = leftMin + 1, leftMax + 1
+    elif c == ")":
+      leftMin, leftMax = leftMin - 1, leftMax - 1
+    else:
+      leftMin, leftMax = leftMin - 1, leftMax + 1
+    if leftMax < 0: # )) ((
+      return False
+    # negative open "(" parenthesis not valid
+    # ex: ( * ) ( -> would return True if next if not included
+    if leftMin < 0:
+      leftMin = 0
+      
+  return leftMin == 0
+```
+
+#### O(n) time | O(1) space
