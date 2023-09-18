@@ -453,3 +453,42 @@ def canCompleteCircuit(self, gas, cost):
 ```
 
 #### O(n) time | O(1) space
+
+## [Leetcode #846 - Hand of Straights](https://leetcode.com/problems/hand-of-straights/)
+
+#### Level: Medium 📘
+
+```python
+def isNStraightHand(self, hand, groupSize):
+  """
+  :type hand: List[int]
+  :type groupSize: int
+  :rtype: bool
+  """
+  if len(hand) % groupSize != 0:
+    return False
+  
+  count = {}
+  for h in hand:
+    count[h] = count.get(h, 0) + 1
+  
+  minH = list(count.keys())
+  heapq.heapify(minH)
+
+  while minH:
+    first = minH[0]
+    
+    # this logic is important
+    for i in range(first, first + groupSize):
+      if i not in count:
+        return False
+      count[i] -= 1
+      if count[i] == 0:
+        if i != minH[0]:
+          return False
+        heapq.heappop(minH)
+
+  return True
+```
+
+#### O(n * log n) time | O(n) space
