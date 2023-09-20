@@ -568,3 +568,30 @@ def checkValidString(self, s):
 ```
 
 #### O(n) time | O(1) space
+
+## [Leetcode #763 - Partition Labels](https://leetcode.com/problems/partition-labels/)
+
+#### Level: Medium 📘
+
+```python
+def partitionLabels(self, s):
+  """
+  :type s: str
+  :rtype: List[int]
+  """
+  rightMostIndex = {}
+  for i, char in enumerate(s):
+    rightMostIndex[char] = i
+
+  left, right = 0, 0
+  result = []
+
+  for i, char in enumerate(s):
+    right = max(right, rightMostIndex[char])
+    if i == right:
+      result += [right - left + 1]
+      left = i + 1
+  return result
+```
+
+#### O(n) time | O(m) space - m is number of unique characters in s
