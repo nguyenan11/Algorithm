@@ -84,3 +84,32 @@ def maxProfit(self, prices):
 ```
 
 #### O(2n) ~ O(n) time | O(2n) ~ O(n) space
+
+## [Leetcode #518 - Coin Change II](https://leetcode.com/problems/coin-change-ii/)
+
+#### Level: Medium 📘
+
+```python
+def change(self, amount, coins):
+  """
+  :type amount: int
+  :type coins: List[int]
+  :rtype: int
+  """
+  cache = {}
+
+  def dfs(i, a):
+    if a == amount:
+      return 1
+    if a > amount or i == len(coins):
+      return 0
+    if (i, a) in cache:
+      return cache[(i, a)]
+    
+    cache[(i, a)] = dfs(i, a + coins[i]) + dfs(i + 1, a)
+    return cache[(i, a)]
+  
+  return dfs(0, 0)
+```
+
+#### O(n * amount) time | O(n * amount) space
