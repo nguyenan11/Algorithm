@@ -113,3 +113,59 @@ def change(self, amount, coins):
 ```
 
 #### O(n * amount) time | O(n * amount) space
+
+## [Leetcode #494 - Target Sum](https://leetcode.com/problems/target-sum/)
+
+#### Level: Medium 📘
+
+> Failed attempt - time limit exceeded
+> Brute force
+
+```python
+def findTargetSumWays(self, nums, target):
+  """
+  :type nums: List[int]
+  :type target: int
+  :rtype: int
+  """
+  self.count = 0
+
+  def dfs(i, total):
+    if i == len(nums):
+      if total == target:
+        self.count += 1
+      return
+    dfs(i + 1, total + nums[i])
+    dfs(i + 1, total - nums[i])
+  
+  dfs(0, 0)
+  return self.count
+```
+
+#### O(2^n) time | O(1) space
+
+> Success utilizing memorization - BACKTRACKING - calculations won't start until last element reached
+
+```python
+def findTargetSumWays(self, nums, target):
+  """
+  :type nums: List[int]
+  :type target: int
+  :rtype: int
+  """
+  # it really BACKTRACK - so memorization is important
+  dp = {} # key: (index, total) | value: total number of ways
+
+  def backtrack(i, total):
+    if i == len(nums):
+      return 1 if total == target else 0
+    if (i, total) in dp:
+      return dp[(i, total)]
+    dp[(i, total)] = backtrack(i + 1, total + nums[i]) + backtrack(i + 1, total - nums[i])
+    
+    return dp[(i, total)]
+
+  return backtrack(0, 0)
+```
+
+#### O(2n) time ~ O(n) time | O(2n) space ~ O(n) space
