@@ -211,3 +211,44 @@ def isInterleave(self, s1, s2, s3):
 #### Worst: O(2^(n1 + n2)) -> but we can take advantage of caching to keep O(n1 * n2) time
 
 > There is another approach using DP
+
+## [Leetcode #329 - Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/)
+
+#### Level: Hard 📕
+
+```python
+def longestIncreasingPath(self, matrix):
+  """
+  :type matrix: List[List[int]]
+  :rtype: int
+  """
+  dp = {} # caching of (row, col) -> the LIP when this point REACHED
+  ROWS, COLS = len(matrix), len(matrix[0])
+
+  def dfs(r, c, preValue):
+    if (
+      r < 0 or r == ROWS or
+      c < 0 or c == COLS or
+      matrix[r][c] <= preValue
+    ):
+      return 0
+    if (r, c) in dp:
+      return dp[(r, c)]
+
+    lip = 1
+    currVal = matrix[r][c]
+    iterLip = max(
+      dfs(r + 1, c, currVal), dfs(r - 1, c, currVal),
+      dfs(r, c + 1, currVal), dfs(r, c - 1, currVal))
+    lip = max(lip, 1 + iterLip)
+    dp[(r, c)] = lip
+    return lip
+
+  for r in range(ROWS):
+    for c in range(COLS):
+      dfs(r, c, -1)
+  
+  return max(dp.values())
+```
+
+#### O(r * c) time | O(r * c) space
