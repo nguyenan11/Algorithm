@@ -70,3 +70,4 @@ None LeetCode problems will be in **Java** and LeetCode ones will be in **Python
 ## [Week 09/04 - 09/10/2023](Readmes_2023/week_09.04-09.10.23.md)
 ## [Week 09/11 - 09/17/2023](Readmes_2023/week_09.11-09.17.23.md)
 ## [Week 09/18 - 09/24/2023](Readmes_2023/week_09.18-09.24.23.md)
+## [Week 09/25 - 10/01/2023](Readmes_2023/week_09.25-10.01.23.md)

@@ -40,3 +40,24 @@ def getConcatenation(self, nums):
 ```
 
 #### O(2n) ~ O(n) time | O(n) space if extra memory counts if not then O(1) space
+
+## [Leetcode #1299 - Replace Elements with Greatest Element on Right Side](https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/)
+
+#### Level: Easy 📗
+
+```python
+def replaceElements(self, arr):
+  """
+  :type arr: List[int]
+  :rtype: List[int]
+  """
+  rightMax = -1 
+  
+  for i in range(len(arr) - 1, -1, -1):
+    newMax = max(rightMax, arr[i])
+    arr[i] = rightMax
+    rightMax = newMax
+  return arr
+```
+
+#### O(n) time | O(1) space
