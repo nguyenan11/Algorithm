@@ -61,3 +61,27 @@ def replaceElements(self, arr):
 ```
 
 #### O(n) time | O(1) space
+
+## [Leetcode #392 - Is Subsequence](https://leetcode.com/problems/is-subsequence/)
+
+#### Level: Easy 📗
+
+```python
+def isSubsequence(self, s, t):
+  """
+  :type s: str
+  :type t: str
+  :rtype: bool
+  """
+  sIdx, tIdx = 0, 0
+  S_LENGTH, T_LENGTH = len(s), len(t)
+  if S_LENGTH > T_LENGTH:
+    return False
+  while tIdx < T_LENGTH and sIdx < S_LENGTH:
+    if s[sIdx] == t[tIdx]:
+      sIdx += 1
+    tIdx += 1
+  return sIdx == S_LENGTH
+```
+
+#### O(t) time | O(1) space
