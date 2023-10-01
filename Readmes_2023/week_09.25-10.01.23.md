@@ -85,3 +85,28 @@ def isSubsequence(self, s, t):
 ```
 
 #### O(t) time | O(1) space
+
+## [Leetcode #58 - Length of Last Word](https://leetcode.com/problems/length-of-last-word/)
+
+#### Level: Easy 📗
+
+```python
+def lengthOfLastWord(self, s):
+  """
+  :type s: str
+  :rtype: int
+  """
+  # return len(s.split()[-1]) 
+  # There seems to be many ways to solve this problem, but either we use helper function or iterating through entire string, time complexity if always O(n)
+  length, runningLength = 0, 0
+  for c in s:
+    if c == " ":
+      if runningLength != 0:
+        length = runningLength
+        runningLength = 0
+    else:
+      runningLength += 1
+  return runningLength if runningLength != 0 else length
+```
+
+#### O(n) time | O(1) space
