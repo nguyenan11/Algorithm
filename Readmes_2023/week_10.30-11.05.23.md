@@ -1,6 +1,6 @@
 # Algorithm practice
 
-# Week 10/09 - 10/15/2023
+# Week 10/30 - 11/05/2023
 
 # Category for this week:
 **[Array And Hashing](#array-and-hashing)**<br>
@@ -29,3 +29,26 @@ def longestCommonPrefix(self, strs):
 ```
 
 #### O(n^s) time | O(n) space - n is length of 1 string, s is total number of strings
+
+## [Leetcode #118 - Pascal's Triangle](https://leetcode.com/problems/pascals-triangle/)
+
+#### Level: Easy 📗
+
+```python
+def generate(self, numRows):
+  """
+  :type numRows: int
+  :rtype: List[List[int]]
+  """
+  result = [[1]]
+  for i in range(numRows - 1): # 1st row already there
+    # 0 @ start and end, using 2 pointers. 1s will always be outside
+    temp = [0] + result[-1] + [0] 
+    newRow =  []
+    for j in range(len(result[-1]) + 1):
+      newRow.append(temp[j] + temp[j + 1])
+    result.append(newRow)
+  return result
+```
+
+#### O(numRows!) time | O(numRows!) space
