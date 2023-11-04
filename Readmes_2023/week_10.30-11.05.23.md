@@ -96,3 +96,30 @@ def numUniqueEmails(self, emails):
 ```
 
 #### O(emails) time | O(unique emails) space
+
+## [Leetcode #205 - Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/)
+
+#### Level: Easy 📗
+
+```python
+def isIsomorphic(self, s, t):
+  """
+  :type s: str
+  :type t: str
+  :rtype: bool
+  """
+  if len(s) != len(t):
+      return False
+  sToT, tToS = {}, {}
+  for i in range(len(s)):
+      if (
+          s[i] in sToT and sToT[s[i]] != t[i] or
+          t[i] in tToS and tToS[t[i]] != s[i]
+      ):
+          return False
+      sToT[s[i]] = t[i]
+      tToS[t[i]] = s[i]
+  return True
+```
+
+#### O(n) time | O(2n) ~ O(n) space
