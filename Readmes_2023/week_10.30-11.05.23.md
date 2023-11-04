@@ -74,3 +74,25 @@ def removeElement(self, nums, val):
 ```
 
 #### O(n) time | O(1) space
+
+## [Leetcode #929 - Unique Email Addresses](https://leetcode.com/problems/unique-email-addresses/)
+
+#### Level: Easy 📗
+
+```python
+def numUniqueEmails(self, emails):
+  """
+  :type emails: List[str]
+  :rtype: int
+  """
+  receiveMails = set()
+  for mail in emails:
+    local, domain = mail.split("@")
+    validLocal = local.split("+")[0]
+    receiveLocal = "".join(validLocal.split("."))
+    receiveMail = receiveLocal + "@" + domain
+    receiveMails.add(receiveMail)
+  return len(receiveMails)
+```
+
+#### O(emails) time | O(unique emails) space
