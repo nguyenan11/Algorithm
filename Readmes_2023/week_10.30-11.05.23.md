@@ -123,3 +123,46 @@ def isIsomorphic(self, s, t):
 ```
 
 #### O(n) time | O(2n) ~ O(n) space
+
+## [Leetcode #605 - Can Place Flowers](https://leetcode.com/problems/can-place-flowers/)
+
+#### Level: Easy 📗
+
+> Failed attempt
+
+```python
+def canPlaceFlowers(self, flowerbed, n):
+  prevNonEmpty = -1
+  for idx, plot in enumerate(flowerbed):
+    if plot == 1:
+      gap = idx - prevNonEmpty - 1
+      if gap >= 3:
+        n -= gap // 2
+      prevNonEmpty = idx
+  
+  if prevNonEmpty == -1:
+    length = len(flowerbed)
+    if length % 2 == 0:
+      return len(flowerbed) // 2 >= n
+    return len(flowerbed) // 2 + 1 >= n
+  return n <= 0
+```
+
+> Success
+
+```python
+def canPlaceFlowers(self, flowerbed, n):
+  """
+  :type flowerbed: List[int]
+  :type n: int
+  :rtype: bool
+  """
+  fb = [0] + flowerbed + [0] # avoid out of bound error when parsing
+  for i in range(1, len(fb) - 1):
+    if fb[i - 1] == 0 and fb[i] == 0 and fb[i + 1] == 0:
+      fb[i] = 1
+      n -= 1
+  return n <= 0
+```
+
+#### O(n) time | O(n) space
